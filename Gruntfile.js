@@ -3,14 +3,14 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    sass: {                              
-      dist: {                            
-        options: {                       
+    sass: {
+      dist: {
+        options: {
           style: 'expanded',
           compass: true,
           sourcemap: true
         },
-        files: {                         
+        files: {
           'css/main.css': 'scss/main.scss'
         }
       }
