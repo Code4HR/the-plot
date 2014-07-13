@@ -50,6 +50,37 @@ body {
 	}
 }
 
+@mixin arrows($size, $direction: left, $buffer: false, $nudge: 2px) {
+	.arrow {
+		width: $size;
+		height: $size;
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: $size;
+			height: floor($size / 7);
+			background: white;
+		}
+		&:before {top: -1 * $nudge}
+		&:after {top: $nudge}
+		&.left {
+			&:before, &:after {@include transform-origin(left)}
+			&:before {@include transform(rotateZ(45deg))}
+			&:after {@include transform(rotateZ(-45deg))}
+		}
+		&.right {
+			&:before, &:after {@include transform-origin(right)}
+			&:before {@include transform(rotateZ(-45deg))}
+			&:after {@include transform(rotateZ(45deg))}
+		}
+		@if $buffer {
+			&.left {left: $buffer}
+			&.right {right: $buffer}
+		}
+	}
+}
+
 $count-carousel-items: 5;
 
 #carousel {
@@ -57,6 +88,24 @@ $count-carousel-items: 5;
 	position: absolute;
 	top: 50vh;
 	white-space: nowrap;
+
+	.arrow {
+		@include transition(all 250ms);
+		position: fixed;
+		@include transform(translateY(-50%));
+		&.left {
+			left: 5vh;
+		}
+		&.right {
+			right: 5vh;
+		}
+		&:not(.active) {
+			pointer-events: none;
+			&:before, &:after {
+				background: #ccc;
+			}
+		}
+	}
 
 	#carousel-item-container {
 		position: absolute;
@@ -81,14 +130,20 @@ $count-carousel-items: 5;
 			background: pink;
 			position: absolute;
 		}
+		@include transition(all 250ms);
+		&:not(.active) {
+			opacity: 0.5;
+		}
 	}
 
 	@include mobile-portrait-only {
 		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 15px);
+		@include arrows(35px);
 	}
 
 	@include mobile-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
+		@include arrows(75px);
 	}
 }
 
