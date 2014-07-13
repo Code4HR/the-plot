@@ -1,3 +1,105 @@
 @import "compass";
+@import "lib";
+
+body {
+	font-family: Helvetica, sans-serif;
+	background: #151617;
+	overflow: hidden;
+}
+
+#logo {
+	text-align: center;
+	text-transform: uppercase;
+	color: white;
+	.the, .plot, .plot * {
+		display: inline-block;
+	}
+	.the {
+		background: #636365;
+		font-size: 12px;
+		@include desktop-and-up {
+			font-size: 14px;
+		}
+	}
+	.plot {
+		* {
+			@include border-radius(50%);
+		}
+		.p {
+			background: #B281FA;
+		}
+		.l {
+			background: #FF2F7B;
+		}
+		.o {
+			background: #BDED44;
+		}
+		.t {
+			background: #27D1FC;
+		}
+	}
+}
+
+@mixin carousel-dimensions($carousel-item-width, $buffer-carousel-item) {
+	width: $count-carousel-items * $carousel-item-width * 100%;
+	.carousel-item-contents {
+		top: $buffer-carousel-item;
+		right: $buffer-carousel-item;
+		bottom: $buffer-carousel-item;
+		left: $buffer-carousel-item;
+	}
+}
+
+$count-carousel-items: 5;
+
+#carousel {
+	
+	position: absolute;
+	top: 50vh;
+	white-space: nowrap;
+
+	#carousel-item-container {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	.carousel-item {
+		display: inline-block;
+		white-space: normal;
+		@include transform(translateY(-50%));
+		width: 100% / $count-carousel-items;
+		padding-top: 100% / $count-carousel-items;
+		position: relative;
+		&:not(:last-of-type) {
+			margin-right: -4px;
+		}
+		.carousel-item-contents {
+			@include border-radius(50%);
+			background: pink;
+			position: absolute;
+		}
+	}
+
+	@include mobile-portrait-only {
+		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 15px);
+	}
+
+	@include mobile-portrait-and-up {
+		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
+	}
+}
+
+#footer {
+	text-align: center;
+	position: absolute;
+	bottom: 10vh;
+	width: 100%;
+	.footer-item {
+		display: inline-block;
+	}
+}
 
 
