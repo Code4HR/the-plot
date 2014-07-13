@@ -136,15 +136,23 @@ $count-carousel-items: 5;
 		}
 	}
 
+	/*
+	ALL MEDIA QUERIES RELATING TO CAROUSEL GO HERE!
+	 */
+
 	@include mobile-portrait-only {
 		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 15px);
 		@include arrows(35px);
+		.arrow {
+			top: 80vh;
+		}
 	}
 
 	@include mobile-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
 		@include arrows(75px);
 	}
+
 }
 
 #footer {
