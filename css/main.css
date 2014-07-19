@@ -4,6 +4,12 @@ body {
   overflow: hidden;
 }
 
+h1, h2 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
 #logo {
   text-align: center;
   text-transform: uppercase;
@@ -27,6 +33,8 @@ body {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+  width: 20px;
+  height: 20px;
 }
 #logo .plot .p {
   background: #B281FA;
@@ -67,11 +75,11 @@ body {
 #carousel .arrow.right {
   right: 5vh;
 }
-#carousel .arrow:not(.active) {
-  pointer-events: none;
-}
 #carousel .arrow:not(.active):before, #carousel .arrow:not(.active):after {
   background: #ccc;
+}
+#carousel .arrow:hover {
+  cursor: pointer;
 }
 #carousel #carousel-item-container {
   position: absolute;
@@ -185,7 +193,7 @@ body {
     top: 80vh;
   }
 }
-@media (min-width: 320px) {
+@media only screen and (min-width: 481px) {
   #carousel {
     width: 250%;
   }
