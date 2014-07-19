@@ -100,11 +100,15 @@ $count-carousel-items: 5;
 			right: 5vh;
 		}
 		&:not(.active) {
-			pointer-events: none;
+			//pointer-events: none;
 			&:before, &:after {
 				background: #ccc;
 			}
 		}
+	}
+
+	.arrow:hover{
+		cursor:pointer;
 	}
 
 	#carousel-item-container {
