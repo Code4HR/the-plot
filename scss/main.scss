@@ -24,6 +24,8 @@ body {
 	.plot {
 		* {
 			@include border-radius(50%);
+			width:20px;
+			height:20px;
 		}
 		.p {
 			background: #B281FA;
