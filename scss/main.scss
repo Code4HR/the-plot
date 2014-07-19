@@ -7,6 +7,12 @@ body {
 	overflow: hidden;
 }
 
+h1, h2{
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
 #logo {
 	text-align: center;
 	text-transform: uppercase;
@@ -154,7 +160,7 @@ $count-carousel-items: 5;
 		}
 	}
 
-	@include mobile-portrait-and-up {
+	@include tablet-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
 		@include arrows(75px);
 	}

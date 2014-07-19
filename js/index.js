@@ -14,6 +14,13 @@ $(function(){
 	var items = [];
 	$("#carousel-item-container .carousel-item").each(function() {
 	    items.push(this);
+	    $(this).find('h1').css({
+	    	"margin-top": ($(".carousel-item-contents").width() / 2 - 20)+ "px"
+	    })
+
+	    $(this).find('h2').css({
+	    	"margin-top": ($(".carousel-item-contents").width() / 2 - 60)+ "px"
+	    })
 	});
 
 	var activeItem = 0;
