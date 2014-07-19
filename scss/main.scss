@@ -7,6 +7,12 @@ body {
 	overflow: hidden;
 }
 
+h1, h2{
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
 #logo {
 	text-align: center;
 	text-transform: uppercase;
@@ -24,6 +30,8 @@ body {
 	.plot {
 		* {
 			@include border-radius(50%);
+			width:20px;
+			height:20px;
 		}
 		.p {
 			background: #B281FA;
@@ -100,11 +108,15 @@ $count-carousel-items: 5;
 			right: 5vh;
 		}
 		&:not(.active) {
-			pointer-events: none;
+			//pointer-events: none;
 			&:before, &:after {
 				background: #ccc;
 			}
 		}
+	}
+
+	.arrow:hover{
+		cursor:pointer;
 	}
 
 	#carousel-item-container {
@@ -148,7 +160,7 @@ $count-carousel-items: 5;
 		}
 	}
 
-	@include mobile-portrait-and-up {
+	@include tablet-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
 		@include arrows(75px);
 	}
