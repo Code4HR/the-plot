@@ -44,5 +44,13 @@ $(function(){
 		}
 	})
 
+	$("#about").on("click", function(){
+		$("#about_box").show();
+	});
+
+	$(".close_btn").on("click", function(){
+		$("#about_box").hide();
+	});
+
 	
 })
