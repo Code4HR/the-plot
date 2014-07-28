@@ -49,7 +49,6 @@ h1, h2 {
 
 #carousel {
   position: absolute;
-  top: 50vh;
   white-space: nowrap;
   /*
   ALL MEDIA QUERIES RELATING TO CAROUSEL GO HERE!
@@ -114,6 +113,7 @@ h1, h2 {
 @media (min-width: 320px) {
   #carousel {
     width: 500%;
+    top: 45vh;
   }
   #carousel .carousel-item-contents {
     top: 40px;
@@ -176,7 +176,7 @@ h1, h2 {
     transform: rotateZ(45deg);
   }
   #carousel .arrow {
-    top: 88vh;
+    top: 85vh;
   }
   #carousel .arrow.left {
     left: 20vh;
@@ -188,6 +188,7 @@ h1, h2 {
 @media only screen and (min-width: 481px) {
   #carousel {
     width: 250%;
+    top: 50vh;
   }
   #carousel .carousel-item-contents {
     top: 40px;

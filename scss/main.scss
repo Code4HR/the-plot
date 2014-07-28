@@ -94,7 +94,6 @@ $count-carousel-items: 5;
 #carousel {
 	
 	position: absolute;
-	top: 50vh;
 	white-space: nowrap;
 
 	.arrow {
@@ -155,8 +154,10 @@ $count-carousel-items: 5;
 	@include mobile-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 40px);
 		@include arrows(35px);
+
+		top: 45vh;
 		.arrow {
-			top: 88vh;
+			top: 85vh;
 			&.left {
 				left: 20vh;
 			}
@@ -169,6 +170,8 @@ $count-carousel-items: 5;
 	@include tablet-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
 		@include arrows(75px);
+
+		top: 50vh;
 		.arrow {
 			top: 50vh;
 		}
