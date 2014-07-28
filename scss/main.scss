@@ -152,7 +152,7 @@ $count-carousel-items: 5;
 	ALL MEDIA QUERIES RELATING TO CAROUSEL GO HERE!
 	 */
 
-	@include mobile-portrait-only {
+	@include mobile-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 15px);
 		@include arrows(35px);
 		.arrow {
@@ -163,6 +163,9 @@ $count-carousel-items: 5;
 	@include tablet-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
 		@include arrows(75px);
+		.arrow {
+			top: 50vh;
+		}
 	}
 
 }
@@ -170,11 +173,85 @@ $count-carousel-items: 5;
 #footer {
 	text-align: center;
 	position: absolute;
-	bottom: 10vh;
+	bottom: 5vh;
 	width: 100%;
+	color:#6F6F72;
+
 	.footer-item {
 		display: inline-block;
+		margin:0 6px;
+		text-transform: uppercase;
+	}
+
+	.footer-item:hover{
+		color:#fff;
+		cursor:pointer;
+	}
+
+	.active{
+		color:#fff;
 	}
 }
+
+#overlay{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:#000;
+	opacity:0.6;
+	display:none;
+}
+
+#about_box{
+	display:none;
+	box-sizing:border-box; 
+	position:absolute;
+	left:10%;
+	top:10%;
+	width:80%;
+	height:80%;
+	text-align:center;
+	background-color:#28292A;
+	color:#737275;
+	padding:10px;
+	z-index:99;
+
+	.container{
+		position:relative;
+		width:100%;
+		height:100%;
+	}
+
+	.close_btn{
+		position:absolute;
+		right:10px;
+		width:50px;
+		height:50px;
+		background-color:#fff;
+	}
+
+	.paragraphs{
+		position:absolute;
+		top:20vh;
+		padding:0 120px;
+
+		p{
+			font-size:22px;
+			padding-bottom:20px;
+
+			.green{
+				color:#C3ED00;
+			}
+
+			a{
+				color:#AA7CFF;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
 
 

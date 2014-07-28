@@ -5,7 +5,7 @@ $(function(){
 		$(".carousel-item").removeClass("active");
 		$(items[activeItem]).addClass("active");
 
-		$("#carousel").css({
+		$("#carousel").animate({
 			"left": (($(window).width() / 2) - ( ($carousel_item_width * index) + ($carousel_item_width/ 2)) )+ "px"
 		});
 	}
@@ -28,7 +28,10 @@ $(function(){
 	$carousel = $("#carousel-item-container");
 	$carousel_item_width = parseInt($(".carousel-item").css("padding-top"));
 
-	moveCarousel(activeItem);
+	// init position
+	$("#carousel").css({
+		"left": (($(window).width() / 2) - ( ($carousel_item_width * 0) + ($carousel_item_width/ 2)) )+ "px"
+	});
 
 	$(".right").on("click", function(){
 		if (activeItem < 3){
@@ -43,6 +46,21 @@ $(function(){
 			moveCarousel(activeItem);
 		}
 	})
+
+	$("#about").on("click", function(){
+		$("#overlay").show();
+		$("#about_box").show();
+	});
+
+	$(".close_btn").on("click", function(){
+		$("#overlay").hide();
+		$("#about_box").hide();
+	});
+
+	$("#overlay").on("click", function(){
+		$("#overlay").hide();
+		$("#about_box").hide();
+	});
 
 	
 })
