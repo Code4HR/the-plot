@@ -153,10 +153,16 @@ $count-carousel-items: 5;
 	 */
 
 	@include mobile-portrait-and-up {
-		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 15px);
+		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 40px);
 		@include arrows(35px);
 		.arrow {
-			top: 80vh;
+			top: 88vh;
+			&.left {
+				left: 20vh;
+			}
+			&.right {
+				right: 20vh;
+			}
 		}
 	}
 
@@ -173,7 +179,6 @@ $count-carousel-items: 5;
 #footer {
 	text-align: center;
 	position: absolute;
-	bottom: 5vh;
 	width: 100%;
 	color:#6F6F72;
 
@@ -190,6 +195,16 @@ $count-carousel-items: 5;
 
 	.active{
 		color:#fff;
+	}
+
+	@include mobile-portrait-and-up {
+		font-size:12px;
+		bottom: 3vh;
+	}
+
+	@include tablet-portrait-and-up {
+		font-size:20px;
+		bottom: 5vh;
 	}
 }
 
@@ -216,7 +231,48 @@ $count-carousel-items: 5;
 	background-color:#28292A;
 	color:#737275;
 	padding:10px;
-	z-index:99;
+	z-index:3;
+
+	.close_btn{
+		position:absolute;
+		background-color:#fff;
+		z-index:4;
+	}
+
+	@include mobile-portrait-and-up {
+		.close_btn{
+			width:25px;
+			height:25px;
+			right:0px;
+		}
+
+		.paragraphs{
+			padding:0 15px;
+			top:0vh;
+			p {
+				font-size:16px;
+				padding-bottom:5px;
+			}
+		}
+	}
+
+	@include tablet-portrait-and-up {
+		.close_btn{
+			width:50px;
+			height:50px;
+			right:10px;
+		}
+
+		.paragraphs{
+			padding:0 120px;
+			top:20vh;
+
+			p {
+				font-size:22px;
+				padding-bottom:20px;
+			}
+		}
+	}
 
 	.container{
 		position:relative;
@@ -224,22 +280,12 @@ $count-carousel-items: 5;
 		height:100%;
 	}
 
-	.close_btn{
-		position:absolute;
-		right:10px;
-		width:50px;
-		height:50px;
-		background-color:#fff;
-	}
+	
 
 	.paragraphs{
 		position:absolute;
-		top:20vh;
-		padding:0 120px;
 
 		p{
-			font-size:22px;
-			padding-bottom:20px;
 
 			.green{
 				color:#C3ED00;

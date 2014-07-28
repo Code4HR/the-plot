@@ -116,10 +116,10 @@ h1, h2 {
     width: 500%;
   }
   #carousel .carousel-item-contents {
-    top: 15px;
-    right: 15px;
-    bottom: 15px;
-    left: 15px;
+    top: 40px;
+    right: 40px;
+    bottom: 40px;
+    left: 40px;
   }
   #carousel .arrow {
     width: 35px;
@@ -176,7 +176,13 @@ h1, h2 {
     transform: rotateZ(45deg);
   }
   #carousel .arrow {
-    top: 80vh;
+    top: 88vh;
+  }
+  #carousel .arrow.left {
+    left: 20vh;
+  }
+  #carousel .arrow.right {
+    right: 20vh;
   }
 }
 @media only screen and (min-width: 481px) {
@@ -251,7 +257,6 @@ h1, h2 {
 #footer {
   text-align: center;
   position: absolute;
-  bottom: 5vh;
   width: 100%;
   color: #6F6F72;
 }
@@ -266,6 +271,18 @@ h1, h2 {
 }
 #footer .active {
   color: #fff;
+}
+@media (min-width: 320px) {
+  #footer {
+    font-size: 12px;
+    bottom: 3vh;
+  }
+}
+@media only screen and (min-width: 481px) {
+  #footer {
+    font-size: 20px;
+    bottom: 5vh;
+  }
 }
 
 #overlay {
@@ -291,28 +308,50 @@ h1, h2 {
   background-color: #28292A;
   color: #737275;
   padding: 10px;
-  z-index: 99;
+  z-index: 3;
+}
+#about_box .close_btn {
+  position: absolute;
+  background-color: #fff;
+  z-index: 4;
+}
+@media (min-width: 320px) {
+  #about_box .close_btn {
+    width: 25px;
+    height: 25px;
+    right: 0px;
+  }
+  #about_box .paragraphs {
+    padding: 0 15px;
+    top: 0vh;
+  }
+  #about_box .paragraphs p {
+    font-size: 16px;
+    padding-bottom: 5px;
+  }
+}
+@media only screen and (min-width: 481px) {
+  #about_box .close_btn {
+    width: 50px;
+    height: 50px;
+    right: 10px;
+  }
+  #about_box .paragraphs {
+    padding: 0 120px;
+    top: 20vh;
+  }
+  #about_box .paragraphs p {
+    font-size: 22px;
+    padding-bottom: 20px;
+  }
 }
 #about_box .container {
   position: relative;
   width: 100%;
   height: 100%;
 }
-#about_box .close_btn {
-  position: absolute;
-  right: 10px;
-  width: 50px;
-  height: 50px;
-  background-color: #fff;
-}
 #about_box .paragraphs {
   position: absolute;
-  top: 20vh;
-  padding: 0 120px;
-}
-#about_box .paragraphs p {
-  font-size: 22px;
-  padding-bottom: 20px;
 }
 #about_box .paragraphs p .green {
   color: #C3ED00;
