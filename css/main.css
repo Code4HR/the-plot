@@ -28,10 +28,8 @@ h1, h2 {
   }
 }
 #logo .plot * {
-  -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  -webkit-border-radius: 50%;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -58,15 +56,13 @@ h1, h2 {
    */
 }
 #carousel .arrow {
-  -webkit-transition: all 250ms;
   -moz-transition: all 250ms;
-  -o-transition: all 250ms;
+  -webkit-transition: all 250ms;
   transition: all 250ms;
   position: fixed;
-  -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 #carousel .arrow.left {
@@ -91,27 +87,23 @@ h1, h2 {
 #carousel .carousel-item {
   display: inline-block;
   white-space: normal;
-  -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 20%;
   padding-top: 20%;
   position: relative;
-  -webkit-transition: all 250ms;
   -moz-transition: all 250ms;
-  -o-transition: all 250ms;
+  -webkit-transition: all 250ms;
   transition: all 250ms;
 }
 #carousel .carousel-item:not(:last-of-type) {
   margin-right: -4px;
 }
 #carousel .carousel-item .carousel-item-contents {
-  -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  -webkit-border-radius: 50%;
   border-radius: 50%;
   background: pink;
   position: absolute;
@@ -119,7 +111,7 @@ h1, h2 {
 #carousel .carousel-item:not(.active) {
   opacity: 0.5;
 }
-@media (max-width: 320px) {
+@media (min-width: 320px) {
   #carousel {
     width: 500%;
   }
@@ -148,45 +140,39 @@ h1, h2 {
     top: 2px;
   }
   #carousel .arrow.left:before, #carousel .arrow.left:after {
-    -webkit-transform-origin: left 50%;
     -moz-transform-origin: left 50%;
     -ms-transform-origin: left 50%;
-    -o-transform-origin: left 50%;
+    -webkit-transform-origin: left 50%;
     transform-origin: left 50%;
   }
   #carousel .arrow.left:before {
-    -webkit-transform: rotateZ(45deg);
     -moz-transform: rotateZ(45deg);
     -ms-transform: rotateZ(45deg);
-    -o-transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
     transform: rotateZ(45deg);
   }
   #carousel .arrow.left:after {
-    -webkit-transform: rotateZ(-45deg);
     -moz-transform: rotateZ(-45deg);
     -ms-transform: rotateZ(-45deg);
-    -o-transform: rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);
     transform: rotateZ(-45deg);
   }
   #carousel .arrow.right:before, #carousel .arrow.right:after {
-    -webkit-transform-origin: right 50%;
     -moz-transform-origin: right 50%;
     -ms-transform-origin: right 50%;
-    -o-transform-origin: right 50%;
+    -webkit-transform-origin: right 50%;
     transform-origin: right 50%;
   }
   #carousel .arrow.right:before {
-    -webkit-transform: rotateZ(-45deg);
     -moz-transform: rotateZ(-45deg);
     -ms-transform: rotateZ(-45deg);
-    -o-transform: rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);
     transform: rotateZ(-45deg);
   }
   #carousel .arrow.right:after {
-    -webkit-transform: rotateZ(45deg);
     -moz-transform: rotateZ(45deg);
     -ms-transform: rotateZ(45deg);
-    -o-transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
     transform: rotateZ(45deg);
   }
   #carousel .arrow {
@@ -222,55 +208,116 @@ h1, h2 {
     top: 2px;
   }
   #carousel .arrow.left:before, #carousel .arrow.left:after {
-    -webkit-transform-origin: left 50%;
     -moz-transform-origin: left 50%;
     -ms-transform-origin: left 50%;
-    -o-transform-origin: left 50%;
+    -webkit-transform-origin: left 50%;
     transform-origin: left 50%;
   }
   #carousel .arrow.left:before {
-    -webkit-transform: rotateZ(45deg);
     -moz-transform: rotateZ(45deg);
     -ms-transform: rotateZ(45deg);
-    -o-transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
     transform: rotateZ(45deg);
   }
   #carousel .arrow.left:after {
-    -webkit-transform: rotateZ(-45deg);
     -moz-transform: rotateZ(-45deg);
     -ms-transform: rotateZ(-45deg);
-    -o-transform: rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);
     transform: rotateZ(-45deg);
   }
   #carousel .arrow.right:before, #carousel .arrow.right:after {
-    -webkit-transform-origin: right 50%;
     -moz-transform-origin: right 50%;
     -ms-transform-origin: right 50%;
-    -o-transform-origin: right 50%;
+    -webkit-transform-origin: right 50%;
     transform-origin: right 50%;
   }
   #carousel .arrow.right:before {
-    -webkit-transform: rotateZ(-45deg);
     -moz-transform: rotateZ(-45deg);
     -ms-transform: rotateZ(-45deg);
-    -o-transform: rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);
     transform: rotateZ(-45deg);
   }
   #carousel .arrow.right:after {
-    -webkit-transform: rotateZ(45deg);
     -moz-transform: rotateZ(45deg);
     -ms-transform: rotateZ(45deg);
-    -o-transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
     transform: rotateZ(45deg);
+  }
+  #carousel .arrow {
+    top: 50vh;
   }
 }
 
 #footer {
   text-align: center;
   position: absolute;
-  bottom: 10vh;
+  bottom: 5vh;
   width: 100%;
+  color: #6F6F72;
 }
 #footer .footer-item {
   display: inline-block;
+  margin: 0 6px;
+  text-transform: uppercase;
+}
+#footer .footer-item:hover {
+  color: #fff;
+  cursor: pointer;
+}
+#footer .active {
+  color: #fff;
+}
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.6;
+  display: none;
+}
+
+#about_box {
+  display: none;
+  box-sizing: border-box;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 80%;
+  text-align: center;
+  background-color: #28292A;
+  color: #737275;
+  padding: 10px;
+  z-index: 99;
+}
+#about_box .container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#about_box .close_btn {
+  position: absolute;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+}
+#about_box .paragraphs {
+  position: absolute;
+  top: 20vh;
+  padding: 0 120px;
+}
+#about_box .paragraphs p {
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+#about_box .paragraphs p .green {
+  color: #C3ED00;
+}
+#about_box .paragraphs p a {
+  color: #AA7CFF;
+  text-decoration: none;
 }
