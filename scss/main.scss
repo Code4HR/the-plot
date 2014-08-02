@@ -14,36 +14,50 @@ h1, h2{
 }
 
 #logo {
-	text-align: center;
-	text-transform: uppercase;
-	color: white;
-	.the, .plot, .plot * {
-		display: inline-block;
+	color: transparent;
+	@include desktop-and-up {
+		@include image(logo, desktop);
 	}
-	.the {
-		background: #636365;
-		font-size: 12px;
+	@include tablet-landscape-and-below {
+		@include image(logo, mobile);
+	}
+	margin: 20px auto;
+}
+
+.carousel-item-contents {
+	color: transparent;
+	background-size: cover;
+}
+
+#feature_1 {
+	.carousel-item-contents {
 		@include desktop-and-up {
-			font-size: 14px;
+			@include image(feature_1, desktop, $dimensions: false, $background-dimensions: false);
+		}
+		@include tablet-landscape-and-below {
+			@include image(feature_1, mobile, $dimensions: false, $background-dimensions: false);
 		}
 	}
-	.plot {
-		* {
-			@include border-radius(50%);
-			width:20px;
-			height:20px;
+}
+
+#feature_2 {
+	.carousel-item-contents {
+		@include desktop-and-up {
+			@include image(feature_2, desktop, $dimensions: false, $background-dimensions: false);
 		}
-		.p {
-			background: #B281FA;
+		@include tablet-landscape-and-below {
+			@include image(feature_2, mobile, $dimensions: false, $background-dimensions: false);
 		}
-		.l {
-			background: #FF2F7B;
+	}
+}
+
+#feature_3 {
+	.carousel-item-contents {
+		@include desktop-and-up {
+			@include image(feature_3, desktop, $dimensions: false, $background-dimensions: false);
 		}
-		.o {
-			background: #BDED44;
-		}
-		.t {
-			background: #27D1FC;
+		@include tablet-landscape-and-below {
+			@include image(feature_3, mobile, $dimensions: false, $background-dimensions: false);
 		}
 	}
 }
@@ -138,7 +152,7 @@ $count-carousel-items: 5;
 		}
 		.carousel-item-contents {
 			@include border-radius(50%);
-			background: pink;
+			background-color: pink;
 			position: absolute;
 		}
 		@include transition(all 250ms);
