@@ -77,7 +77,6 @@ h1, h2 {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  background-color: pink;
   position: absolute;
   color: transparent;
   background-size: cover;
@@ -208,8 +207,8 @@ h1, h2 {
 #carousel .arrow.right {
   right: 5vh;
 }
-#carousel .arrow:not(.active):before, #carousel .arrow:not(.active):after {
-  background: #ccc;
+#carousel .arrow:not(.active) {
+  opacity: 0.5;
 }
 #carousel .arrow:hover {
   cursor: pointer;

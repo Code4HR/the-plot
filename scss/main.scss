@@ -7,7 +7,7 @@ body {
 	overflow: hidden;
 }
 
-h1, h2{
+h1, h2 {
 	margin:0;
 	padding:0;
 	text-align:center;
@@ -24,8 +24,6 @@ h1, h2{
 	margin: 20px auto;
 }
 
-
-
 @mixin carousel-dimensions($carousel-item-width, $buffer-carousel-item) {
 	width: $count-carousel-items * $carousel-item-width * 100%;
 	.carousel-item-contents {
@@ -39,10 +37,8 @@ h1, h2{
 $count-carousel-items: 5;
 
 #carousel {
-	
 	position: absolute;
 	white-space: nowrap;
-
 	#carousel-item-container {
 		position: absolute;
 		top: 0;
@@ -50,7 +46,6 @@ $count-carousel-items: 5;
 		bottom: 0;
 		left: 0;
 	}
-
 	.carousel-item {
 		display: inline-block;
 		white-space: normal;
@@ -64,7 +59,6 @@ $count-carousel-items: 5;
 		}
 		.carousel-item-contents {
 			@include border-radius(50%);
-			background-color: pink;
 			position: absolute;
 			color: transparent;
 			background-size: cover;
@@ -125,10 +119,7 @@ $count-carousel-items: 5;
 			right: 5vh;
 		}
 		&:not(.active) {
-			//pointer-events: none;
-			&:before, &:after {
-				background: #ccc;
-			}
+			opacity: 0.5;
 		}
 		&:hover {
 			cursor: pointer;
