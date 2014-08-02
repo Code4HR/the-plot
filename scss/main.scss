@@ -152,7 +152,7 @@ $count-carousel-items: 5;
 		}
 		.carousel-item-contents {
 			@include border-radius(50%);
-			background: pink;
+			background-color: pink;
 			position: absolute;
 		}
 		@include transition(all 250ms);
