@@ -131,3 +131,39 @@ $mq-desktop				: 1382px !default;
 		@content;
 	}
 }
+
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+@mixin image($name, $environment, $filetype: "png", $dimensions: true, $background-dimensions: true, $center-horz: false, $center-vert: false) {
+	
+	$image-path: #{"img/" + $name + "_" + $environment + "." + $filetype};
+	$retina-image-path: #{"img/" + $name + "_" + $environment + "_2x." + $filetype};
+
+	@if $dimensions {
+		@include size(floor(image-width(#{$image-path})), floor(image-height(#{$image-path})));
+	}
+
+	@if $background-dimensions {
+		background-size: floor(image-width(#{$image-path})) floor(image-height(#{$image-path}));
+	}
+
+	background-image: url(#{"/" + $image-path});
+
+	@if $center-horz {
+		@include center-horz(image-width(#{$image-path}))
+	}
+
+	@if $center-vert {
+		@include center-vert(image-height(#{$image-path}))
+	}
+	
+	background-repeat: no-repeat;
+
+	@include retina {
+		background-image: url(#{"/" + $retina-image-path});
+	}
+
+}
