@@ -7,7 +7,7 @@ body {
 	overflow: hidden;
 }
 
-h1, h2{
+h1, h2 {
 	margin:0;
 	padding:0;
 	text-align:center;
@@ -24,44 +24,6 @@ h1, h2{
 	margin: 20px auto;
 }
 
-.carousel-item-contents {
-	color: transparent;
-	background-size: cover;
-}
-
-#feature_1 {
-	.carousel-item-contents {
-		@include desktop-and-up {
-			@include image(feature_1, desktop, $dimensions: false, $background-dimensions: false);
-		}
-		@include tablet-landscape-and-below {
-			@include image(feature_1, mobile, $dimensions: false, $background-dimensions: false);
-		}
-	}
-}
-
-#feature_2 {
-	.carousel-item-contents {
-		@include desktop-and-up {
-			@include image(feature_2, desktop, $dimensions: false, $background-dimensions: false);
-		}
-		@include tablet-landscape-and-below {
-			@include image(feature_2, mobile, $dimensions: false, $background-dimensions: false);
-		}
-	}
-}
-
-#feature_3 {
-	.carousel-item-contents {
-		@include desktop-and-up {
-			@include image(feature_3, desktop, $dimensions: false, $background-dimensions: false);
-		}
-		@include tablet-landscape-and-below {
-			@include image(feature_3, mobile, $dimensions: false, $background-dimensions: false);
-		}
-	}
-}
-
 @mixin carousel-dimensions($carousel-item-width, $buffer-carousel-item) {
 	width: $count-carousel-items * $carousel-item-width * 100%;
 	.carousel-item-contents {
@@ -72,66 +34,11 @@ h1, h2{
 	}
 }
 
-@mixin arrows($size, $direction: left, $buffer: false, $nudge: 2px) {
-	.arrow {
-		width: $size;
-		height: $size;
-		&:before, &:after {
-			content: "";
-			display: block;
-			position: absolute;
-			width: $size;
-			height: floor($size / 7);
-			background: white;
-		}
-		&:before {top: -1 * $nudge}
-		&:after {top: $nudge}
-		&.left {
-			&:before, &:after {@include transform-origin(left)}
-			&:before {@include transform(rotateZ(45deg))}
-			&:after {@include transform(rotateZ(-45deg))}
-		}
-		&.right {
-			&:before, &:after {@include transform-origin(right)}
-			&:before {@include transform(rotateZ(-45deg))}
-			&:after {@include transform(rotateZ(45deg))}
-		}
-		@if $buffer {
-			&.left {left: $buffer}
-			&.right {right: $buffer}
-		}
-	}
-}
-
 $count-carousel-items: 5;
 
 #carousel {
-	
 	position: absolute;
 	white-space: nowrap;
-
-	.arrow {
-		@include transition(all 250ms);
-		position: fixed;
-		@include transform(translateY(-50%));
-		&.left {
-			left: 5vh;
-		}
-		&.right {
-			right: 5vh;
-		}
-		&:not(.active) {
-			//pointer-events: none;
-			&:before, &:after {
-				background: #ccc;
-			}
-		}
-	}
-
-	.arrow:hover{
-		cursor:pointer;
-	}
-
 	#carousel-item-container {
 		position: absolute;
 		top: 0;
@@ -139,7 +46,6 @@ $count-carousel-items: 5;
 		bottom: 0;
 		left: 0;
 	}
-
 	.carousel-item {
 		display: inline-block;
 		white-space: normal;
@@ -147,28 +53,81 @@ $count-carousel-items: 5;
 		width: 100% / $count-carousel-items;
 		padding-top: 100% / $count-carousel-items;
 		position: relative;
+		@include transition(all 250ms);
 		&:not(:last-of-type) {
 			margin-right: -4px;
 		}
 		.carousel-item-contents {
 			@include border-radius(50%);
-			background-color: pink;
 			position: absolute;
+			color: transparent;
+			background-size: cover;
 		}
-		@include transition(all 250ms);
 		&:not(.active) {
 			opacity: 0.5;
 		}
 	}
 
-	/*
-	ALL MEDIA QUERIES RELATING TO CAROUSEL GO HERE!
-	 */
+	#feature_1 {
+		.carousel-item-contents {
+			@include desktop-and-up {
+				@include image(feature_1, desktop, $dimensions: false, $background-dimensions: false);
+			}
+			@include tablet-landscape-and-below {
+				@include image(feature_1, mobile, $dimensions: false, $background-dimensions: false);
+			}
+		}
+	}
+
+	#feature_2 {
+		.carousel-item-contents {
+			@include desktop-and-up {
+				@include image(feature_2, desktop, $dimensions: false, $background-dimensions: false);
+			}
+			@include tablet-landscape-and-below {
+				@include image(feature_2, mobile, $dimensions: false, $background-dimensions: false);
+			}
+		}
+	}
+
+	#feature_3 {
+		.carousel-item-contents {
+			@include desktop-and-up {
+				@include image(feature_3, desktop, $dimensions: false, $background-dimensions: false);
+			}
+			@include tablet-landscape-and-below {
+				@include image(feature_3, mobile, $dimensions: false, $background-dimensions: false);
+			}
+		}
+	}
+
+	.arrow {
+		@include desktop-and-up {
+			@include image(arrow, desktop);
+		}
+		@include tablet-landscape-and-below {
+			@include image(arrow, mobile);
+		}
+		@include transition(all 250ms);
+		position: fixed;
+		@include transform(translateY(-50%));
+		&.left {
+			left: 5vh;
+			@include transform(translateY(-50%) rotateZ(180deg));
+		}
+		&.right {
+			right: 5vh;
+		}
+		&:not(.active) {
+			opacity: 0.5;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
 
 	@include mobile-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 40px);
-		@include arrows(35px);
-
 		top: 45vh;
 		.arrow {
 			top: 85vh;
@@ -183,8 +142,6 @@ $count-carousel-items: 5;
 
 	@include tablet-portrait-and-up {
 		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
-		@include arrows(75px);
-
 		top: 50vh;
 		.arrow {
 			top: 50vh;
