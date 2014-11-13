@@ -34,25 +34,6 @@
   transform-origin: left center;
 }
 
-body {
-  background: #212121;
-}
-
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-}
-
-.container .top-side, .container .bottom-side, .container [class*="bottom_wall"], .container [class*="top_wall"] {
-  height: 65px;
-}
-.container .right-side, .container .left-side, .container [class*="right_wall"], .container [class*="left_wall"] {
-  width: 65px;
-}
-
 #top_floor, #second_floor {
   -webkit-perspective: 2000px;
   perspective: 2000px;
@@ -278,6 +259,25 @@ body {
   bottom: 0;
 }
 
+body {
+  background: #212121;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+}
+
+.container .top-side, .container .bottom-side, .container [class*="bottom_wall"], .container [class*="top_wall"] {
+  height: 65px;
+}
+.container .right-side, .container .left-side, .container [class*="right_wall"], .container [class*="left_wall"] {
+  width: 65px;
+}
+
 .facade {
   width: 100%;
   background: rgba(255, 255, 255, 0.5);
@@ -312,7 +312,7 @@ body {
 
 #top_floor {
   margin-top: 200px;
-  width: 310px;
+  width: 325px;
   height: 105px;
 }
 #top_floor .facade {
@@ -551,7 +551,7 @@ body {
 
 #second_floor {
   margin-top: 22px;
-  width: 310px;
+  width: 325px;
   height: 105px;
 }
 #second_floor .facade {
@@ -753,7 +753,7 @@ body {
   top: 50%;
 }
 #second_floor .deck {
-  width: 45%;
+  width: 40%;
   height: 100%;
   left: 100%;
 }
@@ -779,7 +779,7 @@ body {
 }
 #second_floor .deck .table_1 {
   left: 28%;
-  top: 25%;
+  top: 20%;
 }
 #second_floor .deck .table_2 {
   left: 60%;
@@ -808,7 +808,7 @@ body {
   left: 50%;
   top: 50%;
   width: 2px;
-  height: 120%;
+  height: 150%;
 }
 #second_floor .deck .umbrella .triangle {
   width: 1px;

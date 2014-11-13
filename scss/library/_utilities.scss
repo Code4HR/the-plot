@@ -1,0 +1,169 @@
+%rotate-back {
+	@include transform(rotateX(-90deg));
+	-webkit-transform-origin: center top;
+	transform-origin: center top;
+}
+
+%rotate-front {
+	@include transform(rotateX(90deg));
+	-webkit-transform-origin: center bottom;
+	transform-origin: center bottom;
+}
+
+%rotate-left {
+	@include transform(rotateY(-90deg));
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
+}
+
+%rotate-right {
+	@include transform(rotateY(90deg));
+	-webkit-transform-origin: left center;
+	transform-origin: left center;
+}
+
+@mixin sizing($depth) {
+	.top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
+		height: $depth;
+	}
+	.right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
+		width: $depth;
+	}
+}
+
+%floor-base {
+	-webkit-perspective: 2000px;
+	perspective: 2000px;
+	margin-left: auto;
+	margin-right: auto;
+	.contents {
+		position: relative;
+		@include square(100%);
+		@include transform(rotateX(90deg));
+	}
+	* {
+		position: absolute;
+		@include transition(all $skew-transition-duration);
+		@include transform-style(preserve-3d);
+	}
+	[class*='side'] {
+		border-width: 2px;
+	}
+	[class*='wall'] {
+		border-width: 1px;
+	}
+	[class*='top'] {
+		@extend %rotate-front;
+	}
+	[class*='right']:not(.chair) {
+		@extend %rotate-right;
+	}
+	[class*='left']:not(.chair) {
+		@extend %rotate-left;
+	}
+	[class*='bottom'] {
+		@extend %rotate-back;
+	}
+	.top-side, .bottom-side, [class*="bottom_wall"] {
+		left: 0;
+	}
+	.top-side, [class*="top_wall"] {
+		bottom: 100%;
+	}
+	.bottom-side, [class*="bottom_wall"] {
+		top: 100%;
+	}
+	.right-side, [class*="right_wall"] {
+		top: 0;
+		left: 100%;
+	}
+	.top-side, .bottom-side {
+		border-left: none;
+		border-right: none;
+	}
+	.left-side, [class*="left_wall"] {
+		right: 100%;
+	}
+	[class*="right_wall"], [class*="left_wall"], .right-side, .left-side {
+		height: 100%;
+	}
+	[class*="bottom_wall"], [class*="top_wall"], .top-side, .bottom-side {
+		width: 100%;
+	}
+	[class*="right_wall"] {
+		border-bottom: none;
+	}
+	[class*="left_wall"] {
+		bottom: 0;
+		border-top: none;
+	}
+	[class*="top_wall"] {
+		right: 0;
+	}
+}
+
+@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y) {
+	@extend %floor-base;
+	@include size($width, $height);
+	.facade {
+		height: $facade-height;
+	}
+	.rotated & {
+		.contents {
+			@include animation(#{$floor-name} $split-transition-duration + $skew-transition-duration forwards);
+		}
+	}
+	@at-root {
+		@include keyframes(#{$floor-name}) {
+			50% {
+				@include transform(translateY($transform-y) rotateX(90deg) translateX($transform-x));
+			}
+			100% {
+				@include transform(translateY($transform-y) rotateX(20deg) rotateZ(-30deg) translateX($transform-x));
+			}
+		}
+	}
+}
+
+@mixin floor-styling($color, $floor-name) {
+	*:not([class="facade"]) {
+		border-color: $color;
+	}
+	.window {
+		border-color: $facade-color;
+		transform: none !important;
+	}
+	[class*="leg"] {
+		background: $color;
+	}
+	[class*='side'], [class*='wall'] {
+		background: rgba($color, 0.15);
+	}
+	.rotated & {
+		.facade {
+			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
+		}
+		.window {
+			border-color: $color;
+			transition-duration: 300ms;
+		}
+	}
+	@at-root {
+		@include keyframes(#{$floor-name}-facade) {
+			30% {
+				border-color: $color;
+				background-color: $color;
+			}
+			50% {
+				border-color: $color;
+				background-color: $color;
+				opacity: 1;
+			}
+			100% {
+				border-color: $color;
+				background-color: $color;
+				opacity: 0;
+			}
+		}
+	}
+}

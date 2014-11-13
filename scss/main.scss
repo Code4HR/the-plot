@@ -1,32 +1,6 @@
 @import "compass";
 @import "lib";
 
-%rotate-back {
-	@include transform(rotateX(-90deg));
-	-webkit-transform-origin: center top;
-	transform-origin: center top;
-}
-
-%rotate-front {
-	@include transform(rotateX(90deg));
-	-webkit-transform-origin: center bottom;
-	transform-origin: center bottom;
-}
-
-%rotate-left {
-	@include transform(rotateY(-90deg));
-    -webkit-transform-origin: right center;
-    transform-origin: right center;
-}
-
-%rotate-right {
-	@include transform(rotateY(90deg));
-	-webkit-transform-origin: left center;
-	transform-origin: left center;
-}
-
-$background-color: #212121;
-
 body {
   background: $background-color;
 }
@@ -37,316 +11,8 @@ body {
   border-width: 0;
 }
 
-$split-transition-duration: .5s;
-$skew-transition-duration: .5s;
-
-$floor-depth: 65px;
-
-$facade-color: rgba(white, 0.5);
-
-@mixin sizing($depth) {
-	.top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
-		height: $depth;
-	}
-	.right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
-		width: $depth;
-	}
-}
-
 .container {
 	@include sizing($floor-depth);
-}
-
-%floor-base {
-	-webkit-perspective: 2000px;
-	perspective: 2000px;
-	margin-left: auto;
-	margin-right: auto;
-	.contents {
-		position: relative;
-		@include square(100%);
-		@include transform(rotateX(90deg));
-	}
-	* {
-		position: absolute;
-		@include transition(all $skew-transition-duration);
-		@include transform-style(preserve-3d);
-	}
-	[class*='side'] {
-		border-width: 2px;
-	}
-	[class*='wall'] {
-		border-width: 1px;
-	}
-	[class*='top'] {
-		@extend %rotate-front;
-	}
-	[class*='right']:not(.chair) {
-		@extend %rotate-right;
-	}
-	[class*='left']:not(.chair) {
-		@extend %rotate-left;
-	}
-	[class*='bottom'] {
-		@extend %rotate-back;
-	}
-	.top-side, .bottom-side, [class*="bottom_wall"] {
-		left: 0;
-	}
-	.top-side, [class*="top_wall"] {
-		bottom: 100%;
-	}
-	.bottom-side, [class*="bottom_wall"] {
-		top: 100%;
-	}
-	.right-side, [class*="right_wall"] {
-		top: 0;
-		left: 100%;
-	}
-	.top-side, .bottom-side {
-		border-left: none;
-		border-right: none;
-	}
-	.left-side, [class*="left_wall"] {
-		right: 100%;
-	}
-	[class*="right_wall"], [class*="left_wall"], .right-side, .left-side {
-		height: 100%;
-	}
-	[class*="bottom_wall"], [class*="top_wall"], .top-side, .bottom-side {
-		width: 100%;
-	}
-	[class*="right_wall"] {
-		border-bottom: none;
-	}
-	[class*="left_wall"] {
-		bottom: 0;
-		border-top: none;
-	}
-	[class*="top_wall"] {
-		right: 0;
-	}
-}
-
-@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y) {
-	@extend %floor-base;
-	@include size($width, $height);
-	.facade {
-		height: $facade-height;
-	}
-	.rotated & {
-		.contents {
-			@include animation(#{$floor-name} $split-transition-duration + $skew-transition-duration forwards);
-		}
-	}
-	@at-root {
-		@include keyframes(#{$floor-name}) {
-			50% {
-				@include transform(translateY($transform-y) rotateX(90deg) translateX($transform-x));
-			}
-			100% {
-				@include transform(translateY($transform-y) rotateX(20deg) rotateZ(-30deg) translateX($transform-x));
-			}
-		}
-	}
-}
-
-@mixin floor-styling($color, $floor-name) {
-	*:not([class="facade"]) {
-		border-color: $color;
-	}
-	.window {
-		border-color: $facade-color;
-		transform: none !important;
-	}
-	[class*="leg"] {
-		background: $color;
-	}
-	[class*='side'], [class*='wall'] {
-		background: rgba($color, 0.15);
-	}
-	.rotated & {
-		.facade {
-			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
-		}
-		.window {
-			border-color: $color;
-			transition-duration: 300ms;
-		}
-	}
-	@at-root {
-		@include keyframes(#{$floor-name}-facade) {
-			30% {
-				border-color: $color;
-				background-color: $color;
-			}
-			50% {
-				border-color: $color;
-				background-color: $color;
-				opacity: 1;
-			}
-			100% {
-				border-color: $color;
-				background-color: $color;
-				opacity: 0;
-			}
-		}
-	}
-}
-
-%step-base {
-	[class*="horizontal"], [class*="vertical"] {
-		width: 100%;
-		bottom: 0;
-	}
-	[class*="horizontal"], [class*="vertical"] {
-		border-width: 1px;
-	}
-	[class*="horizontal"] {
-		border-top-width: 0px;
-		border-bottom-width: 0px;
-		height: 100%;
-	}	
-	[class*="vertical"] {
-		@extend %rotate-front;
-	}
-}
-
-@mixin step-sizing($depth, $vertical-depth, $horizontal-depth, $width: 100%) {
-	@include transform(translateZ($depth));
-	height: $horizontal-depth;
-	width: $width;
-	[class*="vertical"] {
-		height: $vertical-depth;
-	}
-}
-
-.step {
-	@extend %step-base;
-}
-
-@mixin couch-sizing($height, $back-height) {
-	height: $height;
-	.back {
-		height: $back-height;
-	}
-	.step_1 {
-		@include step-sizing(0.3 * $back-height, 0.3 * $back-height, 70%);
-	}
-	.step_2 {
-		@include step-sizing($back-height, 0.7 * $back-height, 30%);
-	}
-}
-
-.couch {
-	@include transform(translateZ(-$floor-depth));
-	@include couch-sizing(14px, 25px);
-	.back, .floor {
-		border-width: 1px;
-		width: 100%;
-	}
-	.back {
-		@include transform(rotateX(-90deg));
-		-webkit-transform-origin: center bottom;
-		transform-origin: center bottom;
-	}
-	.back {
-		bottom: 100%;
-	}
-	.floor {
-		height: 100%;
-	}
-	.step_2 {
-		bottom: 70%;
-	}
-}
-
-@mixin table-sizing($chair-size, $chair-depth, $chair-back-width, $table-depth, $leg-height: 2px) {
-	@include transform(translateZ(-$table-depth));
-	[class*="table_leg"] {
-		@include size($chair-depth * 3, $leg-height);
-	}
-	.chair {
-		@include square($chair-size);
-		@include transform(translateZ(-$chair-depth));
-		&[class*="left"], &[class*="right"] {
-			[class*="chair_back"] {
-				width: $chair-back-width;
-			}
-		}
-		&[class*="front"], &[class*="back"] {
-			[class*="chair_back"] {
-				height: $chair-back-width;
-			}
-		}
-		[class*="chair_leg"] {
-			@include size($chair-depth * 2, $leg-height);
-		}
-	}
-}
-
-.table {
-	@include table-sizing(8px, 10px, 14px, 35px);
-	[class*="table_surface"] {
-		border-width: 1px;
-		@include square(100%);
-	}
-	[class*="table_leg"], [class*="chair_leg"] {
-		@extend %rotate-left;
-	}
-	.chair {
-		[class*="chair_seat"], [class*="chair_back"] {
-			border-width: 1px;
-		}
-		[class*="chair_seat"] {
-			@include square(100%);
-		}
-		&[class*="left"], &[class*="right"] {
-			[class*="chair_back"] {
-				height: 100%;
-				border-left: none;
-			}
-		}
-		&[class*="front"], &[class*="back"] {
-			[class*="chair_back"] {
-				width: 100%;
-			}
-		}
-		&.chair_left_facing [class*="chair_back"] {
-			left: 100%;
-			@include transform(rotateY(-90deg));
-			-webkit-transform-origin: left center;
-			transform-origin: left center;
-		}
-		&.chair_right_facing [class*="chair_back"] {
-			@extend %rotate-left;
-			right: 100%;
-			bottom: 100%;
-		}
-		&.chair_front_facing [class*="chair_back"] {
-			@include transform(rotateX(90deg));
-			-webkit-transform-origin: center top;
-			transform-origin: center top;
-		}
-		&.chair_back_facing [class*="chair_back"] {
-			@include transform(rotateX(-90deg));
-			-webkit-transform-origin: center bottom;
-			transform-origin: center bottom;
-			bottom: 0;
-		}
-	}
-	[class*="leg_tl"], [class*="leg_bl"] {
-	  right: 100%;
-	}
-	[class*="leg_tl"] {
-	  top: 0;
-	}
-	[class*="leg_tr"], [class*="leg_br"] {
-	  right: 0;
-	}
-	[class*="leg_bl"], [class*="leg_br"] {
-	  bottom: 0;
-	}
 }
 
 .facade {
@@ -380,7 +46,7 @@ $facade-color: rgba(white, 0.5);
 
 #top_floor {
 	margin-top: 200px;
-	@include floor-sizing(310px, 105px, 120px, 'top-floor', -30px, -30px);
+	@include floor-sizing(325px, 105px, 120px, 'top-floor', -30px, -30px);
 	@include floor-styling(#733E2D, 'top-floor');
 	.conference_room {
 		left: 0;
@@ -482,7 +148,7 @@ $facade-color: rgba(white, 0.5);
 #second_floor {
 	$second-floor-color: #3C685C;
 	margin-top: 22px;
-	@include floor-sizing(310px, 105px, 120px, 'second-floor', 30px, 30px);
+	@include floor-sizing(325px, 105px, 120px, 'second-floor', 30px, 30px);
 	@include floor-styling($second-floor-color, 'second-floor');
 	.counter {
 		left: 34%;
@@ -543,7 +209,7 @@ $facade-color: rgba(white, 0.5);
 		top: 50%;
 	}
 	.deck {
-		@include size(45%, 100%);
+		@include size(40%, 100%);
 		left: 100%;
 		.floor {
 			border-width: 1px;
@@ -557,7 +223,7 @@ $facade-color: rgba(white, 0.5);
 		}
 		.table_1 {
 			left: 28%;
-			top: 25%;
+			top: 20%;
 		}
 		.table_2 {
 			left: 60%;
@@ -579,7 +245,7 @@ $facade-color: rgba(white, 0.5);
 				left: 50%;
 				top: 50%;
 				width: 2px;
-				height: 120%;
+				height: 150%;
 				@extend %rotate-back;
 			}
 			.triangle {

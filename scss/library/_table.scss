@@ -1,0 +1,87 @@
+@mixin table-sizing($chair-size, $chair-depth, $chair-back-width, $table-depth, $leg-height: 2px) {
+	@include transform(translateZ(-$table-depth));
+	[class*="table_leg"] {
+		@include size($chair-depth * 3, $leg-height);
+	}
+	.chair {
+		@include square($chair-size);
+		@include transform(translateZ(-$chair-depth));
+		&[class*="left"], &[class*="right"] {
+			[class*="chair_back"] {
+				width: $chair-back-width;
+			}
+		}
+		&[class*="front"], &[class*="back"] {
+			[class*="chair_back"] {
+				height: $chair-back-width;
+			}
+		}
+		[class*="chair_leg"] {
+			@include size($chair-depth * 2, $leg-height);
+		}
+	}
+}
+
+.table {
+	@include table-sizing(8px, 10px, 14px, 35px);
+	[class*="table_surface"] {
+		border-width: 1px;
+		@include square(100%);
+	}
+	[class*="table_leg"], [class*="chair_leg"] {
+		@extend %rotate-left;
+	}
+	.chair {
+		[class*="chair_seat"], [class*="chair_back"] {
+			border-width: 1px;
+		}
+		[class*="chair_seat"] {
+			@include square(100%);
+		}
+		&[class*="left"], &[class*="right"] {
+			[class*="chair_back"] {
+				height: 100%;
+				border-left: none;
+			}
+		}
+		&[class*="front"], &[class*="back"] {
+			[class*="chair_back"] {
+				width: 100%;
+			}
+		}
+		&.chair_left_facing [class*="chair_back"] {
+			left: 100%;
+			@include transform(rotateY(-90deg));
+			-webkit-transform-origin: left center;
+			transform-origin: left center;
+		}
+		&.chair_right_facing [class*="chair_back"] {
+			@extend %rotate-left;
+			right: 100%;
+			bottom: 100%;
+		}
+		&.chair_front_facing [class*="chair_back"] {
+			@include transform(rotateX(90deg));
+			-webkit-transform-origin: center top;
+			transform-origin: center top;
+		}
+		&.chair_back_facing [class*="chair_back"] {
+			@include transform(rotateX(-90deg));
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			bottom: 0;
+		}
+	}
+	[class*="leg_tl"], [class*="leg_bl"] {
+	  right: 100%;
+	}
+	[class*="leg_tl"] {
+	  top: 0;
+	}
+	[class*="leg_tr"], [class*="leg_br"] {
+	  right: 0;
+	}
+	[class*="leg_bl"], [class*="leg_br"] {
+	  bottom: 0;
+	}
+}

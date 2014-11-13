@@ -1,0 +1,30 @@
+%step-base {
+	[class*="horizontal"], [class*="vertical"] {
+		width: 100%;
+		bottom: 0;
+	}
+	[class*="horizontal"], [class*="vertical"] {
+		border-width: 1px;
+	}
+	[class*="horizontal"] {
+		border-top-width: 0px;
+		border-bottom-width: 0px;
+		height: 100%;
+	}	
+	[class*="vertical"] {
+		@extend %rotate-front;
+	}
+}
+
+@mixin step-sizing($depth, $vertical-depth, $horizontal-depth, $width: 100%) {
+	@include transform(translateZ($depth));
+	height: $horizontal-depth;
+	width: $width;
+	[class*="vertical"] {
+		height: $vertical-depth;
+	}
+}
+
+.step {
+	@extend %step-base;
+}

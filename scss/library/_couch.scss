@@ -1,0 +1,35 @@
+@mixin couch-sizing($height, $back-height) {
+	height: $height;
+	.back {
+		height: $back-height;
+	}
+	.step_1 {
+		@include step-sizing(0.3 * $back-height, 0.3 * $back-height, 70%);
+	}
+	.step_2 {
+		@include step-sizing($back-height, 0.7 * $back-height, 30%);
+	}
+}
+
+.couch {
+	@include transform(translateZ(-$floor-depth));
+	@include couch-sizing(14px, 25px);
+	.back, .floor {
+		border-width: 1px;
+		width: 100%;
+	}
+	.back {
+		@include transform(rotateX(-90deg));
+		-webkit-transform-origin: center bottom;
+		transform-origin: center bottom;
+	}
+	.back {
+		bottom: 100%;
+	}
+	.floor {
+		height: 100%;
+	}
+	.step_2 {
+		bottom: 70%;
+	}
+}
