@@ -49,8 +49,7 @@
 }
 #top_floor .room, #second_floor .room, #third_floor .room, #fourth_floor .room {
   opacity: 0;
-  transition-delay: 600ms;
-  transition-duration: 300ms;
+  transition-duration: 0;
 }
 #top_floor *, #second_floor *, #third_floor *, #fourth_floor * {
   position: absolute;
@@ -407,6 +406,8 @@ body {
 }
 .rotated #top_floor .room {
   opacity: 1;
+  transition-delay: 600ms;
+  transition-duration: 300ms;
 }
 .rotated #top_floor .window {
   border-color: #733e2d;
@@ -598,8 +599,8 @@ body {
   }
 
   100% {
-    -moz-transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
-    transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    -moz-transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
   }
 }
 @-webkit-keyframes second-floor {
@@ -609,8 +610,8 @@ body {
   }
 
   100% {
-    -webkit-transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
-    transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    -webkit-transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
   }
 }
 @keyframes second-floor {
@@ -622,10 +623,10 @@ body {
   }
 
   100% {
-    -moz-transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
-    -ms-transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
-    -webkit-transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
-    transform: translateY(35px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    -moz-transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    -ms-transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    -webkit-transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
+    transform: translateY(22px) rotateX(20deg) rotateZ(-30deg) translateX(-30px);
   }
 }
 #second_floor *:not([class="facade"]) {
@@ -649,6 +650,8 @@ body {
 }
 .rotated #second_floor .room {
   opacity: 1;
+  transition-delay: 600ms;
+  transition-duration: 300ms;
 }
 .rotated #second_floor .window {
   border-color: #3c685c;
@@ -919,8 +922,8 @@ body {
   }
 
   100% {
-    -moz-transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
-    transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    -moz-transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
   }
 }
 @-webkit-keyframes third-floor {
@@ -930,8 +933,8 @@ body {
   }
 
   100% {
-    -webkit-transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
-    transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    -webkit-transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
   }
 }
 @keyframes third-floor {
@@ -943,10 +946,10 @@ body {
   }
 
   100% {
-    -moz-transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
-    -ms-transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
-    -webkit-transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
-    transform: translateY(110px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    -moz-transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    -ms-transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    -webkit-transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
+    transform: translateY(85px) rotateX(20deg) rotateZ(-30deg) translateX(70px);
   }
 }
 #third_floor *:not([class="facade"]) {
@@ -970,6 +973,8 @@ body {
 }
 .rotated #third_floor .room {
   opacity: 1;
+  transition-delay: 600ms;
+  transition-duration: 300ms;
 }
 .rotated #third_floor .window {
   border-color: #693e3e;
@@ -1199,9 +1204,9 @@ body {
 }
 
 #fourth_floor {
-  margin-top: 30px;
+  margin-top: 3px;
   width: 800px;
-  height: 150px;
+  height: 200px;
 }
 #fourth_floor .facade {
   height: 150px;
@@ -1219,8 +1224,8 @@ body {
   }
 
   100% {
-    -moz-transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
-    transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    -moz-transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
   }
 }
 @-webkit-keyframes fourth-floor {
@@ -1230,8 +1235,8 @@ body {
   }
 
   100% {
-    -webkit-transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
-    transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    -webkit-transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
   }
 }
 @keyframes fourth-floor {
@@ -1243,10 +1248,10 @@ body {
   }
 
   100% {
-    -moz-transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
-    -ms-transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
-    -webkit-transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
-    transform: translateY(30px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    -moz-transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    -ms-transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    -webkit-transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
+    transform: translateY(20px) rotateX(20deg) rotateZ(-30deg) translateX(-80px);
   }
 }
 #fourth_floor *:not([class="facade"]) {
@@ -1270,6 +1275,8 @@ body {
 }
 .rotated #fourth_floor .room {
   opacity: 1;
+  transition-delay: 600ms;
+  transition-duration: 300ms;
 }
 .rotated #fourth_floor .window {
   border-color: #496c52;
@@ -1330,10 +1337,39 @@ body {
   }
 }
 #fourth_floor .facade {
-  left: 3px;
-  width: 404px;
+  left: -3px;
+  width: 412px;
 }
 #fourth_floor .room_1 {
   width: 100%;
-  height: 40%;
+  height: 50%;
+}
+#fourth_floor .room_2 {
+  width: 40%;
+  height: 50%;
+  top: 50%;
+}
+#fourth_floor .room_3 {
+  width: 8%;
+  height: 15%;
+  top: 100%;
+  left: 32%;
+}
+#fourth_floor .room_4 {
+  width: 5%;
+  height: 65%;
+  top: 50%;
+  left: 40%;
+}
+#fourth_floor .room_5 {
+  width: 20%;
+  height: 65%;
+  left: 45%;
+  top: 50%;
+}
+#fourth_floor .room_6 {
+  width: 16%;
+  height: 65%;
+  left: 65%;
+  top: 50%;
 }

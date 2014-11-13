@@ -47,8 +47,7 @@
 	}
 	.room {
 		opacity: 0;
-		transition-delay: 600ms;
-		transition-duration: 300ms;
+		transition-duration: 0;
 	}
 	* {
 		position: absolute;
@@ -154,6 +153,8 @@
 		}
 		.room {
 			opacity: 1;
+			transition-delay: 600ms;
+			transition-duration: 300ms;
 		}
 		.window {
 			border-color: $color;

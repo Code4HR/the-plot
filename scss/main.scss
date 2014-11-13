@@ -154,7 +154,7 @@ body {
 #second_floor {
 	$second-floor-color: #3C685C;
 	margin-top: 22px;
-	@include floor-sizing(325px, 105px, 120px, 'second-floor', 20px, 20px, -30px, 35px);
+	@include floor-sizing(325px, 105px, 120px, 'second-floor', 20px, 20px, -30px, 22px);
 	@include floor-styling($second-floor-color, 'second-floor');
 	.counter {
 		left: 34%;
@@ -274,7 +274,7 @@ body {
 #third_floor {
 	$third-floor-color: #693E3E;
 	margin-top: 22px;
-	@include floor-sizing(285px, 105px, 120px, 'third-floor', 70px, 70px, $post-transform-y: 110px);
+	@include floor-sizing(285px, 105px, 120px, 'third-floor', 70px, 70px, $post-transform-y: 85px);
 	@include floor-styling($third-floor-color, 'third-floor');
 	.contents {
 		.left-side, .right-side {
@@ -393,15 +393,39 @@ body {
 
 #fourth_floor {
 	$fourth-floor-color: #496C52;
-	margin-top: 30px;
-	@include floor-sizing(800px, 150px, 150px, 'fourth-floor', 120px, 120px, -80px, 30px);
+	margin-top: 3px;
+	@include floor-sizing(800px, 200px, 150px, 'fourth-floor', 120px, 120px, -80px, 20px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.facade {
-		left: 3px;
-		width: 404px;
+		left: -3px;
+		width: 412px;
 	}
 	.room_1 {
-		@include size(100%, 40%);
+		@include size(100%, 50%);
+	}
+	.room_2 {
+		@include size(40%, 50%);
+		top: 50%;
+	}
+	.room_3 {
+		@include size(8%, 15%);
+		top: 100%;
+		left: 32%;
+	}
+	.room_4 {
+		@include size(5%, 65%);
+		top: 50%;;
+		left: 40%;
+	}
+	.room_5 {
+		@include size(20%, 65%);
+		left: 45%;
+		top: 50%;
+	}
+	.room_6 {
+		@include size(16%, 65%);
+		left: 65%;
+		top: 50%;
 	}
 }
 
