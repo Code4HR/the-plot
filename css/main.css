@@ -37,8 +37,6 @@
 #top_floor, #second_floor, #third_floor {
   -webkit-perspective: 2000px;
   perspective: 2000px;
-  margin-left: auto;
-  margin-right: auto;
 }
 #top_floor .contents, #second_floor .contents, #third_floor .contents {
   position: relative;
@@ -276,15 +274,28 @@ body {
   border-width: 0;
 }
 
-.container .top-side, .container .bottom-side, .container [class*="bottom_wall"], .container [class*="top_wall"] {
+.building {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.building {
+  width: 400px;
+}
+
+.top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
   height: 65px;
 }
-.container .right-side, .container .left-side, .container [class*="right_wall"], .container [class*="left_wall"] {
+
+.right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
   width: 65px;
 }
 
 .facade {
-  width: 100%;
+  width: 400px;
+}
+
+.facade {
   background: rgba(255, 255, 255, 0.5);
   -webkit-transform-origin: center 87px 22px !important;
   transform-origin: center 87px 22px !important;

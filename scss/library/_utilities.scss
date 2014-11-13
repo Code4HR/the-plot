@@ -22,20 +22,24 @@
 	transform-origin: left center;
 }
 
-@mixin sizing($depth) {
+@mixin sizing($depth, $facade-width) {
+	.building {
+		width: $facade-width;
+	}
 	.top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
 		height: $depth;
 	}
 	.right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
 		width: $depth;
 	}
+	.facade {
+		width: $facade-width;
+	}
 }
 
 %floor-base {
 	-webkit-perspective: 2000px;
 	perspective: 2000px;
-	margin-left: auto;
-	margin-right: auto;
 	.contents {
 		position: relative;
 		@include square(100%);

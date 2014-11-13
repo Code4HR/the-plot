@@ -11,13 +11,16 @@ body {
   border-width: 0;
 }
 
-.container {
-	@include sizing($floor-depth);
+.building {
+	margin-left: auto;
+	margin-right: auto;
 }
+
+@include sizing($floor-depth, 400px);
 
 .facade {
 	@extend %rotate-front;
-	width: 100%;
+	// width: 100%;
 	background: $facade-color;
 	-webkit-transform-origin: center 87px 22px !important;
 	transform-origin: center 87px 22px !important;
