@@ -48,7 +48,7 @@ body {
 }
 
 #top_floor {
-	margin-top: 200px;
+	margin-top: 100px;
 	@include floor-sizing(325px, 105px, 120px, 'top-floor', -30px, -30px);
 	@include floor-styling(#733E2D, 'top-floor');
 	.conference_room {
@@ -151,7 +151,7 @@ body {
 #second_floor {
 	$second-floor-color: #3C685C;
 	margin-top: 22px;
-	@include floor-sizing(325px, 105px, 120px, 'second-floor', 30px, 30px);
+	@include floor-sizing(325px, 105px, 120px, 'second-floor', 20px, 20px, -30px, 35px);
 	@include floor-styling($second-floor-color, 'second-floor');
 	.counter {
 		left: 34%;
@@ -271,7 +271,7 @@ body {
 #third_floor {
 	$third-floor-color: #693E3E;
 	margin-top: 22px;
-	@include floor-sizing(285px, 105px, 120px, 'third-floor', 90px, 90px);
+	@include floor-sizing(285px, 105px, 120px, 'third-floor', 70px, 70px, $post-transform-y: 110px);
 	@include floor-styling($third-floor-color, 'third-floor');
 	.contents {
 		.left-side, .right-side {
@@ -388,7 +388,19 @@ body {
 	}
 }
 
-
+#fourth_floor {
+	$fourth-floor-color: #496C52;
+	margin-top: 30px;
+	@include floor-sizing(800px, 150px, 150px, 'fourth-floor', 120px, 120px, -60px, 30px);
+	@include floor-styling($fourth-floor-color, 'fourth-floor');
+	.facade {
+		left: 1px;
+		width: 404px;
+	}
+	.room_1 {
+		@include size(100%, 40%);
+	}
+}
 
 
 

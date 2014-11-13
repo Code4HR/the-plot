@@ -106,7 +106,7 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y) {
+@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y, $post-transform-x: $transform-x, $post-transform-y: $transform-y) {
 	@extend %floor-base;
 	@include size($width, $height);
 	.facade {
@@ -123,7 +123,7 @@
 				@include transform(translateY($transform-y) rotateX(90deg) translateX($transform-x));
 			}
 			100% {
-				@include transform(translateY($transform-y) rotateX(20deg) rotateZ(-30deg) translateX($transform-x));
+				@include transform(translateY($post-transform-y) rotateX(20deg) rotateZ(-30deg) translateX($post-transform-x));
 			}
 		}
 	}
