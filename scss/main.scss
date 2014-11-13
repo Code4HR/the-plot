@@ -14,6 +14,9 @@ body {
 .building {
 	margin-left: auto;
 	margin-right: auto;
+	.room {
+		@include square(100%);
+	}
 }
 
 @include sizing($floor-depth, 400px);
@@ -391,10 +394,10 @@ body {
 #fourth_floor {
 	$fourth-floor-color: #496C52;
 	margin-top: 30px;
-	@include floor-sizing(800px, 150px, 150px, 'fourth-floor', 120px, 120px, -60px, 30px);
+	@include floor-sizing(800px, 150px, 150px, 'fourth-floor', 120px, 120px, -80px, 30px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.facade {
-		left: 1px;
+		left: 3px;
 		width: 404px;
 	}
 	.room_1 {

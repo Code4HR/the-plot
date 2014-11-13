@@ -45,6 +45,11 @@
 		@include square(100%);
 		@include transform(rotateX(90deg));
 	}
+	.room {
+		opacity: 0;
+		transition-delay: 600ms;
+		transition-duration: 300ms;
+	}
 	* {
 		position: absolute;
 		@include transition(all $skew-transition-duration);
@@ -146,6 +151,9 @@
 	.rotated & {
 		.facade {
 			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
+		}
+		.room {
+			opacity: 1;
 		}
 		.window {
 			border-color: $color;
