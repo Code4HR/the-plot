@@ -7,7 +7,7 @@
   transform-origin: center top;
 }
 
-#top_floor [class*='top'], #second_floor [class*='top'], .facade {
+#top_floor [class*='top'], #second_floor [class*='top'], .step [class*="vertical"], .facade {
   -moz-transform: rotateX(90deg);
   -ms-transform: rotateX(90deg);
   -webkit-transform: rotateX(90deg);
@@ -121,6 +121,19 @@ body {
   right: 0;
 }
 
+.step, .step [class*="horizontal"], .step [class*="vertical"] {
+  width: 100%;
+  bottom: 0;
+}
+.step [class*="horizontal"], .step [class*="vertical"] {
+  border-width: 1px;
+}
+.step [class*="horizontal"] {
+  border-top: none;
+  border-bottom: none;
+  height: 100%;
+}
+
 .couch {
   -moz-transform: translateZ(-65px);
   -ms-transform: translateZ(-65px);
@@ -131,29 +144,31 @@ body {
 .couch .back {
   height: 25px;
 }
-.couch .step_1_vertical {
-  height: 7.5px;
-}
-.couch .step_2_vertical {
-  height: 17.5px;
-}
-.couch .step_1_horizontal {
+.couch .step_1 {
   -moz-transform: translateZ(7.5px);
   -ms-transform: translateZ(7.5px);
   -webkit-transform: translateZ(7.5px);
   transform: translateZ(7.5px);
+  height: 70%;
 }
-.couch .step_2_horizontal {
+.couch .step_1 [class*="vertical"] {
+  height: 7.5px;
+}
+.couch .step_2 {
   -moz-transform: translateZ(25px);
   -ms-transform: translateZ(25px);
   -webkit-transform: translateZ(25px);
   transform: translateZ(25px);
+  height: 30%;
 }
-.couch .back, .couch .floor, .couch [class*="step"] {
+.couch .step_2 [class*="vertical"] {
+  height: 17.5px;
+}
+.couch .back, .couch .floor {
   border-width: 1px;
   width: 100%;
 }
-.couch .back, .couch [class*="vertical"] {
+.couch .back {
   -moz-transform: rotateX(-90deg);
   -ms-transform: rotateX(-90deg);
   -webkit-transform: rotateX(-90deg);
@@ -167,24 +182,8 @@ body {
 .couch .floor {
   height: 100%;
 }
-.couch .step_1_vertical, .couch .step_2_vertical, .couch .step_1_horizontal {
-  bottom: 0;
-}
-.couch .step_2_vertical {
-  -webkit-transform-origin: center bottom 8px;
-  transform-origin: center bottom 8px;
-  border-bottom: none;
-}
-.couch [class*="horizontal"] {
-  border-top: none;
-  border-bottom: none;
-}
-.couch .step_1_horizontal {
-  height: 70%;
-}
-.couch .step_2_horizontal {
-  height: 30%;
-  top: 0;
+.couch .step_2 {
+  bottom: 70%;
 }
 
 .table {

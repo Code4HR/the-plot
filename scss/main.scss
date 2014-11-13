@@ -194,33 +194,57 @@ $facade-color: rgba(white, 0.5);
 	}
 }
 
+%step-base {
+	&, [class*="horizontal"], [class*="vertical"] {
+		width: 100%;
+		bottom: 0;
+	}
+	[class*="horizontal"], [class*="vertical"] {
+		border-width: 1px;
+	}
+	[class*="horizontal"] {
+		border-top: none;
+		border-bottom: none;
+		height: 100%;
+	}	
+	[class*="vertical"] {
+		@extend %rotate-front;
+	}
+}
+
+@mixin step-sizing($depth, $vertical-depth, $horizontal-depth) {
+	@include transform(translateZ($depth));
+	height: $horizontal-depth;
+	[class*="vertical"] {
+		height: $vertical-depth;
+	}
+}
+
+.step {
+	@extend %step-base;
+}
+
 @mixin couch-sizing($height, $back-height) {
-	height: 14px;
+	height: $height;
 	.back {
 		height: $back-height;
 	}
-	.step_1_vertical {
-		height: 0.3 * $back-height;
+	.step_1 {
+		@include step-sizing(0.3 * $back-height, 0.3 * $back-height, 70%);
 	}
-	.step_2_vertical {
-		height: 0.7 * $back-height;
-	}
-	.step_1_horizontal {
-		@include transform(translateZ(0.3 * $back-height));
-	}
-	.step_2_horizontal {
-		@include transform(translateZ($back-height));
+	.step_2 {
+		@include step-sizing($back-height, 0.7 * $back-height, 30%);
 	}
 }
 
 .couch {
 	@include transform(translateZ(-$floor-depth));
 	@include couch-sizing(14px, 25px);
-	.back, .floor, [class*="step"] {
+	.back, .floor {
 		border-width: 1px;
 		width: 100%;
 	}
-	.back, [class*="vertical"] {
+	.back {
 		@include transform(rotateX(-90deg));
 		-webkit-transform-origin: center bottom;
 		transform-origin: center bottom;
@@ -231,24 +255,8 @@ $facade-color: rgba(white, 0.5);
 	.floor {
 		height: 100%;
 	}
-	.step_1_vertical, .step_2_vertical, .step_1_horizontal {
-		bottom: 0;
-	}
-	.step_2_vertical {
-		-webkit-transform-origin: center bottom 8px;
-		transform-origin: center bottom 8px;
-		border-bottom: none;
-	}
-	[class*="horizontal"] {
-		border-top: none;
-		border-bottom: none;
-	}
-	.step_1_horizontal {
-		height: 70%;
-	}
-	.step_2_horizontal {
-		height: 30%;
-		top: 0;
+	.step_2 {
+		bottom: 70%;
 	}
 }
 
