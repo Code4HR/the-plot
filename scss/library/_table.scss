@@ -56,9 +56,10 @@
 			transform-origin: left center;
 		}
 		&.chair_right_facing [class*="chair_back"] {
-			@extend %rotate-left;
+			@include transform(rotateY(90deg));
+		    -webkit-transform-origin: right center;
+		    transform-origin: right center;
 			right: 100%;
-			bottom: 100%;
 		}
 		&.chair_front_facing [class*="chair_back"] {
 			@include transform(rotateX(90deg));

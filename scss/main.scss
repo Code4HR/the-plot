@@ -234,7 +234,7 @@ body {
 		}
 		.umbrella {
 			top: -20%;
-			@include size(115%, 145%);
+			@include size(120%, 145%);
 			border: solid 1px $second-floor-color;
 			@include border-radius(50%);
 			@include transform(translateZ(40px));
@@ -265,6 +265,125 @@ body {
 	}
 }
 
+#third_floor {
+	$third-floor-color: #693E3E;
+	margin-top: 22px;
+	@include floor-sizing(285px, 105px, 120px, 'third-floor', 90px, 90px);
+	@include floor-styling($third-floor-color, 'third-floor');
+	.contents {
+		.left-side, .right-side {
+			background: none;
+			border-top: none;
+			border-bottom: none;
+		}
+		.right-side {
+			border-left: none;
+		}
+		.left-side {
+			border-right: none;
+		}
+		.stairs {
+			@include size(25%, 60%);
+			left: 98%;
+			bottom: 3%;
+			@include transform(rotateZ(-90deg));
+			.floor {
+				@include transform(translateZ(-$floor-depth * 2));
+				border-width: 1px;
+				@include square(100%);
+				left: 0;
+				top: 0;
+			}
+			.horizontal {
+				border-top-width: 1px;
+			}
+			.step_large {
+				left: 24%;
+				.horizontal, .vertical {
+					border-left-width: none;
+				}
+				&.step_1 {
+					top: 5%;
+					@include step-sizing(-$floor-depth, $floor-depth, 20px, 64%);
+				}				
+				&.step_2 {
+					top: 30%;
+					@include step-sizing(-($floor-depth + 20px), $floor-depth - 20px, 20px, 64%);
+				}
+			}
+			.step_small {
+				.vertical {
+					border-top-width: 0px;
+				}
+				&.step_1 {
+					top: 5%;
+					@include step-sizing(-$floor-depth, $floor-depth, 15px, 34%);
+				}
+				&.step_2 {
+					top: 20%;
+					@include step-sizing(-($floor-depth + 15px), $floor-depth - 15px, 15px, 34%);
+				}
+				&.step_3 {
+					top: 35%;
+					@include step-sizing(-($floor-depth + 30px), $floor-depth - 30px, 15px, 34%);
+				}
+				&.step_4 {
+					top: 50%;
+					@include step-sizing(-($floor-depth + 45px), $floor-depth - 45px, 15px, 34%);
+				}
+			}
+		}
+		.chair_left_facing {
+			left: 100%;
+		}
+		.chair_right_facing {
+			right: 100%;
+		}
+		.table_1 {
+			@include size(6%, 100%);
+			.chair_1 {
+				top: 30%;
+			}
+			.chair_2 {
+				top: 50%;
+			}
+			.chair_3 {
+				top: 80%;
+			}
+		}
+		.table_2, .table_3, .table_4, .table_5, .table_6, .table_7 {
+			@include size(7%, 55%);
+			.chair_1 {
+				top: 15%;
+			}
+			.chair_2 {
+				top: 60%;
+			}
+		}
+		.table_2 {
+			left: 20%;
+		}
+		.table_3 {
+			left: 27%;
+		}
+		.table_4 {
+			left: 46%;
+		}
+		.table_5 {
+			left: 53%;
+		}
+		.table_6 {
+			left: 74%;
+		}
+		.table_7 {
+			left: 81%;
+		}
+		.table_8 {
+			left: 96%;
+			@include size(4%, 70%);
+		}
+	}
+}
 
 
 
