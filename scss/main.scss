@@ -195,7 +195,7 @@ $facade-color: rgba(white, 0.5);
 }
 
 %step-base {
-	&, [class*="horizontal"], [class*="vertical"] {
+	[class*="horizontal"], [class*="vertical"] {
 		width: 100%;
 		bottom: 0;
 	}
@@ -203,8 +203,8 @@ $facade-color: rgba(white, 0.5);
 		border-width: 1px;
 	}
 	[class*="horizontal"] {
-		border-top: none;
-		border-bottom: none;
+		border-top-width: 0px;
+		border-bottom-width: 0px;
 		height: 100%;
 	}	
 	[class*="vertical"] {
@@ -212,9 +212,10 @@ $facade-color: rgba(white, 0.5);
 	}
 }
 
-@mixin step-sizing($depth, $vertical-depth, $horizontal-depth) {
+@mixin step-sizing($depth, $vertical-depth, $horizontal-depth, $width: 100%) {
 	@include transform(translateZ($depth));
 	height: $horizontal-depth;
+	width: $width;
 	[class*="vertical"] {
 		height: $vertical-depth;
 	}
@@ -268,8 +269,15 @@ $facade-color: rgba(white, 0.5);
 	.chair {
 		@include square($chair-size);
 		@include transform(translateZ(-$chair-depth));
-		[class*="chair_back"] {
-			width: $chair-back-width;
+		&[class*="left"], &[class*="right"] {
+			[class*="chair_back"] {
+				width: $chair-back-width;
+			}
+		}
+		&[class*="front"], &[class*="back"] {
+			[class*="chair_back"] {
+				height: $chair-back-width;
+			}
 		}
 		[class*="chair_leg"] {
 			@include size($chair-depth * 2, $leg-height);
@@ -293,9 +301,16 @@ $facade-color: rgba(white, 0.5);
 		[class*="chair_seat"] {
 			@include square(100%);
 		}
-		[class*="chair_back"] {
-			height: 100%;
-			border-left: none;
+		&[class*="left"], &[class*="right"] {
+			[class*="chair_back"] {
+				height: 100%;
+				border-left: none;
+			}
+		}
+		&[class*="front"], &[class*="back"] {
+			[class*="chair_back"] {
+				width: 100%;
+			}
 		}
 		&.chair_left_facing [class*="chair_back"] {
 			left: 100%;
@@ -307,6 +322,17 @@ $facade-color: rgba(white, 0.5);
 			@extend %rotate-left;
 			right: 100%;
 			bottom: 100%;
+		}
+		&.chair_front_facing [class*="chair_back"] {
+			@include transform(rotateX(90deg));
+			-webkit-transform-origin: center top;
+			transform-origin: center top;
+		}
+		&.chair_back_facing [class*="chair_back"] {
+			@include transform(rotateX(-90deg));
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			bottom: 0;
 		}
 	}
 	[class*="leg_tl"], [class*="leg_bl"] {
@@ -454,9 +480,123 @@ $facade-color: rgba(white, 0.5);
 }
 
 #second_floor {
+	$second-floor-color: #3C685C;
 	margin-top: 22px;
 	@include floor-sizing(310px, 105px, 120px, 'second-floor', 30px, 30px);
-	@include floor-styling(#3C685C, 'second-floor');
+	@include floor-styling($second-floor-color, 'second-floor');
+	.counter {
+		left: 34%;
+		@include step-sizing(-40px, $floor-depth - 40px, 15px, 34%);
+		.horizontal {
+			border-top-width: 1px;
+		}
+	}
+	.bathroom {
+		left: 68%;
+		@include size(15%, 30%);
+	}
+	.closet {
+		left: 83%;
+		@include size(10%, 30%);
+	}
+	.table {
+		left: 35%;
+		top: 50%;
+		@include size(33%, 22%);
+		.chair_back_facing {
+			top: 100%;
+		}
+		.chair_front_facing {
+			bottom: 100%;
+		}
+		.chair_1, .chair_6 {
+			left: 9%;
+		}
+		.chair_2, .chair_7 {
+			left: 28%;
+		}
+		.chair_3, .chair_8 {
+			left: 48%;
+		}
+		.chair_4, .chair_9 {
+			left: 67%;
+		}
+		.chair_5, .chair_10 {
+			left: 86%;
+		}
+	}
+	.couch_1 {
+		width: 14%;
+		left: 1%;
+		top: 37%;
+		@include transform(translateZ(-$floor-depth) rotateZ(-90deg));
+	}
+	.couch_2, .couch_3 {
+		width: 6%;
+		@include transform(translateZ(-$floor-depth) rotateZ(90deg));
+		left: 17%;
+	}
+	.couch_2 {
+		top: 25%;
+	}
+	.couch_3 {
+		top: 50%;
+	}
+	.deck {
+		@include size(45%, 100%);
+		left: 100%;
+		.floor {
+			border-width: 1px;
+			@include square(100%);
+			@include transform(translateZ(-$floor-depth));
+			@include background-size(5px 5px);
+			@include background-image(linear-gradient(transparent 90%, rgba($second-floor-color, 0.25) 90%));
+		}
+		.table {
+			@include size(18%, 20%);
+		}
+		.table_1 {
+			left: 28%;
+			top: 25%;
+		}
+		.table_2 {
+			left: 60%;
+			top: 58%;
+		}
+		.chair {
+			left: 45%;
+		}
+		.umbrella {
+			top: -20%;
+			@include size(115%, 145%);
+			border: solid 1px $second-floor-color;
+			@include border-radius(50%);
+			@include transform(translateZ(40px));
+			.pole, .triangle {
+				background: $second-floor-color;
+			}
+			.pole {
+				left: 50%;
+				top: 50%;
+				width: 2px;
+				height: 120%;
+				@extend %rotate-back;
+			}
+			.triangle {
+				width: 1px;
+				height: 50%;
+				left: 50%;
+				top: 50%;
+				-webkit-transform-origin: top left;
+				transform-origin: top left;
+				@for $i from 1 through 8 {
+					&.triangle_#{$i} {
+						@include transform(rotateZ(unquote($i * 360 / 8 + "deg")));
+					}
+				}
+			}
+		}
+	}
 }
 
 
