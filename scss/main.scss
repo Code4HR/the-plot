@@ -1,277 +1,496 @@
 @import "compass";
 @import "lib";
 
+%rotate-back {
+	@include transform(rotateX(-90deg));
+	-webkit-transform-origin: center top;
+	transform-origin: center top;
+}
+
+%rotate-front {
+	@include transform(rotateX(90deg));
+	-webkit-transform-origin: center bottom;
+	transform-origin: center bottom;
+}
+
+%rotate-left {
+	@include transform(rotateY(-90deg));
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
+}
+
+%rotate-right {
+	@include transform(rotateY(90deg));
+	-webkit-transform-origin: left center;
+	transform-origin: left center;
+}
+
+$background-color: #212121;
+
 body {
-	font-family: Helvetica, sans-serif;
-	background: #151617;
-	overflow: hidden;
+  background: $background-color;
 }
 
-h1, h2 {
-	margin:0;
-	padding:0;
-	text-align:center;
+* {
+  @include box-sizing(border-box); 
+  border-style: solid;
+  border-width: 0;
 }
 
-#logo {
-	color: transparent;
-	@include desktop-and-up {
-		@include image(logo, desktop);
+$split-transition-duration: .5s;
+$skew-transition-duration: .5s;
+
+$floor-depth: 65px;
+
+$facade-color: rgba(white, 0.5);
+
+@mixin sizing($depth) {
+	.top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
+		height: $depth;
 	}
-	@include tablet-landscape-and-below {
-		@include image(logo, mobile);
-	}
-	margin: 20px auto;
-}
-
-@mixin carousel-dimensions($carousel-item-width, $buffer-carousel-item) {
-	width: $count-carousel-items * $carousel-item-width * 100%;
-	.carousel-item-contents {
-		top: $buffer-carousel-item;
-		right: $buffer-carousel-item;
-		bottom: $buffer-carousel-item;
-		left: $buffer-carousel-item;
+	.right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
+		width: $depth;
 	}
 }
 
-$count-carousel-items: 5;
+.container {
+	@include sizing($floor-depth);
+}
 
-#carousel {
-	position: absolute;
-	white-space: nowrap;
-	#carousel-item-container {
+%floor-base {
+	-webkit-perspective: 2000px;
+	perspective: 2000px;
+	margin-left: auto;
+	margin-right: auto;
+	.contents {
+		position: relative;
+		@include square(100%);
+		@include transform(rotateX(90deg));
+	}
+	* {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
+		@include transition(all $skew-transition-duration);
+		@include transform-style(preserve-3d);
+	}
+	[class*='side'] {
+		border-width: 2px;
+	}
+	[class*='wall'] {
+		border-width: 1px;
+	}
+	[class*='top'] {
+		@extend %rotate-front;
+	}
+	[class*='right']:not(.chair) {
+		@extend %rotate-right;
+	}
+	[class*='left']:not(.chair) {
+		@extend %rotate-left;
+	}
+	[class*='bottom'] {
+		@extend %rotate-back;
+	}
+	.top-side, .bottom-side, [class*="bottom_wall"] {
 		left: 0;
 	}
-	.carousel-item {
-		display: inline-block;
-		white-space: normal;
-		@include transform(translateY(-50%));
-		width: 100% / $count-carousel-items;
-		padding-top: 100% / $count-carousel-items;
-		position: relative;
-		@include transition(all 250ms);
-		&:not(:last-of-type) {
-			margin-right: -4px;
-		}
-		.carousel-item-contents {
-			@include border-radius(50%);
-			position: absolute;
-			color: transparent;
-			background-size: cover;
-		}
-		&:not(.active) {
-			opacity: 0.5;
+	.top-side, [class*="top_wall"] {
+		bottom: 100%;
+	}
+	.bottom-side, [class*="bottom_wall"] {
+		top: 100%;
+	}
+	.right-side, [class*="right_wall"] {
+		top: 0;
+		left: 100%;
+	}
+	.top-side, .bottom-side {
+		border-left: none;
+		border-right: none;
+	}
+	.left-side, [class*="left_wall"] {
+		right: 100%;
+	}
+	[class*="right_wall"], [class*="left_wall"], .right-side, .left-side {
+		height: 100%;
+	}
+	[class*="bottom_wall"], [class*="top_wall"], .top-side, .bottom-side {
+		width: 100%;
+	}
+	[class*="right_wall"] {
+		border-bottom: none;
+	}
+	[class*="left_wall"] {
+		bottom: 0;
+		border-top: none;
+	}
+	[class*="top_wall"] {
+		right: 0;
+	}
+}
+
+@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y) {
+	@extend %floor-base;
+	@include size($width, $height);
+	.facade {
+		height: $facade-height;
+	}
+	.rotated & {
+		.contents {
+			@include animation(#{$floor-name} $split-transition-duration + $skew-transition-duration forwards);
 		}
 	}
-
-	#feature_1 {
-		.carousel-item-contents {
-			@include desktop-and-up {
-				@include image(feature_1, desktop, $dimensions: false, $background-dimensions: false);
+	@at-root {
+		@include keyframes(#{$floor-name}) {
+			50% {
+				@include transform(translateY($transform-y) rotateX(90deg) translateX($transform-x));
 			}
-			@include tablet-landscape-and-below {
-				@include image(feature_1, mobile, $dimensions: false, $background-dimensions: false);
-			}
-		}
-	}
-
-	#feature_2 {
-		.carousel-item-contents {
-			@include desktop-and-up {
-				@include image(feature_2, desktop, $dimensions: false, $background-dimensions: false);
-			}
-			@include tablet-landscape-and-below {
-				@include image(feature_2, mobile, $dimensions: false, $background-dimensions: false);
+			100% {
+				@include transform(translateY($transform-y) rotateX(20deg) rotateZ(-30deg) translateX($transform-x));
 			}
 		}
 	}
+}
 
-	#feature_3 {
-		.carousel-item-contents {
-			@include desktop-and-up {
-				@include image(feature_3, desktop, $dimensions: false, $background-dimensions: false);
+@mixin floor-styling($color, $floor-name) {
+	*:not([class="facade"]) {
+		border-color: $color;
+	}
+	.window {
+		border-color: $facade-color;
+		transform: none !important;
+	}
+	[class*="leg"] {
+		background: $color;
+	}
+	[class*='side'], [class*='wall'] {
+		background: rgba($color, 0.15);
+	}
+	.rotated & {
+		.facade {
+			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
+		}
+		.window {
+			border-color: $color;
+			transition-duration: 300ms;
+		}
+	}
+	@at-root {
+		@include keyframes(#{$floor-name}-facade) {
+			30% {
+				border-color: $color;
+				background-color: $color;
 			}
-			@include tablet-landscape-and-below {
-				@include image(feature_3, mobile, $dimensions: false, $background-dimensions: false);
+			50% {
+				border-color: $color;
+				background-color: $color;
+				opacity: 1;
+			}
+			100% {
+				border-color: $color;
+				background-color: $color;
+				opacity: 0;
 			}
 		}
 	}
+}
 
-	.arrow {
-		@include desktop-and-up {
-			@include image(arrow, desktop);
+@mixin couch-sizing($height, $back-height) {
+	height: 14px;
+	.back {
+		height: $back-height;
+	}
+	.step_1_vertical {
+		height: 0.3 * $back-height;
+	}
+	.step_2_vertical {
+		height: 0.7 * $back-height;
+	}
+	.step_1_horizontal {
+		@include transform(translateZ(0.3 * $back-height));
+	}
+	.step_2_horizontal {
+		@include transform(translateZ($back-height));
+	}
+}
+
+.couch {
+	@include transform(translateZ(-$floor-depth));
+	@include couch-sizing(14px, 25px);
+	.back, .floor, [class*="step"] {
+		border-width: 1px;
+		width: 100%;
+	}
+	.back, [class*="vertical"] {
+		@include transform(rotateX(-90deg));
+		-webkit-transform-origin: center bottom;
+		transform-origin: center bottom;
+	}
+	.back {
+		bottom: 100%;
+	}
+	.floor {
+		height: 100%;
+	}
+	.step_1_vertical, .step_2_vertical, .step_1_horizontal {
+		bottom: 0;
+	}
+	.step_2_vertical {
+		-webkit-transform-origin: center bottom 8px;
+		transform-origin: center bottom 8px;
+		border-bottom: none;
+	}
+	[class*="horizontal"] {
+		border-top: none;
+		border-bottom: none;
+	}
+	.step_1_horizontal {
+		height: 70%;
+	}
+	.step_2_horizontal {
+		height: 30%;
+		top: 0;
+	}
+}
+
+@mixin table-sizing($chair-size, $chair-depth, $chair-back-width, $table-depth, $leg-height: 2px) {
+	@include transform(translateZ(-$table-depth));
+	[class*="table_leg"] {
+		@include size($chair-depth * 3, $leg-height);
+	}
+	.chair {
+		@include square($chair-size);
+		@include transform(translateZ(-$chair-depth));
+		[class*="chair_back"] {
+			width: $chair-back-width;
 		}
-		@include tablet-landscape-and-below {
-			@include image(arrow, mobile);
+		[class*="chair_leg"] {
+			@include size($chair-depth * 2, $leg-height);
 		}
-		@include transition(all 250ms);
-		position: fixed;
-		@include transform(translateY(-50%));
+	}
+}
+
+.table {
+	@include table-sizing(8px, 10px, 14px, 35px);
+	[class*="table_surface"] {
+		border-width: 1px;
+		@include square(100%);
+	}
+	[class*="table_leg"], [class*="chair_leg"] {
+		@extend %rotate-left;
+	}
+	.chair {
+		[class*="chair_seat"], [class*="chair_back"] {
+			border-width: 1px;
+		}
+		[class*="chair_seat"] {
+			@include square(100%);
+		}
+		[class*="chair_back"] {
+			height: 100%;
+			border-left: none;
+		}
+		&.chair_left_facing [class*="chair_back"] {
+			left: 100%;
+			@include transform(rotateY(-90deg));
+			-webkit-transform-origin: left center;
+			transform-origin: left center;
+		}
+		&.chair_right_facing [class*="chair_back"] {
+			@extend %rotate-left;
+			right: 100%;
+			bottom: 100%;
+		}
+	}
+	[class*="leg_tl"], [class*="leg_bl"] {
+	  right: 100%;
+	}
+	[class*="leg_tl"] {
+	  top: 0;
+	}
+	[class*="leg_tr"], [class*="leg_br"] {
+	  right: 0;
+	}
+	[class*="leg_bl"], [class*="leg_br"] {
+	  bottom: 0;
+	}
+}
+
+.facade {
+	@extend %rotate-front;
+	width: 100%;
+	background: $facade-color;
+	-webkit-transform-origin: center 87px 22px !important;
+	transform-origin: center 87px 22px !important;
+	background-image: -webkit-repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
+	background-image: repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
+	@include background-size(6px 6px);
+	&, .window {
+		border: solid 1px $facade-color;
+	}
+	.window {
+		@include size(42px, 62px);
+		top: 10px;
+		background: $background-color;
 		&.left {
-			left: 5vh;
-			@include transform(translateY(-50%) rotateZ(180deg));
+			left: 58px;
+		}
+		&.center {
+			left: 50%;
+			margin-left: -21px;
 		}
 		&.right {
-			right: 5vh;
-		}
-		&:not(.active) {
-			opacity: 0.5;
-		}
-		&:hover {
-			cursor: pointer;
-		}
-	}
-
-	@include mobile-portrait-and-up {
-		@include carousel-dimensions($carousel-item-width: 1, $buffer-carousel-item: 40px);
-		top: 45vh;
-		.arrow {
-			top: 85vh;
-			&.left {
-				left: 20vh;
-			}
-			&.right {
-				right: 20vh;
-			}
-		}
-	}
-
-	@include tablet-portrait-and-up {
-		@include carousel-dimensions($carousel-item-width: 0.5, $buffer-carousel-item: 40px);
-		top: 50vh;
-		.arrow {
-			top: 50vh;
-		}
-	}
-
-}
-
-#footer {
-	text-align: center;
-	position: absolute;
-	width: 100%;
-	color:#6F6F72;
-
-	.footer-item {
-		display: inline-block;
-		margin:0 6px;
-		text-transform: uppercase;
-	}
-
-	.footer-item:hover{
-		color:#fff;
-		cursor:pointer;
-	}
-
-	.active{
-		color:#fff;
-	}
-
-	@include mobile-portrait-and-up {
-		font-size:12px;
-		bottom: 3vh;
-	}
-
-	@include tablet-portrait-and-up {
-		font-size:20px;
-		bottom: 5vh;
-	}
-}
-
-#overlay{
-	width:100%;
-	height:100%;
-	position:absolute;
-	top:0;
-	left:0;
-	background-color:#000;
-	opacity:0.6;
-	display:none;
-}
-
-#about_box{
-	display:none;
-	box-sizing:border-box; 
-	position:absolute;
-	left:10%;
-	top:10%;
-	width:80%;
-	height:80%;
-	text-align:center;
-	background-color:#28292A;
-	color:#737275;
-	padding:10px;
-	z-index:3;
-
-	.close_btn{
-		position:absolute;
-		background-color:#fff;
-		z-index:4;
-	}
-
-	@include mobile-portrait-and-up {
-		.close_btn{
-			width:25px;
-			height:25px;
-			right:0px;
-		}
-
-		.paragraphs{
-			padding:0 15px;
-			top:0vh;
-			p {
-				font-size:16px;
-				padding-bottom:5px;
-			}
-		}
-	}
-
-	@include tablet-portrait-and-up {
-		.close_btn{
-			width:50px;
-			height:50px;
-			right:10px;
-		}
-
-		.paragraphs{
-			padding:0 120px;
-			top:20vh;
-
-			p {
-				font-size:22px;
-				padding-bottom:20px;
-			}
-		}
-	}
-
-	.container{
-		position:relative;
-		width:100%;
-		height:100%;
-	}
-
-	
-
-	.paragraphs{
-		position:absolute;
-
-		p{
-
-			.green{
-				color:#C3ED00;
-			}
-
-			a{
-				color:#AA7CFF;
-				text-decoration: none;
-			}
+			right: 60px;
 		}
 	}
 }
+
+#top_floor {
+	margin-top: 200px;
+	@include floor-sizing(310px, 105px, 120px, 'top-floor', -30px, -30px);
+	@include floor-styling(#733E2D, 'top-floor');
+	.conference_room {
+		left: 0;
+		bottom: 0;
+		@include size(30%, 100%);
+		.table {
+			@include size(30%, 80%);
+			left: 20%;
+			bottom: 2%;
+		}
+		.chair_left_facing {
+			left: 102%;
+		}
+		.chair_right_facing {
+			right: 102%;
+		}
+		.chair_1, .chair_5 {
+			top: 5%;
+		}
+		.chair_2, .chair_6 {
+			top: 28%;
+		}
+		.chair_3, .chair_7 {
+			top: 51%;
+		}
+		.chair_4, .chair_8 {
+			top: 75%;
+		}
+	}
+	.work_room_1, .work_room_2 {
+		bottom: 0;
+	}
+	.work_room_1 {
+		right: 0;
+		@include size(15%, 45%);
+		.table {
+			@include size(30%, 70%);
+			bottom: 0;
+			left: 37%;
+		}
+		.chair_left_facing {
+			left: 100%;
+		}
+		.chair_right_facing {
+			right: 100%;
+		}
+		.chair_1, .chair_3 {
+			top: 5%;
+		}
+		.chair_2, .chair_4 {
+			top: 50%;
+		}
+	}
+	.work_room_2 {
+		right: 15%;
+		@include size(17%, 45%);
+		.couch {
+			width: 30%;
+		}
+		.couch_1 {
+			right: 0;
+			top: 5%;
+		}
+		.couch_2 {
+			@include transform(translateZ(-$floor-depth) rotateZ(-90deg));
+			top: 10%;
+		}
+	}
+	.work_room_3 {
+		left: 30%;
+		@include size(17%, 70%);
+		.couch_1 {
+			width: 50%;
+			left: 20%;
+		}
+		.couch_2 {
+			@include transform(translateZ(-$floor-depth) rotateZ(-90deg));
+			width: 45%;
+			top: 40%;
+		}
+	}
+	.storage_room_1, .storage_room_2 {
+		left: 47%;
+		@include size(17%, 30%);
+	}
+	.storage_room_2 {
+		top: 30%;
+	}
+	.storage_room_3 {
+		left: 74%;
+		@include size(10%, 30%);
+	}
+	.storage_room_4 {
+		left: 84%;
+		@include size(13%, 30%);
+	}
+}
+
+#second_floor {
+	margin-top: 22px;
+	@include floor-sizing(310px, 105px, 120px, 'second-floor', 30px, 30px);
+	@include floor-styling(#3C685C, 'second-floor');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

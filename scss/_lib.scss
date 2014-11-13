@@ -137,6 +137,32 @@ $mq-desktop				: 1382px !default;
 	height: $height;
 }
 
+@mixin square($size) {
+	@include size($size, $size);
+}
+
+@mixin keyframe ($animation_name) {
+	@-webkit-keyframes $animation_name {
+		@content;
+	}
+	@-moz-keyframes $animation_name {
+		@content;
+	}
+	@-o-keyframes $animation_name {
+		@content;
+	} 
+	@keyframes $animation_name {
+		@content;
+	}
+}
+
+@mixin animation($properties) {
+	-webkit-animation:	$properties;
+	-moz-animation:		$properties;
+	-o-animation:		$properties;
+	animation:			$properties;
+}
+
 @mixin image($name, $environment, $filetype: "png", $dimensions: true, $background-dimensions: true, $center-horz: false, $center-vert: false) {
 	
 	$image-path: #{"img/" + $name + "_" + $environment + "." + $filetype};

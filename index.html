@@ -1,66 +1,216 @@
 <html>
-	<head>
-		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<script src="js/lib/jquery.js"></script>
-		<script src="js/lib/jquery.mobile.js"></script>
-		<script src="js/index.js"></script>
-	</head>
-	<body>
-		<div id="logo">The Plot
-		</div>
-		
-		<div id="carousel">
+<head>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery.mobile.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+	<button onclick="floorAnimate()">animate</button>
+	<button onclick="floorUnanimate()">reset</button>
 
-			<div id="carousel-item-container">
-				<div id="feature_1" class="carousel-item active">
-					<div class="carousel-item-contents">
-						<h1>EVENT NAME</h1>
-						<h2>EVENT DATE</h2>
+	<div class="container" id="top_floor">
+		<div class="contents">
+			<div class="side top-side"></div>
+			<div class="side right-side"></div>
+			<div class="side bottom-side"></div>
+			<div class="side left-side"></div>
+			<div class="facade">
+				<div class="window left"></div>
+				<div class="window center"></div>
+				<div class="window right"></div>
+			</div>
+			<div class="work_room_1">
+				<div class="work_room_1_top_wall"></div>
+				<div class="work_room_1_left_wall"></div>
+				<div class="table">
+					<div class="table_surface"></div>
+					<div class="table_leg_tl"></div>
+					<div class="table_leg_tr"></div>
+					<div class="table_leg_bl"></div>
+					<div class="table_leg_br"></div>
+					<div class="chair chair_left_facing chair_1">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
 					</div>
-				</div>
-				<div id="feature_2" class="carousel-item">
-					<div class="carousel-item-contents">
-						<h1>EVENT NAME</h1>
-						<h2>EVENT DATE</h2>
+					<div class="chair chair_left_facing chair_2">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
 					</div>
-				</div>
-				<div id="feature_3" class="carousel-item">
-					<div class="carousel-item-contents">
-						<h1>EVENT NAME</h1>
-						<h2>EVENT DATE</h2>
+					<div class="chair chair_right_facing chair_3">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_right_facing chair_4">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
 					</div>
 				</div>
 			</div>
-
-			<div class="arrow left"></div>
-			<div class="arrow right active"></div>
-
-		</div>
-
-		<div id="footer">
-			<div class="footer-item active">Calendar</div>
-			<div class="footer-item" id="about">About</div>
-			<div class="footer-item">Facebook</div>
-			<div class="footer-item">Contact</div>
-		</div>
-
-		<div id="overlay"></div>
-
-
-		<div id="about_box">
-			<div class="container">
-				<div class="close_btn"></div>
-				<div class="paragraphs">
-					<p>Located in the <span class="green">Norfolk Arts District on Granby Street.</span>
-					<br>The Plot is writing a new chapter for downtown.</p>
-					<p>This community gathering space is constructed of materials reclaim from the site and other City sources and has been made possible thanks to the countless volunteer hours and generous sponsors. </p>
-					<p>The Plot celebrates the community's effort to create a better Norfolk block by block.</p>
-					<p>Address Line goes here and then theres a <a href="">link</a></p>
+			<div class="work_room_2">
+				<div class="work_room_2_top_wall"></div>
+				<div class="work_room_2_left_wall"></div>
+				<div class="couch couch_1">
+					<div class="back"></div>
+					<div class="floor"></div>
+					<div class="step_1_vertical"></div>
+					<div class="step_1_horizontal"></div>
+					<div class="step_2_vertical"></div>
+					<div class="step_2_horizontal"></div>
 				</div>
-				
+				<div class="couch couch_2">
+					<div class="back"></div>
+					<div class="floor"></div>
+					<div class="step_1_vertical"></div>
+					<div class="step_1_horizontal"></div>
+					<div class="step_2_vertical"></div>
+					<div class="step_2_horizontal"></div>
+				</div>
+			</div>
+			<div class="work_room_3">
+				<div class="work_room_3_bottom_wall"></div>
+				<div class="work_room_3_right_wall"></div>
+				<div class="couch couch_1">
+					<div class="back"></div>
+					<div class="floor"></div>
+					<div class="step_1_vertical"></div>
+					<div class="step_1_horizontal"></div>
+					<div class="step_2_vertical"></div>
+					<div class="step_2_horizontal"></div>
+				</div>
+				<div class="couch couch_2">
+					<div class="back"></div>
+					<div class="floor"></div>
+					<div class="step_1_vertical"></div>
+					<div class="step_1_horizontal"></div>
+					<div class="step_2_vertical"></div>
+					<div class="step_2_horizontal"></div>
+				</div>
+			</div>
+			<div class="storage_room_1">
+				<div class="storage_room_1_bottom_wall"></div>
+				<div class="storage_room_1_right_wall"></div>
+			</div>
+			<div class="storage_room_2">
+				<div class="storage_room_2_bottom_wall"></div>
+				<div class="storage_room_2_right_wall"></div>
+			</div>
+			<div class="storage_room_3">
+				<div class="storage_room_3_bottom_wall"></div>
+				<div class="storage_room_3_left_wall"></div>
+				<div class="storage_room_3_right_wall"></div>
+			</div>
+			<div class="storage_room_4">
+				<div class="storage_room_4_bottom_wall"></div>
+				<div class="storage_room_4_right_wall"></div>
+			</div>
+			<div class="conference_room">
+				<div class="conference_room_right_wall"></div>
+				<div class="table">
+					<div class="table_surface"></div>
+					<div class="table_leg_tl"></div>
+					<div class="table_leg_tr"></div>
+					<div class="table_leg_bl"></div>
+					<div class="table_leg_br"></div>
+					<div class="chair chair_left_facing chair_1">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_left_facing chair_2">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_left_facing chair_3">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_left_facing chair_4">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_right_facing chair_5">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_right_facing chair_6">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_right_facing chair_7">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+					<div class="chair chair_right_facing chair_8">
+						<div class="chair_seat"></div>
+						<div class="chair_back"></div>
+						<div class="chair_leg_tl"></div>
+						<div class="chair_leg_tr"></div>
+						<div class="chair_leg_bl"></div>
+						<div class="chair_leg_br"></div>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
 
-	</body>
+	<div class="container" id="second_floor">
+		<div class="contents">
+			<div class="side top-side"></div>
+			<div class="side right-side"></div>
+			<div class="side bottom-side"></div>
+			<div class="side left-side"></div>
+			<div class="facade">
+				<div class="window left"></div>
+				<div class="window center"></div>
+				<div class="window right"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>
