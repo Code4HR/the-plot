@@ -1,4 +1,4 @@
-#top_floor [class*='bottom'], #second_floor [class*='bottom'], #third_floor [class*='bottom'], #fourth_floor [class*='bottom'], .facade, #second_floor .deck .umbrella .pole {
+#top_floor [class*='bottom'], #second_floor [class*='bottom'], #third_floor [class*='bottom'], #fourth_floor [class*='bottom'], #second_floor .deck .umbrella .pole {
   -moz-transform: rotateX(-90deg);
   -ms-transform: rotateX(-90deg);
   -webkit-transform: rotateX(-90deg);
@@ -16,7 +16,7 @@
   transform-origin: center bottom;
 }
 
-#top_floor [class*='left']:not(.chair), #second_floor [class*='left']:not(.chair), #third_floor [class*='left']:not(.chair), #fourth_floor [class*='left']:not(.chair), .table [class*="table_leg"], .table [class*="chair_leg"] {
+#top_floor [class*='left']:not(.chair), #second_floor [class*='left']:not(.chair), #third_floor [class*='left']:not(.chair), #fourth_floor [class*='left']:not(.chair), .table [class*="table_leg"], .table [class*="chair_leg"], .facade {
   -moz-transform: rotateY(-90deg);
   -ms-transform: rotateY(-90deg);
   -webkit-transform: rotateY(-90deg);
@@ -34,10 +34,6 @@
   transform-origin: left center;
 }
 
-#top_floor, #second_floor, #third_floor, #fourth_floor {
-  -webkit-perspective: 2000px;
-  perspective: 2000px;
-}
 #top_floor .contents, #second_floor .contents, #third_floor .contents, #fourth_floor .contents {
   position: relative;
   width: 100%;
@@ -260,8 +256,69 @@
 
 body {
   background: #212121;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  perspective-origin: center 200px;
+}
+body.rotated {
+  -webkit-animation: perspective-transition 1s forwards;
+  -moz-animation: perspective-transition 1s forwards;
+  -o-animation: perspective-transition 1s forwards;
+  animation: perspective-transition 1s forwards;
 }
 
+@-webkit-keyframes perspective-transition {
+  50% {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    perspective-origin: center 200px;
+  }
+
+  100% {
+    -webkit-perspective: 5000px;
+    perspective: 5000px;
+    perspective-origin: center 400px;
+  }
+}
+@-moz-keyframes perspective-transition {
+  50% {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    perspective-origin: center 200px;
+  }
+
+  100% {
+    -webkit-perspective: 5000px;
+    perspective: 5000px;
+    perspective-origin: center 400px;
+  }
+}
+@-o-keyframes perspective-transition {
+  50% {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    perspective-origin: center 200px;
+  }
+
+  100% {
+    -webkit-perspective: 5000px;
+    perspective: 5000px;
+    perspective-origin: center 400px;
+  }
+}
+@keyframes perspective-transition {
+  50% {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    perspective-origin: center 200px;
+  }
+
+  100% {
+    -webkit-perspective: 5000px;
+    perspective: 5000px;
+    perspective-origin: center 400px;
+  }
+}
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -273,14 +330,15 @@ body {
 .building {
   margin-left: auto;
   margin-right: auto;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  width: 500px;
+  height: 500px;
 }
 .building .room {
   width: 100%;
   height: 100%;
-}
-
-.building {
-  width: 400px;
 }
 
 .top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
@@ -292,11 +350,11 @@ body {
 }
 
 .facade {
-  width: 400px;
+  width: 65px;
 }
 
 .facade {
-  top: 100%;
+  right: 100%;
   background: rgba(255, 255, 255, 0.5);
   background-image: -webkit-repeating-radial-gradient(center center, #212121, #212121 3px, transparent 3px, transparent 100%);
   background-image: repeating-radial-gradient(center center, #212121, #212121 3px, transparent 3px, transparent 100%);
@@ -305,25 +363,6 @@ body {
   -webkit-background-size: 6px 6px;
   background-size: 6px 6px;
 }
-.facade, .facade .window {
-  border: solid 1px rgba(255, 255, 255, 0.5);
-}
-.facade .window {
-  width: 42px;
-  height: 62px;
-  top: 10px;
-  background: #212121;
-}
-.facade .window.left {
-  left: 58px;
-}
-.facade .window.center {
-  left: 50%;
-  margin-left: -21px;
-}
-.facade .window.right {
-  right: 60px;
-}
 
 #top_floor {
   margin-top: 100px;
@@ -331,19 +370,13 @@ body {
   height: 105px;
 }
 #top_floor .facade {
-  height: 120px;
+  height: 105px;
 }
 #top_floor .contents {
-  -moz-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  -ms-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  -webkit-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-}
-#top_floor .contents > .room {
-  -moz-transform: translateZ(-55px);
-  -ms-transform: translateZ(-55px);
-  -webkit-transform: translateZ(-55px);
-  transform: translateZ(-55px);
+  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-230px) translateY(28px);
+  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-230px) translateY(28px);
+  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-230px) translateY(28px);
+  transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-230px) translateY(28px);
 }
 .rotated #top_floor .contents {
   -webkit-animation: top-floor 1s forwards;
@@ -353,8 +386,8 @@ body {
 }
 @-moz-keyframes top-floor {
   50% {
-    -moz-transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
-    transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
   }
 
   100% {
@@ -364,8 +397,8 @@ body {
 }
 @-webkit-keyframes top-floor {
   50% {
-    -webkit-transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
-    transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
   }
 
   100% {
@@ -375,10 +408,10 @@ body {
 }
 @keyframes top-floor {
   50% {
-    -moz-transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
-    -ms-transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
-    -webkit-transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
-    transform: translateY(-30px) rotateX(90deg) translateX(-30px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
+    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-230px) translateY(-2px);
   }
 
   100% {
@@ -577,24 +610,17 @@ body {
 }
 
 #second_floor {
-  margin-top: 22px;
   width: 325px;
   height: 105px;
 }
 #second_floor .facade {
-  height: 120px;
+  height: 105px;
 }
 #second_floor .contents {
-  -moz-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  -ms-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  -webkit-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-}
-#second_floor .contents > .room {
-  -moz-transform: translateZ(-55px);
-  -ms-transform: translateZ(-55px);
-  -webkit-transform: translateZ(-55px);
-  transform: translateZ(-55px);
+  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-230px) translateY(28px);
+  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-230px) translateY(28px);
+  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-230px) translateY(28px);
+  transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-230px) translateY(28px);
 }
 .rotated #second_floor .contents {
   -webkit-animation: second-floor 1s forwards;
@@ -604,8 +630,8 @@ body {
 }
 @-moz-keyframes second-floor {
   50% {
-    -moz-transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
-    transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
   }
 
   100% {
@@ -615,8 +641,8 @@ body {
 }
 @-webkit-keyframes second-floor {
   50% {
-    -webkit-transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
-    transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
   }
 
   100% {
@@ -626,10 +652,10 @@ body {
 }
 @keyframes second-floor {
   50% {
-    -moz-transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
-    -ms-transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
-    -webkit-transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
-    transform: translateY(20px) rotateX(90deg) translateX(20px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
+    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-230px) translateY(18px);
   }
 
   100% {
@@ -907,24 +933,17 @@ body {
 }
 
 #third_floor {
-  margin-top: 22px;
   width: 285px;
   height: 105px;
 }
 #third_floor .facade {
-  height: 120px;
+  height: 105px;
 }
 #third_floor .contents {
-  -moz-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  -ms-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  -webkit-transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-  transform: rotateX(90deg) translateZ(0px) translateX(0px) translateY(0px);
-}
-#third_floor .contents > .room {
-  -moz-transform: translateZ(-55px);
-  -ms-transform: translateZ(-55px);
-  -webkit-transform: translateZ(-55px);
-  transform: translateZ(-55px);
+  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-250px) translateY(48px);
+  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-250px) translateY(48px);
+  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-250px) translateY(48px);
+  transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-250px) translateY(48px);
 }
 .rotated #third_floor .contents {
   -webkit-animation: third-floor 1s forwards;
@@ -934,8 +953,8 @@ body {
 }
 @-moz-keyframes third-floor {
   50% {
-    -moz-transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
-    transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
   }
 
   100% {
@@ -945,8 +964,8 @@ body {
 }
 @-webkit-keyframes third-floor {
   50% {
-    -webkit-transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
-    transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
   }
 
   100% {
@@ -956,10 +975,10 @@ body {
 }
 @keyframes third-floor {
   50% {
-    -moz-transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
-    -ms-transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
-    -webkit-transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
-    transform: translateY(70px) rotateX(90deg) translateX(70px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
+    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-250px) translateY(58px);
   }
 
   100% {
@@ -1219,24 +1238,17 @@ body {
 }
 
 #fourth_floor {
-  margin-top: 3px;
   width: 800px;
   height: 220px;
 }
 #fourth_floor .facade {
-  height: 150px;
+  height: 220px;
 }
 #fourth_floor .contents {
-  -moz-transform: rotateX(90deg) translateZ(40px) translateX(7px) translateY(-55px);
-  -ms-transform: rotateX(90deg) translateZ(40px) translateX(7px) translateY(-55px);
-  -webkit-transform: rotateX(90deg) translateZ(40px) translateX(7px) translateY(-55px);
-  transform: rotateX(90deg) translateZ(40px) translateX(7px) translateY(-55px);
-}
-#fourth_floor .contents > .room {
-  -moz-transform: translateZ(-85px);
-  -ms-transform: translateZ(-85px);
-  -webkit-transform: translateZ(-85px);
-  transform: translateZ(-85px);
+  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
+  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
+  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
+  transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
 }
 .rotated #fourth_floor .contents {
   -webkit-animation: fourth-floor 1s forwards;
@@ -1246,8 +1258,8 @@ body {
 }
 @-moz-keyframes fourth-floor {
   50% {
-    -moz-transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
-    transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
   }
 
   100% {
@@ -1257,8 +1269,8 @@ body {
 }
 @-webkit-keyframes fourth-floor {
   50% {
-    -webkit-transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
-    transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
   }
 
   100% {
@@ -1268,10 +1280,10 @@ body {
 }
 @keyframes fourth-floor {
   50% {
-    -moz-transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
-    -ms-transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
-    -webkit-transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
-    transform: translateY(120px) rotateX(90deg) translateX(120px) translateZ(0px);
+    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
   }
 
   100% {
@@ -1517,6 +1529,16 @@ body {
   height: 70%;
   left: 80%;
   top: 30%;
+}
+#fourth_floor .room_1 .drew_office .table {
+  width: 65%;
+  height: 32%;
+  left: 18%;
+  top: 28%;
+}
+#fourth_floor .room_1 .drew_office .table .chair {
+  top: 100%;
+  left: 38%;
 }
 #fourth_floor .room_2 {
   width: 40%;

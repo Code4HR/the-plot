@@ -3,6 +3,25 @@
 
 body {
   background: $background-color;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  perspective-origin: center 200px;
+  &.rotated {
+  	@include animation(perspective-transition $split-transition-duration + $skew-transition-duration forwards)
+  }
+}
+
+@include keyframe(perspective-transition) {
+	50% {
+		-webkit-perspective: 1000px;
+		perspective: 1000px;
+		perspective-origin: center 200px;
+	}
+	100% {
+		-webkit-perspective: 5000px;
+		perspective: 5000px;
+		perspective-origin: center 400px;
+	}
 }
 
 * {
@@ -14,43 +33,33 @@ body {
 .building {
 	margin-left: auto;
 	margin-right: auto;
+	@include transform-style(preserve-3d);
+	width: 500px;
+	height: 500px;
 	.room {
 		@include square(100%);
 	}
 }
 
-@include sizing($floor-depth, 400px);
+@include sizing($floor-depth, $floor-width);
 
 .facade {
-	top: 100%;
+	right: 100%;
 	background: $facade-color;
-	@extend %rotate-back;
+	@extend %rotate-left;
 	background-image: -webkit-repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
 	background-image: repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
 	@include background-size(6px 6px);
-	&, .window {
-		border: solid 1px $facade-color;
-	}
-	.window {
-		@include size(42px, 62px);
-		top: 10px;
-		background: $background-color;
-		&.left {
-			left: 58px;
-		}
-		&.center {
-			left: 50%;
-			margin-left: -21px;
-		}
-		&.right {
-			right: 60px;
-		}
-	}
 }
 
 #top_floor {
+	// $width, $height, $facade-height, $floor-name, $transform-x, $transform-y, $post-transform-x: $transform-x, $post-transform-y: $transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $transform-z: 0px, $post-transform-z: 0px
+	// 
+	
+	// 
+	// promising transform: rotateX(22deg) rotateZ(-30deg) translateZ(0px) translateX(0px) translateY(0px) rotateY(0deg)
 	margin-top: 100px;
-	@include floor-sizing(325px, 105px, 120px, 'top-floor', -30px, -30px);
+	@include floor-sizing(325px, $floor-width, 120px, 'top-floor', -30px, -30px, $pre-transform-x: -230px, $pre-transform-y: 28px);
 	@include floor-styling(#733E2D, 'top-floor');
 	.conference_room {
 		left: 0;
@@ -151,8 +160,7 @@ body {
 
 #second_floor {
 	$second-floor-color: #3C685C;
-	margin-top: 22px;
-	@include floor-sizing(325px, 105px, 120px, 'second-floor', 20px, 20px, -30px, 22px);
+	@include floor-sizing(325px, $floor-width, 120px, 'second-floor', 20px, 20px, -30px, 22px, $pre-transform-x: -230px, $pre-transform-z: 39px, $pre-transform-y: 28px);
 	@include floor-styling($second-floor-color, 'second-floor');
 	.counter {
 		left: 34%;
@@ -271,8 +279,7 @@ body {
 
 #third_floor {
 	$third-floor-color: #693E3E;
-	margin-top: 22px;
-	@include floor-sizing(285px, 105px, 120px, 'third-floor', 70px, 70px, $post-transform-y: 85px);
+	@include floor-sizing(285px, $floor-width, 120px, 'third-floor', 70px, 70px, $post-transform-y: 85px, $pre-transform-y: 48px, $pre-transform-x: -250px, $pre-transform-z: 78px);
 	@include floor-styling($third-floor-color, 'third-floor');
 	.contents {
 		.left-side, .right-side {
@@ -393,9 +400,9 @@ body {
 }
 
 #fourth_floor {
+	
 	$fourth-floor-color: #496C52;
-	margin-top: 3px;
-	@include floor-sizing(800px, 220px, 150px, 'fourth-floor', 120px, 120px, -80px, 0px, $pre-transform-z: 40px, $pre-transform-x: 7px, $pre-transform-y: -55px);
+	@include floor-sizing($width: 800px, $height: 220px, $facade-height: 150px, $floor-name: 'fourth-floor', $transform-x: 120px, $transform-y: 120px, $transform-z: 0px, $post-transform-x: -80px, $post-transform-y: 0px, $pre-transform-y: -150px, $pre-transform-z: 177px, $pre-transform-x: 0px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.room_1 {
 		@include size(100%, 43%);
@@ -532,6 +539,15 @@ body {
 			@include size(8%, 70%);
 			left: 80%;
 			top: 30%;
+			.table {
+				@include size(65%, 32%);
+				left: 18%;
+				top: 28%;
+				.chair {
+					top: 100%;
+					left: 38%;
+				}
+			}
 		}
 	}
 	.room_2 {

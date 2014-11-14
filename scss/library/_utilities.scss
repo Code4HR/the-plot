@@ -23,9 +23,6 @@
 }
 
 @mixin sizing($depth, $facade-width) {
-	.building {
-		width: $facade-width;
-	}
 	.top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
 		height: $depth;
 	}
@@ -33,13 +30,11 @@
 		width: $depth;
 	}
 	.facade {
-		width: $facade-width;
+		width: $depth;
 	}
 }
 
 %floor-base {
-	-webkit-perspective: 2000px;
-	perspective: 2000px;
 	.contents {
 		position: relative;
 		@include square(100%);
@@ -112,14 +107,33 @@
 @mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y, $post-transform-x: $transform-x, $post-transform-y: $transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $transform-z: 0px, $post-transform-z: 0px) {
 	@extend %floor-base;
 	@include size($width, $height);
+
+	$mid-z: 0;
+	$mid-y: 0;
+	$modifier: 10px;
+
+	@if ($floor-name == "top-floor") {
+		$mid-z: $pre-transform-z + (3 * $modifier);
+		$mid-y: $pre-transform-y - (3 * $modifier);
+	}
+	@else if ($floor-name == "second-floor") {
+		$mid-z: $pre-transform-z + $modifier;
+		$mid-y: $pre-transform-y - $modifier;
+	}
+	@else if ($floor-name == "third-floor") {
+		$mid-z: $pre-transform-z - $modifier;
+		$mid-y: $pre-transform-y + $modifier;
+	}
+	@else {
+		$mid-z: $pre-transform-z - (3 * $modifier);
+		$mid-y: $pre-transform-y + (3 * $modifier);
+	}
+
 	.facade {
-		height: $facade-height;
+		height: $height;
 	}
 	.contents {
-		@include transform(rotateX(90deg) translateZ($pre-transform-z) translateX($pre-transform-x) translateY($pre-transform-y));
-		> .room {
-			@include transform(translateZ(-($facade-height - $floor-depth)));
-		}
+		@include transform(rotateX(90deg) rotateZ(-90deg) translateZ($pre-transform-z) translateX($pre-transform-x) translateY($pre-transform-y));
 	}
 	.rotated & {
 		.contents {
@@ -129,7 +143,7 @@
 	@at-root {
 		@include keyframes(#{$floor-name}) {
 			50% {
-				@include transform(translateY($transform-y) rotateX(90deg) translateX($transform-x) translateZ($transform-z));
+				@include transform(rotateX(90deg) rotateZ(-90deg) translateZ($mid-z) translateX($pre-transform-x) translateY($mid-y));
 			}
 			100% {
 				@include transform(translateY($post-transform-y) rotateX(20deg) rotateZ(-30deg) translateX($post-transform-x) translateZ($post-transform-z));
