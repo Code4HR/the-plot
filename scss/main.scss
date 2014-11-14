@@ -537,6 +537,41 @@ body {
 	.room_2 {
 		@include size(40%, 43%);
 		top: 43%;
+		.table_1, .table_2, .table_3 {
+			@include size(8%, 73%);
+			.chair_left_facing {
+				left: 100%;
+			}
+			.chair_right_facing {
+				right: 100%;
+			}
+			.chair_1, .chair_4 {
+				top: 15%;
+			}
+			.chair_2, .chair_5 {
+				top: 40%;
+			}
+			.chair_3, .chair_6 {
+				top: 65%;
+			}
+		}
+		.table_1 {
+			left: 8%;
+		}
+		.table_2 {
+			left: 25%;
+		}
+		.table_3 {
+			left: 42%;
+		}
+		.bar {
+			@include size(4%, 73%);
+			left: 65%;
+		}
+		.kitchen {
+			@include size(25%, 73%);
+			left: 75%;
+		}
 	}
 	.room_3 {
 		@include size(8%, 14%);
@@ -547,11 +582,78 @@ body {
 		@include size(5%, 65%);
 		top: 43%;;
 		left: 40%;
+		.room {
+			@include size(100%, 35%);
+			top: 35%;
+		}
+		.office_desk_1, .office_desk_2 {
+			@include size(100%, 10%);
+			.chair {
+				left: 40%;
+			}
+		}
+		.office_desk_1 {
+			top: 35%;
+			.chair {
+				top: 100%;
+			}
+		}
+		.office_desk_2 {
+			bottom: 0;
+			.chair {
+				bottom: 100%;
+			}
+		}
 	}
 	.room_5 {
 		@include size(20%, 65%);
 		left: 45%;
 		top: 43%;
+		.standing_desks {
+			@include size(65%, 16%);
+			.chair {
+				top: 100%;
+			}
+			.chair_1 {
+				left: 12%;
+			}
+			.chair_2 {
+				left: 35%;
+			}
+			.chair_3 {
+				left: 58%;
+			}
+			.chair_4 {
+				left: 82%;
+			}
+		}
+		.creative_table_1, .creative_table_2 {
+			@include size(23%, 34%);
+			bottom: 0;
+			.chair_left_facing {
+				left: 100%;
+			}
+			.chair_right_facing {
+				right: 100%;
+			}
+			.chair_1, .chair_3 {
+				top: 10%;
+			}
+			.chair_2, .chair_4 {
+				top: 60%;
+			}
+			.divider {
+				@include size(1px, 100%);
+				background: $fourth-floor-color;
+				left: 50%;
+			}
+		}
+		.creative_table_1 {
+			left: 20%;
+		}
+		.creative_table_2 {
+			left: 63%;
+		}
 	}
 	.room_6 {
 		@include size(16%, 65%);
