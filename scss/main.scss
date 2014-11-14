@@ -53,13 +53,8 @@ body {
 }
 
 #top_floor {
-	// $width, $height, $facade-height, $floor-name, $transform-x, $transform-y, $post-transform-x: $transform-x, $post-transform-y: $transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $transform-z: 0px, $post-transform-z: 0px
-	// 
-	
-	// 
-	// promising transform: rotateX(22deg) rotateZ(-30deg) translateZ(0px) translateX(0px) translateY(0px) rotateY(0deg)
 	margin-top: 100px;
-	@include floor-sizing(325px, $floor-width, 120px, 'top-floor', -30px, -30px, $pre-transform-x: -230px, $pre-transform-y: 28px);
+	@include floor-sizing(325px, $floor-width, 'top-floor', $post-transform-x: -30px, $post-transform-y: -30px, $pre-transform-x: -230px, $pre-transform-y: 28px);
 	@include floor-styling(#733E2D, 'top-floor');
 	.conference_room {
 		left: 0;
@@ -160,7 +155,7 @@ body {
 
 #second_floor {
 	$second-floor-color: #3C685C;
-	@include floor-sizing(325px, $floor-width, 120px, 'second-floor', 20px, 20px, -30px, 22px, $pre-transform-x: -230px, $pre-transform-z: 39px, $pre-transform-y: 28px);
+	@include floor-sizing(325px, $floor-width, 'second-floor', $post-transform-x: -30px, $post-transform-y: 30px, $pre-transform-x: -230px, $pre-transform-z: 39px, $pre-transform-y: 28px);
 	@include floor-styling($second-floor-color, 'second-floor');
 	.counter {
 		left: 34%;
@@ -279,7 +274,7 @@ body {
 
 #third_floor {
 	$third-floor-color: #693E3E;
-	@include floor-sizing(285px, $floor-width, 120px, 'third-floor', 70px, 70px, $post-transform-y: 85px, $pre-transform-y: 48px, $pre-transform-x: -250px, $pre-transform-z: 78px);
+	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: 105px, $post-transform-x: 80px, $pre-transform-y: 48px, $pre-transform-x: -250px, $pre-transform-z: 78px);
 	@include floor-styling($third-floor-color, 'third-floor');
 	.contents {
 		.left-side, .right-side {
@@ -402,7 +397,7 @@ body {
 #fourth_floor {
 	
 	$fourth-floor-color: #496C52;
-	@include floor-sizing($width: 800px, $height: 220px, $facade-height: 150px, $floor-name: 'fourth-floor', $transform-x: 120px, $transform-y: 120px, $transform-z: 0px, $post-transform-x: -80px, $post-transform-y: 0px, $pre-transform-y: -150px, $pre-transform-z: 177px, $pre-transform-x: 0px);
+	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -80px, $post-transform-y: 35px, $pre-transform-y: -150px, $pre-transform-z: 177px, $pre-transform-x: 0px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.room_1 {
 		@include size(100%, 43%);

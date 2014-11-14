@@ -104,7 +104,7 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y, $post-transform-x: $transform-x, $post-transform-y: $transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $transform-z: 0px, $post-transform-z: 0px) {
+@mixin floor-sizing($width, $height, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $post-transform-z: 0px) {
 	@extend %floor-base;
 	@include size($width, $height);
 
