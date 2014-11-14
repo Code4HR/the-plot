@@ -22,11 +22,9 @@ body {
 @include sizing($floor-depth, 400px);
 
 .facade {
-	@extend %rotate-front;
-	// width: 100%;
+	top: 100%;
 	background: $facade-color;
-	-webkit-transform-origin: center 87px 22px !important;
-	transform-origin: center 87px 22px !important;
+	@extend %rotate-back;
 	background-image: -webkit-repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
 	background-image: repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
 	@include background-size(6px 6px);
@@ -394,38 +392,34 @@ body {
 #fourth_floor {
 	$fourth-floor-color: #496C52;
 	margin-top: 3px;
-	@include floor-sizing(800px, 200px, 150px, 'fourth-floor', 120px, 120px, -80px, 20px);
+	@include floor-sizing(800px, 220px, 150px, 'fourth-floor', 120px, 120px, -80px, 10px, $pre-transform-z: 40px, $pre-transform-x: 7px, $pre-transform-y: -55px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
-	.facade {
-		left: -3px;
-		width: 412px;
-	}
 	.room_1 {
-		@include size(100%, 50%);
+		@include size(100%, 43%);
 	}
 	.room_2 {
-		@include size(40%, 50%);
-		top: 50%;
+		@include size(40%, 43%);
+		top: 43%;
 	}
 	.room_3 {
-		@include size(8%, 15%);
-		top: 100%;
+		@include size(8%, 14%);
+		top: 86%;
 		left: 32%;
 	}
 	.room_4 {
 		@include size(5%, 65%);
-		top: 50%;;
+		top: 43%;;
 		left: 40%;
 	}
 	.room_5 {
 		@include size(20%, 65%);
 		left: 45%;
-		top: 50%;
+		top: 43%;
 	}
 	.room_6 {
 		@include size(16%, 65%);
 		left: 65%;
-		top: 50%;
+		top: 43%;
 	}
 }
 

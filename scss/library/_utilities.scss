@@ -43,11 +43,10 @@
 	.contents {
 		position: relative;
 		@include square(100%);
-		@include transform(rotateX(90deg));
 	}
 	.room {
-		opacity: 0;
-		transition-duration: 0;
+		// opacity: 0;
+		// transition-duration: 0;
 	}
 	* {
 		position: absolute;
@@ -110,11 +109,17 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y, $post-transform-x: $transform-x, $post-transform-y: $transform-y) {
+@mixin floor-sizing($width, $height, $facade-height, $floor-name, $transform-x, $transform-y, $post-transform-x: $transform-x, $post-transform-y: $transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $transform-z: 0px, $post-transform-z: 0px) {
 	@extend %floor-base;
 	@include size($width, $height);
 	.facade {
 		height: $facade-height;
+	}
+	.contents {
+		@include transform(rotateX(90deg) translateZ($pre-transform-z) translateX($pre-transform-x) translateY($pre-transform-y));
+		> .room {
+			@include transform(translateZ(-($facade-height - $floor-depth)));
+		}
 	}
 	.rotated & {
 		.contents {
@@ -124,10 +129,10 @@
 	@at-root {
 		@include keyframes(#{$floor-name}) {
 			50% {
-				@include transform(translateY($transform-y) rotateX(90deg) translateX($transform-x));
+				@include transform(translateY($transform-y) rotateX(90deg) translateX($transform-x) translateZ($transform-z));
 			}
 			100% {
-				@include transform(translateY($post-transform-y) rotateX(20deg) rotateZ(-30deg) translateX($post-transform-x));
+				@include transform(translateY($post-transform-y) rotateX(20deg) rotateZ(-30deg) translateX($post-transform-x) translateZ($post-transform-z));
 			}
 		}
 	}
@@ -152,9 +157,9 @@
 			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
 		}
 		.room {
-			opacity: 1;
-			transition-delay: 600ms;
-			transition-duration: 300ms;
+			// opacity: 1;
+			// transition-delay: 600ms;
+			// transition-duration: 300ms;
 		}
 		.window {
 			border-color: $color;
