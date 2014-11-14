@@ -39,22 +39,28 @@ body {
 	.room {
 		@include square(100%);
 	}
+	svg {
+		overflow: visible;
+		@include square(100%);
+		position: absolute;
+	}
 }
 
 @include sizing($floor-depth, $floor-width);
 
 .facade {
 	right: 100%;
-	background: $facade-color;
 	@extend %rotate-left;
-	background-image: -webkit-repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
-	background-image: repeating-radial-gradient(center center, $background-color, $background-color 3px, transparent 3px, transparent 100%);
-	@include background-size(6px 6px);
 }
 
 #top_floor {
+	svg {
+		> g {
+			@include transform(rotateZ(90deg) scale(0.354) translateX(308px) translateY(128px));
+		}
+	}
 	margin-top: 100px;
-	@include floor-sizing(325px, $floor-width, 'top-floor', $post-transform-x: -30px, $post-transform-y: -30px, $pre-transform-x: -230px, $pre-transform-y: 28px);
+	@include floor-sizing(325px, $floor-width, 'top-floor', $post-transform-x: -30px, $post-transform-y: -30px, $pre-transform-x: -238px, $pre-transform-y: 28px, $facade-width: 86px);
 	@include floor-styling(#733E2D, 'top-floor');
 	.conference_room {
 		left: 0;
@@ -154,9 +160,15 @@ body {
 }
 
 #second_floor {
+	margin-top: 4.25%;
 	$second-floor-color: #3C685C;
-	@include floor-sizing(325px, $floor-width, 'second-floor', $post-transform-x: -30px, $post-transform-y: 30px, $pre-transform-x: -230px, $pre-transform-z: 39px, $pre-transform-y: 28px);
+	@include floor-sizing(325px, $floor-width, 'second-floor', $post-transform-x: -30px, $post-transform-y: 15px, $pre-transform-x: -238px, $pre-transform-z: 39px, $pre-transform-y: 28px, $facade-width: 61px);
 	@include floor-styling($second-floor-color, 'second-floor');
+	svg {
+		> g {
+			@include transform(rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px));
+		}
+	}
 	.counter {
 		left: 34%;
 		@include step-sizing(-40px, $floor-depth - 40px, 15px, 34%);
@@ -273,9 +285,15 @@ body {
 }
 
 #third_floor {
+	margin-top: -1%;
 	$third-floor-color: #693E3E;
-	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: 105px, $post-transform-x: 80px, $pre-transform-y: 48px, $pre-transform-x: -250px, $pre-transform-z: 78px);
+	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: 90px, $post-transform-x: 80px, $pre-transform-y: 48px, $pre-transform-x: -258px, $pre-transform-z: 78px, $facade-width: 55px);
 	@include floor-styling($third-floor-color, 'third-floor');
+	svg {
+		> g {
+			@include transform(rotateZ(90deg) scale(0.556) translateX(236px) translateY(-268px));
+		}
+	}
 	.contents {
 		.left-side, .right-side {
 			background: none;
@@ -395,10 +413,15 @@ body {
 }
 
 #fourth_floor {
-	
+	margin-top: -13%;
 	$fourth-floor-color: #496C52;
-	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -80px, $post-transform-y: 35px, $pre-transform-y: -150px, $pre-transform-z: 177px, $pre-transform-x: 0px);
+	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -80px, $post-transform-y: 60px, $pre-transform-y: -150px, $pre-transform-z: 177px, $pre-transform-x: 0px, $facade-width: 101px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
+	svg {
+		> g {
+			@include transform(rotateZ(90deg) scale(0.635) translateX(62px) translateY(-418px));
+		}
+	}
 	.room_1 {
 		@include size(100%, 43%);
 		.upper, .lower {

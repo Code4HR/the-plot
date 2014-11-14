@@ -29,9 +29,6 @@
 	.right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
 		width: $depth;
 	}
-	.facade {
-		width: $depth;
-	}
 }
 
 %floor-base {
@@ -40,8 +37,8 @@
 		@include square(100%);
 	}
 	.room {
-		// opacity: 0;
-		// transition-duration: 0;
+		opacity: 0;
+		transition-duration: 0;
 	}
 	* {
 		position: absolute;
@@ -104,8 +101,9 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $post-transform-z: 0px) {
+@mixin floor-sizing($width, $height, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $post-transform-z: 0px, $facade-width: $floor-depth) {
 	@extend %floor-base;
+
 	@include size($width, $height);
 
 	$mid-z: 0;
@@ -130,10 +128,13 @@
 	}
 
 	.facade {
-		height: $height;
+		@include size($facade-width, $height);
 	}
 	.contents {
 		@include transform(rotateX(90deg) rotateZ(-90deg) translateZ($pre-transform-z) translateX($pre-transform-x) translateY($pre-transform-y));
+		> .room {
+			@include transform(translateZ(-($facade-width - $floor-depth)));
+		}
 	}
 	.rotated & {
 		.contents {
@@ -166,14 +167,20 @@
 	[class*='side'], [class*='wall'] {
 		background: rgba($color, 0.15);
 	}
+	svg * {
+		@include transition(all 250ms);
+	}
 	.rotated & {
-		.facade {
+		.facade svg {
 			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
+			* {
+				stroke: $color;
+			}
 		}
 		.room {
-			// opacity: 1;
-			// transition-delay: 600ms;
-			// transition-duration: 300ms;
+			opacity: 1;
+			transition-delay: 600ms;
+			transition-duration: 300ms;
 		}
 		.window {
 			border-color: $color;
@@ -182,18 +189,10 @@
 	}
 	@at-root {
 		@include keyframes(#{$floor-name}-facade) {
-			30% {
-				border-color: $color;
-				background-color: $color;
-			}
 			50% {
-				border-color: $color;
-				background-color: $color;
 				opacity: 1;
 			}
 			100% {
-				border-color: $color;
-				background-color: $color;
 				opacity: 0;
 			}
 		}
