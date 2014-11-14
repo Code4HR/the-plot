@@ -287,55 +287,9 @@ body {
 			border-right: none;
 		}
 		.stairs {
-			@include size(25%, 60%);
 			left: 98%;
 			bottom: 3%;
-			@include transform(rotateZ(-90deg));
-			.floor {
-				@include transform(translateZ(-$floor-depth * 2));
-				border-width: 1px;
-				@include square(100%);
-				left: 0;
-				top: 0;
-			}
-			.horizontal {
-				border-top-width: 1px;
-			}
-			.step_large {
-				left: 24%;
-				.horizontal, .vertical {
-					border-left-width: none;
-				}
-				&.step_1 {
-					top: 5%;
-					@include step-sizing(-$floor-depth, $floor-depth, 20px, 64%);
-				}				
-				&.step_2 {
-					top: 30%;
-					@include step-sizing(-($floor-depth + 20px), $floor-depth - 20px, 20px, 64%);
-				}
-			}
-			.step_small {
-				.vertical {
-					border-top-width: 0px;
-				}
-				&.step_1 {
-					top: 5%;
-					@include step-sizing(-$floor-depth, $floor-depth, 15px, 34%);
-				}
-				&.step_2 {
-					top: 20%;
-					@include step-sizing(-($floor-depth + 15px), $floor-depth - 15px, 15px, 34%);
-				}
-				&.step_3 {
-					top: 35%;
-					@include step-sizing(-($floor-depth + 30px), $floor-depth - 30px, 15px, 34%);
-				}
-				&.step_4 {
-					top: 50%;
-					@include step-sizing(-($floor-depth + 45px), $floor-depth - 45px, 15px, 34%);
-				}
-			}
+			@include size(25%, 60%);
 		}
 		.chair_left_facing {
 			left: 100%;
@@ -389,13 +343,196 @@ body {
 	}
 }
 
+.stairs {
+	@include transform(rotateZ(-90deg));
+	.floor {
+		@include transform(translateZ(-$floor-depth * 2));
+		border-width: 1px;
+		@include square(100%);
+		left: 0;
+		top: 0;
+	}
+	.horizontal {
+		border-top-width: 1px;
+	}
+	.step_large {
+		left: 24%;
+		.horizontal, .vertical {
+			border-left-width: none;
+		}
+		&.step_1 {
+			top: 5%;
+			@include step-sizing(-$floor-depth, $floor-depth, 20px, 64%);
+		}				
+		&.step_2 {
+			top: 30%;
+			@include step-sizing(-($floor-depth + 20px), $floor-depth - 20px, 20px, 64%);
+		}
+	}
+	.step_small {
+		.vertical {
+			border-top-width: 0px;
+		}
+		&.step_1 {
+			top: 5%;
+			@include step-sizing(-$floor-depth, $floor-depth, 15px, 34%);
+		}
+		&.step_2 {
+			top: 20%;
+			@include step-sizing(-($floor-depth + 15px), $floor-depth - 15px, 15px, 34%);
+		}
+		&.step_3 {
+			top: 35%;
+			@include step-sizing(-($floor-depth + 30px), $floor-depth - 30px, 15px, 34%);
+		}
+		&.step_4 {
+			top: 50%;
+			@include step-sizing(-($floor-depth + 45px), $floor-depth - 45px, 15px, 34%);
+		}
+	}
+}
+
 #fourth_floor {
 	$fourth-floor-color: #496C52;
 	margin-top: 3px;
-	@include floor-sizing(800px, 220px, 150px, 'fourth-floor', 120px, 120px, -80px, 10px, $pre-transform-z: 40px, $pre-transform-x: 7px, $pre-transform-y: -55px);
+	@include floor-sizing(800px, 220px, 150px, 'fourth-floor', 120px, 120px, -80px, 0px, $pre-transform-z: 40px, $pre-transform-x: 7px, $pre-transform-y: -55px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.room_1 {
 		@include size(100%, 43%);
+		.upper, .lower {
+			height: 33%;
+			border: solid 1px $fourth-floor-color;
+		}
+		.upper {
+			top: 0;
+		}
+		.doorway {
+			@include size(3%, 30%);
+			top: 33%;
+			.bottom_wall, .top_wall {
+				border-left: none;
+				border-right: none;
+			}
+			.left_wall {
+				background: none;
+				border-width: 2px;
+			}
+		}
+		.front_desk {
+			@include size(1.5%, 26%);
+			left: 7%;
+			top: 37%;
+			.chair_left_facing {
+				left: 96%;
+			}
+			.chair_2 {
+				top: 50%;
+			}
+		}
+		.divider {
+			@include size(1%, 32%);
+			left: 11%;
+			top: 30%;
+			.table {
+				@include square(100%);
+				@include transform(translateZ(-45px));
+				.table_surface {
+					background: rgba($fourth-floor-color, 0.1);
+				}
+				[class*="wall"] {
+					height: $floor-depth - 45px;
+				}
+			}
+		}
+		.ping_pong_table {
+			@include size(7%, 28%);
+			left: 17%;
+			top: 38%;
+			.line {
+				background: $fourth-floor-color;
+			}
+			.horizontal {
+				@include size(100%, 1px);
+				top: 49%;
+			}
+			.vertical {
+				@include size(1px, 100%);
+				left: 50%;
+			}
+		}
+		.eric_office, .storage_room_1, .storage_room_2, .bathroom_1 {
+			top: 30%;
+		}
+		.eric_office {
+			@include size(7%, 70%);
+			left: 29%;
+			.table {
+				@include size(65%, 32%);
+				left: 18%;
+				top: 28%;
+				.chair {
+					top: 100%;
+					left: 38%;
+				}
+			}
+		}
+		.storage_room_1 {
+			@include size(4.5%, 70%);
+			left: 36%;
+		}
+		.storage_room_2, .storage_room_3 {
+			left: 40.5%;
+		}
+		.storage_room_2 {
+			@include size(3.5%, 45%);
+		}
+		.storage_room_3 {
+			@include size(3.5%, 25%);
+			top: 75%;
+		}
+		.bathroom_1, .bathroom_2 {
+			@include size(6%, 35%);
+			left: 48%;
+		}
+		.bathroom_2 {
+			top: 65%;
+		}
+		.stairs {
+			left: 53%;
+			bottom: 0;
+			@include size(9%, 62%);
+			@include transform(rotateZ(-90deg) translateZ($floor-depth + 22px));
+		}
+		.producer_table {
+			@include size(10%, 38%);
+			left: 67%;
+			top: 30%;
+			.chair_front_facing {
+				bottom: 100%;
+			}
+			.chair_back_facing {
+				top: 100%;
+			}
+			.chair_1, .chair_4 {
+				left: 15%;
+			}
+			.chair_2, .chair_5 {
+				left: 45%;
+			}
+			.chair_3, .chair_6 {
+				left: 75%;
+			}
+		}
+		.green_room_divider {
+			left: 80%;
+			height: 100%;
+			background: none;
+		}
+		.drew_office {
+			@include size(8%, 70%);
+			left: 80%;
+			top: 30%;
+		}
 	}
 	.room_2 {
 		@include size(40%, 43%);
