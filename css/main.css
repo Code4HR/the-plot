@@ -196,6 +196,18 @@
   width: 100%;
   height: 100%;
 }
+.table .chair_left_facing {
+  left: 100%;
+}
+.table .chair_right_facing {
+  right: 100%;
+}
+.table .chair_back_facing {
+  top: 100%;
+}
+.table .chair_front_facing {
+  bottom: 100%;
+}
 .table .chair [class*="chair_seat"], .table .chair [class*="chair_back"] {
   border-width: 1px;
 }
@@ -541,12 +553,6 @@ body.rotated {
   bottom: 0;
   left: 37%;
 }
-#top_floor .work_room_1 .chair_left_facing {
-  left: 100%;
-}
-#top_floor .work_room_1 .chair_right_facing {
-  right: 100%;
-}
 #top_floor .work_room_1 .chair_1, #top_floor .work_room_1 .chair_3 {
   top: 5%;
 }
@@ -772,12 +778,6 @@ body.rotated {
   top: 50%;
   width: 33%;
   height: 22%;
-}
-#second_floor .table .chair_back_facing {
-  top: 100%;
-}
-#second_floor .table .chair_front_facing {
-  bottom: 100%;
 }
 #second_floor .table .chair_1, #second_floor .table .chair_6 {
   left: 9%;
@@ -1082,12 +1082,6 @@ body.rotated {
   bottom: 3%;
   width: 25%;
   height: 60%;
-}
-#third_floor .contents .chair_left_facing {
-  left: 100%;
-}
-#third_floor .contents .chair_right_facing {
-  right: 100%;
 }
 #third_floor .contents .table_1 {
   width: 6%;
@@ -1506,12 +1500,6 @@ body.rotated {
   left: 67%;
   top: 30%;
 }
-#fourth_floor .room_1 .producer_table .chair_front_facing {
-  bottom: 100%;
-}
-#fourth_floor .room_1 .producer_table .chair_back_facing {
-  top: 100%;
-}
 #fourth_floor .room_1 .producer_table .chair_1, #fourth_floor .room_1 .producer_table .chair_4 {
   left: 15%;
 }
@@ -1529,7 +1517,7 @@ body.rotated {
 #fourth_floor .room_1 .drew_office {
   width: 8%;
   height: 70%;
-  left: 80%;
+  left: 80.25%;
   top: 30%;
 }
 #fourth_floor .room_1 .drew_office .table {
@@ -1550,12 +1538,6 @@ body.rotated {
 #fourth_floor .room_2 .table_1, #fourth_floor .room_2 .table_2, #fourth_floor .room_2 .table_3 {
   width: 8%;
   height: 73%;
-}
-#fourth_floor .room_2 .table_1 .chair_left_facing, #fourth_floor .room_2 .table_2 .chair_left_facing, #fourth_floor .room_2 .table_3 .chair_left_facing {
-  left: 100%;
-}
-#fourth_floor .room_2 .table_1 .chair_right_facing, #fourth_floor .room_2 .table_2 .chair_right_facing, #fourth_floor .room_2 .table_3 .chair_right_facing {
-  right: 100%;
 }
 #fourth_floor .room_2 .table_1 .chair_1, #fourth_floor .room_2 .table_1 .chair_4, #fourth_floor .room_2 .table_2 .chair_1, #fourth_floor .room_2 .table_2 .chair_4, #fourth_floor .room_2 .table_3 .chair_1, #fourth_floor .room_2 .table_3 .chair_4 {
   top: 15%;
@@ -1627,6 +1609,21 @@ body.rotated {
   left: 45%;
   top: 43%;
 }
+#fourth_floor .room_5 > .divider {
+  width: 100%;
+  height: 1px;
+  background: #496c52;
+  -moz-transform: translateZ(-65px);
+  -ms-transform: translateZ(-65px);
+  -webkit-transform: translateZ(-65px);
+  transform: translateZ(-65px);
+}
+#fourth_floor .room_5 .divider_1 {
+  top: 42%;
+}
+#fourth_floor .room_5 .divider_2 {
+  top: 45%;
+}
 #fourth_floor .room_5 .standing_desks {
   width: 65%;
   height: 16%;
@@ -1651,12 +1648,6 @@ body.rotated {
   height: 34%;
   bottom: 0;
 }
-#fourth_floor .room_5 .creative_table_1 .chair_left_facing, #fourth_floor .room_5 .creative_table_2 .chair_left_facing {
-  left: 100%;
-}
-#fourth_floor .room_5 .creative_table_1 .chair_right_facing, #fourth_floor .room_5 .creative_table_2 .chair_right_facing {
-  right: 100%;
-}
 #fourth_floor .room_5 .creative_table_1 .chair_1, #fourth_floor .room_5 .creative_table_1 .chair_3, #fourth_floor .room_5 .creative_table_2 .chair_1, #fourth_floor .room_5 .creative_table_2 .chair_3 {
   top: 10%;
 }
@@ -1680,4 +1671,24 @@ body.rotated {
   height: 65%;
   left: 65%;
   top: 43%;
+}
+#fourth_floor .room_6 .table {
+  width: 60%;
+  height: 22%;
+  left: 23%;
+}
+#fourth_floor .room_6 .table .chair_1, #fourth_floor .room_6 .table .chair_4 {
+  left: 15%;
+}
+#fourth_floor .room_6 .table .chair_2, #fourth_floor .room_6 .table .chair_5 {
+  left: 50%;
+}
+#fourth_floor .room_6 .table .chair_3, #fourth_floor .room_6 .table .chair_6 {
+  left: 85%;
+}
+#fourth_floor .room_6 .table_1 {
+  top: 18%;
+}
+#fourth_floor .room_6 .table_2 {
+  top: 60%;
 }

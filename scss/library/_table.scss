@@ -31,6 +31,18 @@
 	[class*="table_leg"], [class*="chair_leg"] {
 		@extend %rotate-left;
 	}
+	.chair_left_facing {
+		left: 100%;
+	}
+	.chair_right_facing {
+		right: 100%;
+	}
+	.chair_back_facing {
+		top: 100%;
+	}
+	.chair_front_facing {
+		bottom: 100%;
+	}
 	.chair {
 		[class*="chair_seat"], [class*="chair_back"] {
 			border-width: 1px;

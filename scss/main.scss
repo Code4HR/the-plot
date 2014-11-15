@@ -101,12 +101,6 @@ body {
 			bottom: 0;
 			left: 37%;
 		}
-		.chair_left_facing {
-			left: 100%;
-		}
-		.chair_right_facing {
-			right: 100%;
-		}
 		.chair_1, .chair_3 {
 			top: 5%;
 		}
@@ -188,12 +182,6 @@ body {
 		left: 35%;
 		top: 50%;
 		@include size(33%, 22%);
-		.chair_back_facing {
-			top: 100%;
-		}
-		.chair_front_facing {
-			bottom: 100%;
-		}
 		.chair_1, .chair_6 {
 			left: 9%;
 		}
@@ -310,12 +298,6 @@ body {
 			left: 98%;
 			bottom: 3%;
 			@include size(25%, 60%);
-		}
-		.chair_left_facing {
-			left: 100%;
-		}
-		.chair_right_facing {
-			right: 100%;
 		}
 		.table_1 {
 			@include size(6%, 100%);
@@ -532,12 +514,6 @@ body {
 			@include size(10%, 38%);
 			left: 67%;
 			top: 30%;
-			.chair_front_facing {
-				bottom: 100%;
-			}
-			.chair_back_facing {
-				top: 100%;
-			}
 			.chair_1, .chair_4 {
 				left: 15%;
 			}
@@ -555,7 +531,7 @@ body {
 		}
 		.drew_office {
 			@include size(8%, 70%);
-			left: 80%;
+			left: 80.25%;
 			top: 30%;
 			.table {
 				@include size(65%, 32%);
@@ -573,12 +549,6 @@ body {
 		top: 43%;
 		.table_1, .table_2, .table_3 {
 			@include size(8%, 73%);
-			.chair_left_facing {
-				left: 100%;
-			}
-			.chair_right_facing {
-				right: 100%;
-			}
 			.chair_1, .chair_4 {
 				top: 15%;
 			}
@@ -643,6 +613,17 @@ body {
 		@include size(20%, 65%);
 		left: 45%;
 		top: 43%;
+		> .divider {
+			@include size(100%, 1px);
+			background: $fourth-floor-color;
+			@include transform(translateZ(-$floor-depth));
+		}
+		.divider_1 {
+			top: 42%;
+		}
+		.divider_2 {
+			top: 45%;
+		}
 		.standing_desks {
 			@include size(65%, 16%);
 			.chair {
@@ -664,12 +645,6 @@ body {
 		.creative_table_1, .creative_table_2 {
 			@include size(23%, 34%);
 			bottom: 0;
-			.chair_left_facing {
-				left: 100%;
-			}
-			.chair_right_facing {
-				right: 100%;
-			}
 			.chair_1, .chair_3 {
 				top: 10%;
 			}
@@ -693,6 +668,25 @@ body {
 		@include size(16%, 65%);
 		left: 65%;
 		top: 43%;
+		.table {
+			@include size(60%, 22%);
+			left: 23%;
+			.chair_1, .chair_4 {
+				left: 15%;
+			}
+			.chair_2, .chair_5 {
+				left: 50%;
+			}
+			.chair_3, .chair_6 {
+				left: 85%;
+			}
+		}
+		.table_1 {
+			top: 18%;
+		}
+		.table_2 {
+			top: 60%;
+		}
 	}
 }
 
