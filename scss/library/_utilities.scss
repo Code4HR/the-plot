@@ -174,17 +174,13 @@
 		.facade svg {
 			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
 			* {
-				stroke: $color;
+				stroke: lighten($color, 25%);
 			}
 		}
 		.room {
 			opacity: 1;
-			transition-delay: 600ms;
-			transition-duration: 300ms;
-		}
-		.window {
-			border-color: $color;
-			transition-duration: 300ms;
+			transition-delay: $split-transition-duration;
+			transition-duration: $skew-transition-duration / 1.75;
 		}
 	}
 	@at-root {

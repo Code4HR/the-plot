@@ -45,10 +45,10 @@
 }
 #top_floor *, #second_floor *, #third_floor *, #fourth_floor * {
   position: absolute;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -moz-transition: all 0.65s;
+  -o-transition: all 0.65s;
+  -webkit-transition: all 0.65s;
+  transition: all 0.65s;
   -moz-transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -277,10 +277,10 @@ body {
   perspective-origin: center 200px;
 }
 body.rotated {
-  -webkit-animation: perspective-transition 1s forwards;
-  -moz-animation: perspective-transition 1s forwards;
-  -o-animation: perspective-transition 1s forwards;
-  animation: perspective-transition 1s forwards;
+  -webkit-animation: perspective-transition 1.3s forwards;
+  -moz-animation: perspective-transition 1.3s forwards;
+  -o-animation: perspective-transition 1.3s forwards;
+  animation: perspective-transition 1.3s forwards;
 }
 
 @-webkit-keyframes perspective-transition {
@@ -403,10 +403,10 @@ body.rotated {
   transform: translateZ(-21px);
 }
 .rotated #top_floor .contents {
-  -webkit-animation: top-floor 1s forwards;
-  -moz-animation: top-floor 1s forwards;
-  -o-animation: top-floor 1s forwards;
-  animation: top-floor 1s forwards;
+  -webkit-animation: top-floor 1.3s forwards;
+  -moz-animation: top-floor 1.3s forwards;
+  -o-animation: top-floor 1.3s forwards;
+  animation: top-floor 1.3s forwards;
 }
 @-moz-keyframes top-floor {
   50% {
@@ -465,22 +465,18 @@ body.rotated {
   transition: all 250ms;
 }
 .rotated #top_floor .facade svg {
-  -webkit-animation: top-floor-facade 1s forwards;
-  -moz-animation: top-floor-facade 1s forwards;
-  -o-animation: top-floor-facade 1s forwards;
-  animation: top-floor-facade 1s forwards;
+  -webkit-animation: top-floor-facade 1.3s forwards;
+  -moz-animation: top-floor-facade 1.3s forwards;
+  -o-animation: top-floor-facade 1.3s forwards;
+  animation: top-floor-facade 1.3s forwards;
 }
 .rotated #top_floor .facade svg * {
-  stroke: #733e2d;
+  stroke: #c0775f;
 }
 .rotated #top_floor .room {
   opacity: 1;
-  transition-delay: 600ms;
-  transition-duration: 300ms;
-}
-.rotated #top_floor .window {
-  border-color: #733e2d;
-  transition-duration: 300ms;
+  transition-delay: 0.65s;
+  transition-duration: 0.37143s;
 }
 @-moz-keyframes top-floor-facade {
   50% {
@@ -636,10 +632,10 @@ body.rotated {
   transform: translateZ(4px);
 }
 .rotated #second_floor .contents {
-  -webkit-animation: second-floor 1s forwards;
-  -moz-animation: second-floor 1s forwards;
-  -o-animation: second-floor 1s forwards;
-  animation: second-floor 1s forwards;
+  -webkit-animation: second-floor 1.3s forwards;
+  -moz-animation: second-floor 1.3s forwards;
+  -o-animation: second-floor 1.3s forwards;
+  animation: second-floor 1.3s forwards;
 }
 @-moz-keyframes second-floor {
   50% {
@@ -698,22 +694,18 @@ body.rotated {
   transition: all 250ms;
 }
 .rotated #second_floor .facade svg {
-  -webkit-animation: second-floor-facade 1s forwards;
-  -moz-animation: second-floor-facade 1s forwards;
-  -o-animation: second-floor-facade 1s forwards;
-  animation: second-floor-facade 1s forwards;
+  -webkit-animation: second-floor-facade 1.3s forwards;
+  -moz-animation: second-floor-facade 1.3s forwards;
+  -o-animation: second-floor-facade 1.3s forwards;
+  animation: second-floor-facade 1.3s forwards;
 }
 .rotated #second_floor .facade svg * {
-  stroke: #3c685c;
+  stroke: #74af9f;
 }
 .rotated #second_floor .room {
   opacity: 1;
-  transition-delay: 600ms;
-  transition-duration: 300ms;
-}
-.rotated #second_floor .window {
-  border-color: #3c685c;
-  transition-duration: 300ms;
+  transition-delay: 0.65s;
+  transition-duration: 0.37143s;
 }
 @-moz-keyframes second-floor-facade {
   50% {
@@ -954,10 +946,10 @@ body.rotated {
   transform: translateZ(10px);
 }
 .rotated #third_floor .contents {
-  -webkit-animation: third-floor 1s forwards;
-  -moz-animation: third-floor 1s forwards;
-  -o-animation: third-floor 1s forwards;
-  animation: third-floor 1s forwards;
+  -webkit-animation: third-floor 1.3s forwards;
+  -moz-animation: third-floor 1.3s forwards;
+  -o-animation: third-floor 1.3s forwards;
+  animation: third-floor 1.3s forwards;
 }
 @-moz-keyframes third-floor {
   50% {
@@ -1016,22 +1008,18 @@ body.rotated {
   transition: all 250ms;
 }
 .rotated #third_floor .facade svg {
-  -webkit-animation: third-floor-facade 1s forwards;
-  -moz-animation: third-floor-facade 1s forwards;
-  -o-animation: third-floor-facade 1s forwards;
-  animation: third-floor-facade 1s forwards;
+  -webkit-animation: third-floor-facade 1.3s forwards;
+  -moz-animation: third-floor-facade 1.3s forwards;
+  -o-animation: third-floor-facade 1.3s forwards;
+  animation: third-floor-facade 1.3s forwards;
 }
 .rotated #third_floor .facade svg * {
-  stroke: #693e3e;
+  stroke: #af7878;
 }
 .rotated #third_floor .room {
   opacity: 1;
-  transition-delay: 600ms;
-  transition-duration: 300ms;
-}
-.rotated #third_floor .window {
-  border-color: #693e3e;
-  transition-duration: 300ms;
+  transition-delay: 0.65s;
+  transition-duration: 0.37143s;
 }
 @-moz-keyframes third-floor-facade {
   50% {
@@ -1254,10 +1242,10 @@ body.rotated {
   transform: translateZ(-36px);
 }
 .rotated #fourth_floor .contents {
-  -webkit-animation: fourth-floor 1s forwards;
-  -moz-animation: fourth-floor 1s forwards;
-  -o-animation: fourth-floor 1s forwards;
-  animation: fourth-floor 1s forwards;
+  -webkit-animation: fourth-floor 1.3s forwards;
+  -moz-animation: fourth-floor 1.3s forwards;
+  -o-animation: fourth-floor 1.3s forwards;
+  animation: fourth-floor 1.3s forwards;
 }
 @-moz-keyframes fourth-floor {
   50% {
@@ -1316,22 +1304,18 @@ body.rotated {
   transition: all 250ms;
 }
 .rotated #fourth_floor .facade svg {
-  -webkit-animation: fourth-floor-facade 1s forwards;
-  -moz-animation: fourth-floor-facade 1s forwards;
-  -o-animation: fourth-floor-facade 1s forwards;
-  animation: fourth-floor-facade 1s forwards;
+  -webkit-animation: fourth-floor-facade 1.3s forwards;
+  -moz-animation: fourth-floor-facade 1.3s forwards;
+  -o-animation: fourth-floor-facade 1.3s forwards;
+  animation: fourth-floor-facade 1.3s forwards;
 }
 .rotated #fourth_floor .facade svg * {
-  stroke: #496c52;
+  stroke: #87ae91;
 }
 .rotated #fourth_floor .room {
   opacity: 1;
-  transition-delay: 600ms;
-  transition-duration: 300ms;
-}
-.rotated #fourth_floor .window {
-  border-color: #496c52;
-  transition-duration: 300ms;
+  transition-delay: 0.65s;
+  transition-duration: 0.37143s;
 }
 @-moz-keyframes fourth-floor-facade {
   50% {
