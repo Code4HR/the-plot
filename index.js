@@ -1,7 +1,8 @@
 var http = require("http"),
 	url = require("url"),
 	path = require("path"),
-	fs = require("fs");
+	fs = require("fs"),
+	port = process.env.PORT || 8080;
 
 http.createServer(function(request, response) {
 	var uri = url.parse(request.url).pathname
@@ -21,6 +22,6 @@ http.createServer(function(request, response) {
 			console.log(e);
 		}
 	});
-}).listen(8080);
+}).listen(port);
 
 console.log("Static file server running");
