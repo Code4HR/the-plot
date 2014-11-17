@@ -283,17 +283,85 @@
   bottom: 0;
 }
 
-body {
-  background: #212121;
+.test {
+  display: none;
+}
+.testing .test {
+  display: block;
+  margin-left: 200px;
+  margin-top: 100px;
+}
+.testing .test svg {
+  overflow: visible;
+  border: solid 1px red;
+}
+.testing .test svg > g {
+  -moz-transform: translateX(300px) translateY(300px) scale(0.75);
+  -ms-transform: translateX(300px) translateY(300px) scale(0.75);
+  -webkit-transform: translateX(300px) translateY(300px) scale(0.75);
+  transform: translateX(300px) translateY(300px) scale(0.75);
+}
+
+#test_2, #test_3, #test_4 {
   -webkit-perspective: 1000px;
   perspective: 1000px;
+}
+#test_2 *, #test_3 *, #test_4 * {
+  transform-style: preserve-3d;
+}
+#test_2 .svg_container, #test_3 .svg_container, #test_4 .svg_container {
+  -moz-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+#test_2 .svg_container svg, #test_3 .svg_container svg, #test_4 .svg_container svg {
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+
+#test_3 {
   perspective-origin: center 20%;
 }
-body.rotated {
+#test_3 .svg_container {
+  -moz-transform: rotateX(90deg) rotateZ(-90deg);
+  -ms-transform: rotateX(90deg) rotateZ(-90deg);
+  -webkit-transform: rotateX(90deg) rotateZ(-90deg);
+  transform: rotateX(90deg) rotateZ(-90deg);
+}
+#test_3 .svg_container svg {
+  -moz-transform: rotateY(-90deg);
+  -ms-transform: rotateY(-90deg);
+  -webkit-transform: rotateY(-90deg);
+  transform: rotateY(-90deg);
+}
+
+#test_4 {
+  margin-top: 200px;
+}
+#test_4 svg {
+  -moz-transform: scale(0.75) rotateX(-90deg);
+  -ms-transform: scale(0.75) rotateX(-90deg);
+  -webkit-transform: scale(0.75) rotateX(-90deg);
+  transform: scale(0.75) rotateX(-90deg);
+}
+
+body {
+  background: #212121;
+}
+body.rotated #building_container {
   -webkit-animation: perspective-transition 1.3s forwards;
   -moz-animation: perspective-transition 1.3s forwards;
   -o-animation: perspective-transition 1.3s forwards;
   animation: perspective-transition 1.3s forwards;
+}
+
+#building_container {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  perspective-origin: center 20%;
 }
 
 @-webkit-keyframes perspective-transition {

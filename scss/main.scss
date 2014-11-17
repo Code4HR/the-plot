@@ -1,14 +1,64 @@
 @import "compass";
 @import "lib";
 
+.test {
+	display: none;
+	.testing & {
+		display: block;
+		margin-left: 200px;
+		margin-top: 100px;
+		svg {
+			overflow: visible;
+			border: solid 1px red;
+			> g {
+				@include transform(translateX(300px) translateY(300px) scale(0.75));
+			}
+		}
+	}
+}
+
+#test_2, #test_3, #test_4 {
+	* {
+		transform-style: preserve-3d;
+	}
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	.svg_container {
+		@include transform(rotateX(90deg));
+		svg {
+			@include transform(rotateX(-90deg));
+		}
+	}
+}
+
+#test_3 {
+	perspective-origin: center 20%;
+	.svg_container {
+		@include transform(rotateX(90deg) rotateZ(-90deg));
+		svg {
+			@include transform(rotateY(-90deg));
+		}
+	}
+}
+
+#test_4 {
+	margin-top: 200px;
+	svg {
+		@include transform(scale(0.75) rotateX(-90deg));
+	}
+}
+
 body {
-  background: $background-color;
+	background: $background-color;
+	&.rotated #building_container {
+		@include animation(perspective-transition $split-transition-duration + $skew-transition-duration forwards)
+	}
+}
+
+#building_container {
   -webkit-perspective: 1000px;
   perspective: 1000px;
   perspective-origin: center 20%;
-  &.rotated {
-  	@include animation(perspective-transition $split-transition-duration + $skew-transition-duration forwards)
-  }
 }
 
 @include keyframe(perspective-transition) {
