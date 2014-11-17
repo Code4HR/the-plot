@@ -5,7 +5,7 @@ body {
   background: $background-color;
   -webkit-perspective: 1000px;
   perspective: 1000px;
-  perspective-origin: center 200px;
+  perspective-origin: center 20%;
   &.rotated {
   	@include animation(perspective-transition $split-transition-duration + $skew-transition-duration forwards)
   }
@@ -15,12 +15,12 @@ body {
 	50% {
 		-webkit-perspective: 1000px;
 		perspective: 1000px;
-		perspective-origin: center 200px;
+		perspective-origin: center 20%;
 	}
 	100% {
 		-webkit-perspective: 5000px;
 		perspective: 5000px;
-		perspective-origin: center 400px;
+		perspective-origin: center 40%;
 	}
 }
 

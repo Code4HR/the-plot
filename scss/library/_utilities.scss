@@ -183,7 +183,11 @@
 		.facade svg {
 			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
 			* {
-				stroke: lighten($color, 25%);
+				stroke: lighten($color, 35%);
+			}
+			.need_fill * {
+				fill: lighten($color, 35%);
+				stroke: none;
 			}
 		}
 		.room {
