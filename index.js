@@ -21,6 +21,6 @@ http.createServer(function(request, response) {
 			console.log(e);
 		}
 	});
-}).listen(8888);
+}).listen(8080);
 
 console.log("Static file server running");
