@@ -29,6 +29,9 @@
 	.right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
 		width: $depth;
 	}
+	.ground {
+		@include transform(translateZ(-$depth));
+	}
 }
 
 %floor-base {
@@ -39,6 +42,16 @@
 	.room {
 		opacity: 0;
 		transition-duration: 0;
+	}
+	.ground {
+		@include square(100%);
+		@include transition(opacity 250ms);
+		opacity: 0;
+		pointer-events: auto;
+		// background: rgba(white, 0.5) !important;
+		&:hover {
+			opacity: 1;
+		}
 	}
 	* {
 		position: absolute;
@@ -157,14 +170,10 @@
 	*:not([class="facade"]) {
 		border-color: $color;
 	}
-	.window {
-		border-color: $facade-color;
-		transform: none !important;
-	}
 	[class*="leg"] {
 		background: $color;
 	}
-	[class*='side'], [class*='wall'] {
+	[class*='side'], [class*='wall'], .ground {
 		background: rgba($color, 0.15);
 	}
 	svg * {

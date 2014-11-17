@@ -43,6 +43,19 @@
   opacity: 0;
   transition-duration: 0;
 }
+#top_floor .ground, #second_floor .ground, #third_floor .ground, #fourth_floor .ground {
+  width: 100%;
+  height: 100%;
+  -moz-transition: opacity 250ms;
+  -o-transition: opacity 250ms;
+  -webkit-transition: opacity 250ms;
+  transition: opacity 250ms;
+  opacity: 0;
+  pointer-events: auto;
+}
+#top_floor .ground:hover, #second_floor .ground:hover, #third_floor .ground:hover, #fourth_floor .ground:hover {
+  opacity: 1;
+}
 #top_floor *, #second_floor *, #third_floor *, #fourth_floor * {
   position: absolute;
   -moz-transition: all 0.65s;
@@ -351,6 +364,7 @@ body.rotated {
   transform-style: preserve-3d;
   width: 500px;
   height: 500px;
+  pointer-events: none;
 }
 .building .room {
   width: 100%;
@@ -369,6 +383,13 @@ body.rotated {
 
 .right-side, .left-side, [class*="right_wall"], [class*="left_wall"] {
   width: 65px;
+}
+
+.ground {
+  -moz-transform: translateZ(-65px);
+  -ms-transform: translateZ(-65px);
+  -webkit-transform: translateZ(-65px);
+  transform: translateZ(-65px);
 }
 
 .facade {
@@ -448,14 +469,10 @@ body.rotated {
 #top_floor *:not([class="facade"]) {
   border-color: #733e2d;
 }
-#top_floor .window {
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: none !important;
-}
 #top_floor [class*="leg"] {
   background: #733e2d;
 }
-#top_floor [class*='side'], #top_floor [class*='wall'] {
+#top_floor [class*='side'], #top_floor [class*='wall'], #top_floor .ground {
   background: rgba(115, 62, 45, 0.15);
 }
 #top_floor svg * {
@@ -677,14 +694,10 @@ body.rotated {
 #second_floor *:not([class="facade"]) {
   border-color: #3c685c;
 }
-#second_floor .window {
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: none !important;
-}
 #second_floor [class*="leg"] {
   background: #3c685c;
 }
-#second_floor [class*='side'], #second_floor [class*='wall'] {
+#second_floor [class*='side'], #second_floor [class*='wall'], #second_floor .ground {
   background: rgba(60, 104, 92, 0.15);
 }
 #second_floor svg * {
@@ -739,6 +752,13 @@ body.rotated {
   -ms-transform: rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px);
   -webkit-transform: rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px);
   transform: rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px);
+}
+#second_floor .ground_couches {
+  width: 30%;
+}
+#second_floor .ground_kitchen {
+  width: 70%;
+  left: 30%;
 }
 #second_floor .counter {
   left: 34%;
@@ -991,14 +1011,10 @@ body.rotated {
 #third_floor *:not([class="facade"]) {
   border-color: #693e3e;
 }
-#third_floor .window {
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: none !important;
-}
 #third_floor [class*="leg"] {
   background: #693e3e;
 }
-#third_floor [class*='side'], #third_floor [class*='wall'] {
+#third_floor [class*='side'], #third_floor [class*='wall'], #third_floor .ground {
   background: rgba(105, 62, 62, 0.15);
 }
 #third_floor svg * {
@@ -1287,14 +1303,10 @@ body.rotated {
 #fourth_floor *:not([class="facade"]) {
   border-color: #496c52;
 }
-#fourth_floor .window {
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: none !important;
-}
 #fourth_floor [class*="leg"] {
   background: #496c52;
 }
-#fourth_floor [class*='side'], #fourth_floor [class*='wall'] {
+#fourth_floor [class*='side'], #fourth_floor [class*='wall'], #fourth_floor .ground {
   background: rgba(73, 108, 82, 0.15);
 }
 #fourth_floor svg * {
@@ -1353,6 +1365,22 @@ body.rotated {
 #fourth_floor .room_1 {
   width: 100%;
   height: 43%;
+}
+#fourth_floor .room_1 .ground_front_desk {
+  width: 4%;
+  left: 6.3%;
+}
+#fourth_floor .room_1 .ground_ping_pong_table {
+  width: 12%;
+  left: 14.5%;
+}
+#fourth_floor .room_1 .ground_steps {
+  width: 12%;
+  left: 52%;
+}
+#fourth_floor .room_1 .ground_green_room {
+  width: 11.75%;
+  left: 88.25%;
 }
 #fourth_floor .room_1 .upper, #fourth_floor .room_1 .lower {
   height: 33%;
@@ -1518,6 +1546,9 @@ body.rotated {
   width: 40%;
   height: 43%;
   top: 43%;
+}
+#fourth_floor .room_2 .ground {
+  width: 60%;
 }
 #fourth_floor .room_2 .table_1, #fourth_floor .room_2 .table_2, #fourth_floor .room_2 .table_3 {
   width: 8%;

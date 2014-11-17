@@ -36,6 +36,7 @@ body {
 	@include transform-style(preserve-3d);
 	width: 500px;
 	height: 500px;
+	pointer-events: none;
 	.room {
 		@include square(100%);
 	}
@@ -162,6 +163,13 @@ body {
 		> g {
 			@include transform(rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px));
 		}
+	}
+	.ground_couches {
+		width: 30%;
+	}
+	.ground_kitchen {
+		width: 70%;
+		left: 30%;
 	}
 	.counter {
 		left: 34%;
@@ -405,6 +413,22 @@ body {
 		}
 	}
 	.room_1 {
+		.ground_front_desk {
+			width: 4%;
+			left: 6.3%;
+		}
+		.ground_ping_pong_table {
+			width: 12%;
+			left: 14.5%;
+		}
+		.ground_steps {
+			width: 12%;
+			left: 52%;
+		}
+		.ground_green_room {
+			width: 11.75%;
+			left: 88.25%;
+		}
 		@include size(100%, 43%);
 		.upper, .lower {
 			height: 33%;
@@ -547,6 +571,9 @@ body {
 	.room_2 {
 		@include size(40%, 43%);
 		top: 43%;
+		.ground {
+			width: 60%;
+		}
 		.table_1, .table_2, .table_3 {
 			@include size(8%, 73%);
 			.chair_1, .chair_4 {
