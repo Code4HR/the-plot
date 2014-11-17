@@ -34,18 +34,18 @@
   transform-origin: left center;
 }
 
-#top_floor .contents, #second_floor .contents, #third_floor .contents, #fourth_floor .contents {
-  position: relative;
+#top_floor .rooms, #second_floor .rooms, #third_floor .rooms, #fourth_floor .rooms, #top_floor .contents, #second_floor .contents, #third_floor .contents, #fourth_floor .contents, #top_floor .ground, #second_floor .ground, #third_floor .ground, #fourth_floor .ground {
   width: 100%;
   height: 100%;
+}
+#top_floor .contents, #second_floor .contents, #third_floor .contents, #fourth_floor .contents {
+  position: relative;
 }
 #top_floor .room, #second_floor .room, #third_floor .room, #fourth_floor .room {
   opacity: 0;
   transition-duration: 0;
 }
 #top_floor .ground, #second_floor .ground, #third_floor .ground, #fourth_floor .ground {
-  width: 100%;
-  height: 100%;
   -moz-transition: opacity 250ms;
   -o-transition: opacity 250ms;
   -webkit-transition: opacity 250ms;
@@ -1054,8 +1054,8 @@ body.rotated #building_container {
   }
 
   100% {
-    -moz-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -moz-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
   }
 }
 @-webkit-keyframes third-floor {
@@ -1065,8 +1065,8 @@ body.rotated #building_container {
   }
 
   100% {
-    -webkit-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -webkit-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
   }
 }
 @keyframes third-floor {
@@ -1078,10 +1078,10 @@ body.rotated #building_container {
   }
 
   100% {
-    -moz-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    -ms-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    -webkit-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -moz-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -ms-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -webkit-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
   }
 }
 #third_floor *:not([class="facade"]) {
@@ -1350,8 +1350,8 @@ body.rotated #building_container {
   }
 
   100% {
-    -moz-transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -moz-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
   }
 }
 @-webkit-keyframes fourth-floor {
@@ -1361,8 +1361,8 @@ body.rotated #building_container {
   }
 
   100% {
-    -webkit-transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -webkit-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
   }
 }
 @keyframes fourth-floor {
@@ -1374,10 +1374,10 @@ body.rotated #building_container {
   }
 
   100% {
-    -moz-transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    -ms-transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    -webkit-transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    transform: translateY(60px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -moz-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -ms-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -webkit-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
   }
 }
 #fourth_floor *:not([class="facade"]) {

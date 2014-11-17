@@ -6,7 +6,7 @@ function floorUnanimate() {
   document.querySelector("body").className = "";
 }
 
-var test = true;
+var test = false;
 
 window.onload = function() {
 	['top', 'second', 'third', 'fourth'].forEach(function(floor) {

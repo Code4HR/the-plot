@@ -333,7 +333,7 @@ body {
 #third_floor {
 	margin-top: -1%;
 	$third-floor-color: #693E3E;
-	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: 90px, $post-transform-x: 80px, $pre-transform-y: 48px, $pre-transform-x: -258px, $pre-transform-z: 78px, $facade-width: 55px);
+	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: 95px, $post-transform-x: 80px, $pre-transform-y: 48px, $pre-transform-x: -258px, $pre-transform-z: 78px, $facade-width: 55px);
 	@include floor-styling($third-floor-color, 'third-floor');
 	svg {
 		> g {
@@ -455,7 +455,7 @@ body {
 #fourth_floor {
 	margin-top: -13%;
 	$fourth-floor-color: #496C52;
-	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -80px, $post-transform-y: 60px, $pre-transform-y: -150px, $pre-transform-z: 177px, $pre-transform-x: 0px, $facade-width: 101px);
+	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -80px, $post-transform-y: 90px, $pre-transform-y: -150px, $pre-transform-z: 177px, $pre-transform-x: 0px, $facade-width: 101px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	svg {
 		> g {

@@ -35,20 +35,20 @@
 }
 
 %floor-base {
+	.rooms, .contents, .ground {
+		@include square(100%);
+	}
 	.contents {
 		position: relative;
-		@include square(100%);
 	}
 	.room {
 		opacity: 0;
 		transition-duration: 0;
 	}
 	.ground {
-		@include square(100%);
 		@include transition(opacity 250ms);
 		opacity: 0;
 		pointer-events: auto;
-		// background: rgba(white, 0.5) !important;
 		&:hover {
 			opacity: 1;
 		}
