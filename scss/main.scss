@@ -38,6 +38,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	@include transform-style(preserve-3d);
+	margin-top: 100px;
 	width: 500px;
 	height: 500px;
 	pointer-events: none;
@@ -58,6 +59,8 @@ body {
 }
 
 #top_floor {
+	@include floor-sizing(325px, $floor-width, 'top-floor', $post-transform-x: -30px, $post-transform-y: -30px, $pre-transform-y: 40%, $facade-width: 86px);
+	@include floor-styling($first-floor-color, 'top-floor');
 	.facade {
 		-webkit-transform-origin: center 254%;
 		transform-origin: center 254%;
@@ -67,15 +70,10 @@ body {
 			@include transform(scale(0.288) translateY(1109px) translateX(516px));
 		}
 	}
-	margin-top: 100px;
-	@include floor-sizing(325px, $floor-width, 'top-floor', $post-transform-x: -30px, $post-transform-y: -30px, $pre-transform-y: 40%, $facade-width: 86px);
-	@include floor-styling(#733E2D, 'top-floor');
-	
 }
 
 #second_floor {
 	margin-top: -8.6%;
-	$second-floor-color: #3C685C;
 	@include floor-sizing(325px, $floor-width, 'second-floor', $post-transform-x: -30px, $post-transform-y: 75px, $pre-transform-z: 39px, $pre-transform-y: 40%, $facade-width: 61px);
 	@include floor-styling($second-floor-color, 'second-floor');
 	.facade {
@@ -91,7 +89,6 @@ body {
 
 #third_floor {
 	margin-top: -10.5%;
-	$third-floor-color: #693E3E;
 	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: -60px, $post-transform-x: 190px, $pre-transform-y: 59%, $pre-transform-x: -7%, $pre-transform-z: 78px, $facade-width: 55px);
 	@include floor-styling($third-floor-color, 'third-floor');
 	.facade {
@@ -107,7 +104,6 @@ body {
 
 #fourth_floor {
 	margin-top: -24%;
-	$fourth-floor-color: #496C52;
 	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -275px, $post-transform-y: 720px, $pre-transform-y: -63%, $pre-transform-z: 177px, $pre-transform-x: 30%, $facade-width: 101px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.facade {
