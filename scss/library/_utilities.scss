@@ -48,6 +48,21 @@
 		opacity: 0;
 		transition-duration: 0;
 	}
+	.number {
+		@include transform(rotateX(-38deg) rotateZ(24deg) rotateY(-15deg));
+		@include square(23px);
+		text-align: center;
+		line-height: 23px;
+		@include border-radius(50%);
+		color: white;
+		opacity: 0;
+		transition-duration: 0;
+		font-size: 13px;
+		&.empty {
+			background: $background-color;
+			border-width: 1px;
+		}
+	}
 	.ground {
 		@include transition(opacity 250ms);
 		opacity: 0;
@@ -198,7 +213,7 @@
 	*:not([class="facade"]) {
 		border-color: $color;
 	}
-	[class*="leg"] {
+	[class*="leg"], .number:not(.empty) {
 		background: $color;
 	}
 	[class*='side'], [class*='wall'], .ground {
@@ -217,10 +232,16 @@
 				stroke: none;
 			}
 		}
-		.room {
+		.room, .number {
 			opacity: 1;
+		}
+		.room {
 			transition-delay: $split-transition-duration;
 			transition-duration: $skew-transition-duration / 1.75;
+		}
+		.number {
+			transition-delay: 2 * $split-transition-duration;
+			transition-duration: 200ms;
 		}
 	}
 }

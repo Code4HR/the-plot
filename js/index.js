@@ -1,5 +1,5 @@
 function floorAnimate() {
-  document.querySelector("body").className = "rotated";
+  	document.querySelector("body").className = "rotated";
 }
 
 function floorUnanimate() {
@@ -21,4 +21,5 @@ window.onload = function() {
 		};
 		xhr.send("");
 	});
+
 }

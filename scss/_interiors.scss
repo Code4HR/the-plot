@@ -27,6 +27,10 @@
 			top: 75%;
 		}
 	}
+	#conference_room_number {
+		left: 10%;
+		top: 15%;
+	}
 	.work_room_1, .work_room_2 {
 		bottom: 0;
 	}
@@ -45,6 +49,10 @@
 			top: 50%;
 		}
 	}
+	#work_room_1_number {
+		left: 87%;
+		top: 61%;
+	}
 	.work_room_2 {
 		right: 15%;
 		@include size(17%, 45%);
@@ -60,6 +68,10 @@
 			top: 10%;
 		}
 	}
+	#work_room_2_number {
+		left: 70%;
+		top: 61%;
+	}
 	.work_room_3 {
 		left: 30%;
 		@include size(17%, 70%);
@@ -72,6 +84,10 @@
 			width: 45%;
 			top: 40%;
 		}
+	}
+	#work_room_3_number {
+		left: 35%;
+		top: 25%;
 	}
 	.storage_room_1, .storage_room_2 {
 		left: 47%;
@@ -91,6 +107,10 @@
 }
 
 #second_floor {
+	#couches_number {
+		left: 7%;
+		top: 50%;
+	}
 	.ground_couches {
 		width: 30%;
 	}
@@ -112,6 +132,10 @@
 	.closet {
 		left: 83%;
 		@include size(10%, 30%);
+	}
+	#kitchen_number {
+		left: 50%;
+		top: 48%;
 	}
 	.table {
 		left: 35%;
@@ -148,6 +172,10 @@
 		top: 25%;
 	}
 	.couch_3 {
+		top: 50%;
+	}
+	#deck_number {
+		left: 115%;
 		top: 50%;
 	}
 	.deck {
@@ -209,6 +237,10 @@
 
 #third_floor {
 	.contents {
+		#mezzanine_number {
+			left: 50%;
+			top: 50%;
+		}
 		.left-side, .right-side {
 			background: none;
 			border-top: none;
@@ -272,6 +304,45 @@
 }
 
 #fourth_floor {
+	// <div class="number" id="field_guide_number">1</div>
+	// <div class="number" id="creative_space_number">1</div>
+	// <div class="number" id="war_room_number">2</div>
+	#front_desk_number {
+		left: 4%;
+		top: 22%;
+	}
+	#ping_pong_table_number {
+		left: 17%;
+		top: 15%;
+	}
+	#erics_office_number {
+		left: 30.5%;
+		top: 18%;
+	}
+	#stairs_number {
+		left: 61.5%;
+		top: 19%;
+	}
+	#drew_office_number {
+		left: 82%;
+		top: 18%;
+	}
+	#green_room_number {
+		left: 91.5%;
+		top: 21%;
+	}
+	#field_guide_number {
+		left: 8%;
+		top: 60%;
+	}
+	#creative_space_number {
+		left: 52.5%;
+		top: 72%;
+	}
+	#war_room_number {
+		left: 71.5%;
+		top: 67%;
+	}
 	.room_1 {
 		.ground_front_desk {
 			width: 4%;
