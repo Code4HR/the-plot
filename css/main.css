@@ -1121,7 +1121,7 @@ body.rotated #building_container {
 }
 #top_floor .facade {
   width: 105px;
-  height: 86px;
+  height: 86.1px;
   left: 50%;
   margin-left: -52.5px;
 }
@@ -1138,10 +1138,10 @@ body.rotated #building_container {
   transform: rotateZ(-90deg) translateX(0px) translateY(40%);
 }
 #top_floor .contents > .room {
-  -moz-transform: translateZ(-21px);
-  -ms-transform: translateZ(-21px);
-  -webkit-transform: translateZ(-21px);
-  transform: translateZ(-21px);
+  -moz-transform: translateZ(-21.1px);
+  -ms-transform: translateZ(-21.1px);
+  -webkit-transform: translateZ(-21.1px);
+  transform: translateZ(-21.1px);
 }
 .rotated #top_floor .contents {
   -webkit-animation: top-floor 1.3s forwards;
@@ -1264,7 +1264,7 @@ body.rotated #building_container {
 }
 #second_floor .facade {
   width: 105px;
-  height: 61px;
+  height: 60.9px;
   left: 50%;
   margin-left: -52.5px;
 }
@@ -1281,10 +1281,10 @@ body.rotated #building_container {
   transform: rotateZ(-90deg) translateX(0px) translateY(40%);
 }
 #second_floor .contents > .room {
-  -moz-transform: translateZ(4px);
-  -ms-transform: translateZ(4px);
-  -webkit-transform: translateZ(4px);
-  transform: translateZ(4px);
+  -moz-transform: translateZ(4.1px);
+  -ms-transform: translateZ(4.1px);
+  -webkit-transform: translateZ(4.1px);
+  transform: translateZ(4.1px);
 }
 .rotated #second_floor .contents {
   -webkit-animation: second-floor 1.3s forwards;
@@ -1407,7 +1407,7 @@ body.rotated #building_container {
 }
 #third_floor .facade {
   width: 105px;
-  height: 55px;
+  height: 54.6px;
   left: 50%;
   margin-left: -52.5px;
 }
@@ -1424,10 +1424,10 @@ body.rotated #building_container {
   transform: rotateZ(-90deg) translateX(-7%) translateY(59%);
 }
 #third_floor .contents > .room {
-  -moz-transform: translateZ(10px);
-  -ms-transform: translateZ(10px);
-  -webkit-transform: translateZ(10px);
-  transform: translateZ(10px);
+  -moz-transform: translateZ(10.4px);
+  -ms-transform: translateZ(10.4px);
+  -webkit-transform: translateZ(10.4px);
+  transform: translateZ(10.4px);
 }
 .rotated #third_floor .contents {
   -webkit-animation: third-floor 1.3s forwards;
@@ -1550,7 +1550,7 @@ body.rotated #building_container {
 }
 #fourth_floor .facade {
   width: 220px;
-  height: 101px;
+  height: 101.2px;
   left: 50%;
   margin-left: -110px;
 }
@@ -1567,10 +1567,10 @@ body.rotated #building_container {
   transform: rotateZ(-90deg) translateX(30%) translateY(-63%);
 }
 #fourth_floor .contents > .room {
-  -moz-transform: translateZ(-36px);
-  -ms-transform: translateZ(-36px);
-  -webkit-transform: translateZ(-36px);
-  transform: translateZ(-36px);
+  -moz-transform: translateZ(-36.2px);
+  -ms-transform: translateZ(-36.2px);
+  -webkit-transform: translateZ(-36.2px);
+  transform: translateZ(-36.2px);
 }
 .rotated #fourth_floor .contents {
   -webkit-animation: fourth-floor 1.3s forwards;
