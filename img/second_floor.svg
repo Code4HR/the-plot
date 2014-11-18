@@ -54,8 +54,8 @@
 	<path fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" d="M-237.2-53.6h9.4
 		 M-240.2-35.6h15.4 M-240.2-38.6h15.4 M-242.5-41.6h19.8 M-224.9,46.8h-15.4 M-224.9,43.8h-15.4"/>
 	
-		<rect x="-237.2" y="-32.6" fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" width="9.4" height="73.4"/>
-	
+<!-- 		<rect x="-237.2" y="-32.6" fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" width="9.4" height="73.4"/>
+ -->	
 		<line fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" x1="-130.8" y1="-43.2" x2="-130.8" y2="-44.6"/>
 	<path fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" d="M-218.1-77.6h63"/>
 	<path fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" d="M-149.5-85.2v-13.4
@@ -100,7 +100,7 @@
 	<path fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" d="M-244.1,48.4h-69
 		 M-221.1-43.2h69 M-152.1,48.4h-69"/>
 	
-		<rect x="-310.1" y="-40.2" fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" width="63" height="85.6"/>
+		<!-- <rect x="-310.1" y="-40.2" fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" width="63" height="85.6"/> -->
 	<polyline fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" points="-155.1,45.4 
 		-218.1,45.4 -218.1,-40.2 	"/>
 	<polyline fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" points="-155.1,45.4 
@@ -127,7 +127,7 @@
 		h-9.4 M-136.1-53.6h-9.4 M-133.1-50.6v-31.6 M-148.4-50.6v-31.6 M-145.4-53.6v-25.6 M-136.1-53.6v-25.6 M-31.1,39.4v10.4
 		 M-342.2,39.4v10.4"/>
 	
-		<rect x="-145.4" y="-32.6" fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" width="9.4" height="73.4"/>
+		<!-- <rect x="-145.4" y="-32.6" fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" width="9.4" height="73.4"/> -->
 	<path fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" d="M-367.1-133.7H-6.2"/>
 	<path fill="none" stroke="#EEEEEE" stroke-width="0.25" stroke-linecap="round" stroke-miterlimit="10" d="M-365.1,74.4h340.8
 		 M-6.2,66.4h-360.8"/>
