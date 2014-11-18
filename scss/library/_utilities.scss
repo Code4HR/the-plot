@@ -117,7 +117,7 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0, $pre-transform-z: 0, $facade-width: $floor-depth) {
+@mixin floor-sizing($width, $height, $facade-height-ratio, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0, $pre-transform-z: 0) {
 	@extend %floor-base;
 
 	@include size($width, $height);
@@ -144,7 +144,7 @@
 	}
 
 	.facade {
-		@include size($height, $facade-width);
+		@include size($height, $facade-height-ratio * $height);
 		left: 50%;
 		margin-left: -0.5 * $height;
 	}
@@ -154,7 +154,7 @@
 			@include transform(rotateZ(-90deg) translateX($pre-transform-x) translateY($pre-transform-y));
 		}
 		> .room {
-			@include transform(translateZ(-($facade-width - $floor-depth)));
+			@include transform(translateZ(-($facade-height-ratio * $height - $floor-depth)));
 		}
 	}
 	.rotated & {
