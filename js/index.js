@@ -15,7 +15,7 @@ window.onload = function() {
 				var response = xhr.responseXML.documentElement;
 
 				document.querySelector("#" + floor + "_floor svg").appendChild(response);
-				document.querySelector("#" + floor + "_floor svg").setAttribute("viewBox", "0 0 " + document.querySelector("#" + floor + "_floor .facade").offsetWidth + " " + document.querySelector("#" + floor + "_floor .facade").offsetHeight);
+				document.querySelector("#" + floor + "_floor svg").setAttribute("viewBox", "0 0 " + document.querySelector("#" + floor + "_floor .facade").offsetWidth * 2 + " " + document.querySelector("#" + floor + "_floor .facade").offsetHeight * 2);
 				document.querySelector("#" + floor + "_floor").innerHTML = document.querySelector("#" + floor + "_floor").innerHTML;
 			}
 		};

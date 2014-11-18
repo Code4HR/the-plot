@@ -59,84 +59,82 @@ body {
 }
 
 #top_floor {
-	@include floor-sizing(325px, $floor-width, 0.82, 'top-floor', $post-transform-x: -30px, $post-transform-y: -30px, $pre-transform-y: 40%);
+	@include floor-sizing($width: 325px, 
+					 	  $height: $floor-width, 
+					 	  $facade-height-ratio: 0.82, 
+					 	  $floor-name: 'top-floor', 
+					 	  $facade-translate-x: 376px,
+					 	  $facade-translate-y: 700px,
+					 	  $svg-translate-x: 14px,
+					 	  $svg-translate-y: 81px,
+					 	  $post-transform-x: -30px, 
+					 	  $post-transform-y: -30px, 
+					 	  $pre-transform-y: 40%);
 	@include floor-styling($first-floor-color, 'top-floor');
 	.facade {
 		-webkit-transform-origin: center 254%;
 		transform-origin: center 254%;
 	}
-	svg {
-		> g {
-			@include transform(scale(0.288) translateY(1109px) translateX(516px));
-		}
-	}
 }
 
 #second_floor {
-	margin-top: -8.6%;
 	@include floor-sizing($width: 325px, 
 						  $height: $floor-width, 
 						  $facade-height-ratio: 0.58, 
 						  $floor-name: 'second-floor', 
+						  $facade-translate-x: 377px,
+						  $facade-translate-y: 486px,
+						  $svg-translate-x: 14px,
+						  $svg-translate-y: 81px,
 						  $post-transform-x: -30px, 
-						  $post-transform-y: 75px, 
-						  $pre-transform-z: 39px, 
+						  $post-transform-y: 35px, 
 						  $pre-transform-y: 40%);
 	@include floor-styling($second-floor-color, 'second-floor');
 	.facade {
 		-webkit-transform-origin: center 353%;
 		transform-origin: center 353%;
 	}
-	svg {
-		> g {
-			@include transform(scale(0.29) translateY(888px) translateX(513px));
-		}
-	}
 }
 
 #third_floor {
-	margin-top: -10.5%;
+	margin-top: -2%;
 	@include floor-sizing($width: 285px, 
 						  $height: $floor-width, 
 						  $facade-height-ratio: 0.52, 
 						  $floor-name: 'third-floor', 
-						  $post-transform-y: -60px, 
+						  $facade-translate-x: 417px,
+						  $facade-translate-y: 295px,
+						  $svg-translate-x: 19px,
+						  $svg-translate-y: 83px,
+						  $post-transform-y: -140px, 
 						  $post-transform-x: 190px, 
 						  $pre-transform-y: 59%, 
-						  $pre-transform-x: -7%, 
-						  $pre-transform-z: 78px);
+						  $pre-transform-x: -7%);
 	@include floor-styling($third-floor-color, 'third-floor');
 	.facade {
 		-webkit-transform-origin: center 389%;
 		transform-origin: center 389%;
 	}
-	svg {
-		> g {
-			@include transform(scale(0.29) translateY(704px) translateX(582px));
-		}
-	}
 }
 
 #fourth_floor {
-	margin-top: -24%;
+	margin-top: -16%;
 	@include floor-sizing($width: 800px, 
 						  $height: 220px, 
 						  $facade-height-ratio: 0.46, 
 						  $floor-name: 'fourth-floor', 
+						  $facade-translate-x: 18px,
+						  $facade-translate-y: 247px,
+						  $svg-translate-x: -68px,
+						  $svg-translate-y: 95px,
 						  $post-transform-x: -275px, 
-						  $post-transform-y: 720px, 
+						  $post-transform-y: 605px, 
 						  $pre-transform-y: -63%, 
-						  $pre-transform-z: 177px, 
 						  $pre-transform-x: 30%);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.facade {
 		-webkit-transform-origin: center 267%;
 		transform-origin: center 267%;
-	}
-	svg {
-		> g {
-			@include transform(scale(0.29) translateY(759px) translateX(-108px));
-		}
 	}
 }
 

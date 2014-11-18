@@ -117,7 +117,7 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $facade-height-ratio, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0, $pre-transform-z: 0) {
+@mixin floor-sizing($width, $height, $facade-height-ratio, $floor-name, $facade-translate-y, $facade-translate-x, $svg-translate-x, $svg-translate-y, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0) {
 	@extend %floor-base;
 
 	@include size($width, $height);
@@ -142,11 +142,16 @@
 		$mid-x: $modifier + $modifier/2;
 		$mid-z: -($modifier + $modifier/2);
 	}
-
 	.facade {
 		@include size($height, $facade-height-ratio * $height);
 		left: 50%;
 		margin-left: -0.5 * $height;
+		svg {
+			> g {
+				@include transform(translateY($facade-translate-y) translateX($facade-translate-x));
+				@include transition(all 200ms);
+			}
+		}
 	}
 	.contents {
 		@include transform(rotateX(90deg));
@@ -158,6 +163,9 @@
 		}
 	}
 	.rotated & {
+		svg {
+			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
+		}
 		.contents {
 			@include animation(#{$floor-name} $split-transition-duration + $skew-transition-duration forwards);
 		}
@@ -169,6 +177,18 @@
 			}
 			100% {
 				@include transform(translateY($post-transform-y) rotateX(20deg) rotateZ(60deg) translateX($post-transform-x));
+			}
+		}
+	}
+	@at-root {
+		@include keyframes(#{$floor-name}-facade) {
+			50% {
+				@include transform(scale(0.75) translateX($svg-translate-x) translateY($svg-translate-y));
+				opacity: 1;
+			}
+			100% {
+				@include transform(scale(0.75) translateX(0.25 * 0.5 * $facade-translate-x) translateY(0.25 * 0.5 * $facade-translate-y));
+				opacity: 0;
 			}
 		}
 	}
@@ -189,7 +209,6 @@
 	}
 	.rotated & {
 		.facade svg {
-			@include animation(#{$floor-name}-facade $split-transition-duration + $skew-transition-duration forwards);
 			* {
 				stroke: lighten($color, 35%);
 			}
@@ -202,16 +221,6 @@
 			opacity: 1;
 			transition-delay: $split-transition-duration;
 			transition-duration: $skew-transition-duration / 1.75;
-		}
-	}
-	@at-root {
-		@include keyframes(#{$floor-name}-facade) {
-			50% {
-				opacity: 1;
-			}
-			100% {
-				opacity: 0;
-			}
 		}
 	}
 }
