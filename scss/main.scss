@@ -338,17 +338,17 @@ body {
 }
 
 #third_floor {
-	margin-top: -11%;
+	margin-top: -10.5%;
 	$third-floor-color: #693E3E;
-	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: -60px, $post-transform-x: 190px, $pre-transform-y: 61%, $pre-transform-x: -16%, $pre-transform-z: 78px, $facade-width: 55px);
+	@include floor-sizing(285px, $floor-width, 'third-floor', $post-transform-y: -60px, $post-transform-x: 190px, $pre-transform-y: 59%, $pre-transform-x: -7%, $pre-transform-z: 78px, $facade-width: 55px);
 	@include floor-styling($third-floor-color, 'third-floor');
 	.facade {
-		-webkit-transform-origin: center 401%;
-		transform-origin: center 401%;
+		-webkit-transform-origin: center 389%;
+		transform-origin: center 389%;
 	}
 	svg {
 		> g {
-			@include transform(scale(0.287) translateY(753px) translateX(588px));
+			@include transform(scale(0.29) translateY(704px) translateX(582px));
 		}
 	}
 	.contents {
@@ -464,17 +464,17 @@ body {
 }
 
 #fourth_floor {
-	margin-top: -25%;
+	margin-top: -24%;
 	$fourth-floor-color: #496C52;
-	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -250px, $post-transform-y: 690px, $pre-transform-y: -60%, $pre-transform-z: 177px, $pre-transform-x: 23.25%, $facade-width: 101px);
+	@include floor-sizing($width: 800px, $height: 220px, $floor-name: 'fourth-floor', $post-transform-x: -275px, $post-transform-y: 720px, $pre-transform-y: -63%, $pre-transform-z: 177px, $pre-transform-x: 30%, $facade-width: 101px);
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.facade {
-		-webkit-transform-origin: center 316%;
-		transform-origin: center 316%;
+		-webkit-transform-origin: center 267%;
+		transform-origin: center 267%;
 	}
 	svg {
 		> g {
-			@include transform(scale(0.276) translateY(990px) translateX(-111px));
+			@include transform(scale(0.29) translateY(759px) translateX(-108px));
 		}
 	}
 	.room_1 {
