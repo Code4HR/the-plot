@@ -41,6 +41,9 @@
 	.contents {
 		position: relative;
 	}
+	.rooms {
+		@include transform(rotateZ(-90deg));
+	}
 	.room {
 		opacity: 0;
 		transition-duration: 0;
@@ -114,37 +117,42 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0px, $pre-transform-z: 0px, $post-transform-z: 0px, $facade-width: $floor-depth) {
+@mixin floor-sizing($width, $height, $floor-name, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0, $pre-transform-z: 0, $facade-width: $floor-depth) {
 	@extend %floor-base;
 
 	@include size($width, $height);
 
+	$mid-x: 0;
 	$mid-z: 0;
-	$mid-y: 0;
-	$modifier: 10px;
+	$modifier: 20px;
 
 	@if ($floor-name == "top-floor") {
-		$mid-z: $pre-transform-z + (3 * $modifier);
-		$mid-y: $pre-transform-y - (3 * $modifier);
+		$mid-x: -($modifier + $modifier/2);
+		$mid-z: $modifier + $modifier/2;
 	}
 	@else if ($floor-name == "second-floor") {
-		$mid-z: $pre-transform-z + $modifier;
-		$mid-y: $pre-transform-y - $modifier;
+		$mid-x: -($modifier/2);
+		$mid-z: $modifier/2;
 	}
 	@else if ($floor-name == "third-floor") {
-		$mid-z: $pre-transform-z - $modifier;
-		$mid-y: $pre-transform-y + $modifier;
+		$mid-x: $modifier/2;
+		$mid-z: -($modifier/2);
 	}
 	@else {
-		$mid-z: $pre-transform-z - (3 * $modifier);
-		$mid-y: $pre-transform-y + (3 * $modifier);
+		$mid-x: $modifier + $modifier/2;
+		$mid-z: -($modifier + $modifier/2);
 	}
 
 	.facade {
-		@include size($facade-width, $height);
+		@include size($height, $facade-width);
+		left: 50%;
+		margin-left: -0.5 * $height;
 	}
 	.contents {
-		@include transform(rotateX(90deg) rotateZ(-90deg) translateZ($pre-transform-z) translateX($pre-transform-x) translateY($pre-transform-y));
+		@include transform(rotateX(90deg));
+		.rooms {
+			@include transform(rotateZ(-90deg) translateX($pre-transform-x) translateY($pre-transform-y));
+		}
 		> .room {
 			@include transform(translateZ(-($facade-width - $floor-depth)));
 		}
@@ -157,10 +165,10 @@
 	@at-root {
 		@include keyframes(#{$floor-name}) {
 			50% {
-				@include transform(rotateX(90deg) rotateZ(-90deg) translateZ($mid-z) translateX($pre-transform-x) translateY($mid-y));
+				@include transform(rotateX(90deg) translateX($mid-x) translateZ($mid-z));
 			}
 			100% {
-				@include transform(translateY($post-transform-y) rotateX(20deg) rotateZ(-30deg) translateX($post-transform-x) translateZ($post-transform-z));
+				@include transform(translateY($post-transform-y) rotateX(20deg) rotateZ(60deg) translateX($post-transform-x));
 			}
 		}
 	}

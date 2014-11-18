@@ -16,7 +16,7 @@
   transform-origin: center bottom;
 }
 
-#top_floor [class*='left']:not(.chair), #second_floor [class*='left']:not(.chair), #third_floor [class*='left']:not(.chair), #fourth_floor [class*='left']:not(.chair), .table [class*="table_leg"], .table [class*="chair_leg"], .facade {
+#top_floor [class*='left']:not(.chair), #second_floor [class*='left']:not(.chair), #third_floor [class*='left']:not(.chair), #fourth_floor [class*='left']:not(.chair), .table [class*="table_leg"], .table [class*="chair_leg"] {
   -moz-transform: rotateY(-90deg);
   -ms-transform: rotateY(-90deg);
   -webkit-transform: rotateY(-90deg);
@@ -40,6 +40,12 @@
 }
 #top_floor .contents, #second_floor .contents, #third_floor .contents, #fourth_floor .contents {
   position: relative;
+}
+#top_floor .rooms, #second_floor .rooms, #third_floor .rooms, #fourth_floor .rooms {
+  -moz-transform: rotateZ(-90deg);
+  -ms-transform: rotateZ(-90deg);
+  -webkit-transform: rotateZ(-90deg);
+  transform: rotateZ(-90deg);
 }
 #top_floor .room, #second_floor .room, #third_floor .room, #fourth_floor .room {
   opacity: 0;
@@ -461,7 +467,10 @@ body.rotated #building_container {
 }
 
 .facade {
-  right: 100%;
+  -moz-transform: rotateX(-90deg);
+  -ms-transform: rotateX(-90deg);
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
 }
 
 #top_floor {
@@ -469,21 +478,33 @@ body.rotated #building_container {
   width: 325px;
   height: 105px;
 }
+#top_floor .facade {
+  -webkit-transform-origin: center 254%;
+  transform-origin: center 254%;
+}
 #top_floor svg > g {
-  -moz-transform: rotateZ(90deg) scale(0.354) translateX(308px) translateY(128px);
-  -ms-transform: rotateZ(90deg) scale(0.354) translateX(308px) translateY(128px);
-  -webkit-transform: rotateZ(90deg) scale(0.354) translateX(308px) translateY(128px);
-  transform: rotateZ(90deg) scale(0.354) translateX(308px) translateY(128px);
+  -moz-transform: scale(0.288) translateY(1109px) translateX(516px);
+  -ms-transform: scale(0.288) translateY(1109px) translateX(516px);
+  -webkit-transform: scale(0.288) translateY(1109px) translateX(516px);
+  transform: scale(0.288) translateY(1109px) translateX(516px);
 }
 #top_floor .facade {
-  width: 86px;
-  height: 105px;
+  width: 105px;
+  height: 86px;
+  left: 50%;
+  margin-left: -52.5px;
 }
 #top_floor .contents {
-  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-238px) translateY(28px);
-  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-238px) translateY(28px);
-  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-238px) translateY(28px);
-  transform: rotateX(90deg) rotateZ(-90deg) translateZ(0px) translateX(-238px) translateY(28px);
+  -moz-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+#top_floor .contents .rooms {
+  -moz-transform: rotateZ(-90deg) translateX(0px) translateY(40%);
+  -ms-transform: rotateZ(-90deg) translateX(0px) translateY(40%);
+  -webkit-transform: rotateZ(-90deg) translateX(0px) translateY(40%);
+  transform: rotateZ(-90deg) translateX(0px) translateY(40%);
 }
 #top_floor .contents > .room {
   -moz-transform: translateZ(-21px);
@@ -499,39 +520,39 @@ body.rotated #building_container {
 }
 @-moz-keyframes top-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
+    -moz-transform: rotateX(90deg) translateX(-30px) translateZ(30px);
+    transform: rotateX(90deg) translateX(-30px) translateZ(30px);
   }
 
   100% {
-    -moz-transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
+    -moz-transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
   }
 }
 @-webkit-keyframes top-floor {
   50% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
+    -webkit-transform: rotateX(90deg) translateX(-30px) translateZ(30px);
+    transform: rotateX(90deg) translateX(-30px) translateZ(30px);
   }
 
   100% {
-    -webkit-transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
+    -webkit-transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
   }
 }
 @keyframes top-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
-    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(30px) translateX(-238px) translateY(-2px);
+    -moz-transform: rotateX(90deg) translateX(-30px) translateZ(30px);
+    -ms-transform: rotateX(90deg) translateX(-30px) translateZ(30px);
+    -webkit-transform: rotateX(90deg) translateX(-30px) translateZ(30px);
+    transform: rotateX(90deg) translateX(-30px) translateZ(30px);
   }
 
   100% {
-    -moz-transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    -ms-transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    -webkit-transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    transform: translateY(-30px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
+    -moz-transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    -ms-transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    -webkit-transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    transform: translateY(-30px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
   }
 }
 #top_floor *:not([class="facade"]) {
@@ -700,19 +721,27 @@ body.rotated #building_container {
 }
 
 #second_floor {
-  margin-top: 4.25%;
+  margin-top: -8.6%;
   width: 325px;
   height: 105px;
 }
 #second_floor .facade {
-  width: 61px;
-  height: 105px;
+  width: 105px;
+  height: 61px;
+  left: 50%;
+  margin-left: -52.5px;
 }
 #second_floor .contents {
-  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-238px) translateY(28px);
-  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-238px) translateY(28px);
-  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-238px) translateY(28px);
-  transform: rotateX(90deg) rotateZ(-90deg) translateZ(39px) translateX(-238px) translateY(28px);
+  -moz-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+#second_floor .contents .rooms {
+  -moz-transform: rotateZ(-90deg) translateX(0px) translateY(40%);
+  -ms-transform: rotateZ(-90deg) translateX(0px) translateY(40%);
+  -webkit-transform: rotateZ(-90deg) translateX(0px) translateY(40%);
+  transform: rotateZ(-90deg) translateX(0px) translateY(40%);
 }
 #second_floor .contents > .room {
   -moz-transform: translateZ(4px);
@@ -728,39 +757,39 @@ body.rotated #building_container {
 }
 @-moz-keyframes second-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
+    -moz-transform: rotateX(90deg) translateX(-10px) translateZ(10px);
+    transform: rotateX(90deg) translateX(-10px) translateZ(10px);
   }
 
   100% {
-    -moz-transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
+    -moz-transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
   }
 }
 @-webkit-keyframes second-floor {
   50% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
+    -webkit-transform: rotateX(90deg) translateX(-10px) translateZ(10px);
+    transform: rotateX(90deg) translateX(-10px) translateZ(10px);
   }
 
   100% {
-    -webkit-transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
+    -webkit-transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
   }
 }
 @keyframes second-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
-    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(49px) translateX(-238px) translateY(18px);
+    -moz-transform: rotateX(90deg) translateX(-10px) translateZ(10px);
+    -ms-transform: rotateX(90deg) translateX(-10px) translateZ(10px);
+    -webkit-transform: rotateX(90deg) translateX(-10px) translateZ(10px);
+    transform: rotateX(90deg) translateX(-10px) translateZ(10px);
   }
 
   100% {
-    -moz-transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    -ms-transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    -webkit-transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
-    transform: translateY(15px) rotateX(20deg) rotateZ(-30deg) translateX(-30px) translateZ(0px);
+    -moz-transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    -ms-transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    -webkit-transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
+    transform: translateY(75px) rotateX(20deg) rotateZ(60deg) translateX(-30px);
   }
 }
 #second_floor *:not([class="facade"]) {
@@ -823,11 +852,15 @@ body.rotated #building_container {
     opacity: 0;
   }
 }
+#second_floor .facade {
+  -webkit-transform-origin: center 353%;
+  transform-origin: center 353%;
+}
 #second_floor svg > g {
-  -moz-transform: rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px);
-  -ms-transform: rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px);
-  -webkit-transform: rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px);
-  transform: rotateZ(90deg) scale(0.5) translateX(248px) translateY(-81px);
+  -moz-transform: scale(0.29) translateY(888px) translateX(513px);
+  -ms-transform: scale(0.29) translateY(888px) translateX(513px);
+  -webkit-transform: scale(0.29) translateY(888px) translateX(513px);
+  transform: scale(0.29) translateY(888px) translateX(513px);
 }
 #second_floor .ground_couches {
   width: 30%;
@@ -1021,19 +1054,27 @@ body.rotated #building_container {
 }
 
 #third_floor {
-  margin-top: -1%;
+  margin-top: -11%;
   width: 285px;
   height: 105px;
 }
 #third_floor .facade {
-  width: 55px;
-  height: 105px;
+  width: 105px;
+  height: 55px;
+  left: 50%;
+  margin-left: -52.5px;
 }
 #third_floor .contents {
-  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-258px) translateY(48px);
-  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-258px) translateY(48px);
-  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-258px) translateY(48px);
-  transform: rotateX(90deg) rotateZ(-90deg) translateZ(78px) translateX(-258px) translateY(48px);
+  -moz-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+#third_floor .contents .rooms {
+  -moz-transform: rotateZ(-90deg) translateX(-16%) translateY(61%);
+  -ms-transform: rotateZ(-90deg) translateX(-16%) translateY(61%);
+  -webkit-transform: rotateZ(-90deg) translateX(-16%) translateY(61%);
+  transform: rotateZ(-90deg) translateX(-16%) translateY(61%);
 }
 #third_floor .contents > .room {
   -moz-transform: translateZ(10px);
@@ -1049,39 +1090,39 @@ body.rotated #building_container {
 }
 @-moz-keyframes third-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
+    -moz-transform: rotateX(90deg) translateX(10px) translateZ(-10px);
+    transform: rotateX(90deg) translateX(10px) translateZ(-10px);
   }
 
   100% {
-    -moz-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -moz-transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
+    transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
   }
 }
 @-webkit-keyframes third-floor {
   50% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
+    -webkit-transform: rotateX(90deg) translateX(10px) translateZ(-10px);
+    transform: rotateX(90deg) translateX(10px) translateZ(-10px);
   }
 
   100% {
-    -webkit-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -webkit-transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
+    transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
   }
 }
 @keyframes third-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
-    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(68px) translateX(-258px) translateY(58px);
+    -moz-transform: rotateX(90deg) translateX(10px) translateZ(-10px);
+    -ms-transform: rotateX(90deg) translateX(10px) translateZ(-10px);
+    -webkit-transform: rotateX(90deg) translateX(10px) translateZ(-10px);
+    transform: rotateX(90deg) translateX(10px) translateZ(-10px);
   }
 
   100% {
-    -moz-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    -ms-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    -webkit-transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
-    transform: translateY(95px) rotateX(20deg) rotateZ(-30deg) translateX(80px) translateZ(0px);
+    -moz-transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
+    -ms-transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
+    -webkit-transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
+    transform: translateY(-60px) rotateX(20deg) rotateZ(60deg) translateX(190px);
   }
 }
 #third_floor *:not([class="facade"]) {
@@ -1144,11 +1185,15 @@ body.rotated #building_container {
     opacity: 0;
   }
 }
+#third_floor .facade {
+  -webkit-transform-origin: center 401%;
+  transform-origin: center 401%;
+}
 #third_floor svg > g {
-  -moz-transform: rotateZ(90deg) scale(0.556) translateX(236px) translateY(-268px);
-  -ms-transform: rotateZ(90deg) scale(0.556) translateX(236px) translateY(-268px);
-  -webkit-transform: rotateZ(90deg) scale(0.556) translateX(236px) translateY(-268px);
-  transform: rotateZ(90deg) scale(0.556) translateX(236px) translateY(-268px);
+  -moz-transform: scale(0.287) translateY(753px) translateX(588px);
+  -ms-transform: scale(0.287) translateY(753px) translateX(588px);
+  -webkit-transform: scale(0.287) translateY(753px) translateX(588px);
+  transform: scale(0.287) translateY(753px) translateX(588px);
 }
 #third_floor .contents .left-side, #third_floor .contents .right-side {
   background: none;
@@ -1317,19 +1362,27 @@ body.rotated #building_container {
 }
 
 #fourth_floor {
-  margin-top: -13%;
+  margin-top: -25%;
   width: 800px;
   height: 220px;
 }
 #fourth_floor .facade {
-  width: 101px;
-  height: 220px;
+  width: 220px;
+  height: 101px;
+  left: 50%;
+  margin-left: -110px;
 }
 #fourth_floor .contents {
-  -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
-  -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
-  -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
-  transform: rotateX(90deg) rotateZ(-90deg) translateZ(177px) translateX(0px) translateY(-150px);
+  -moz-transform: rotateX(90deg);
+  -ms-transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+#fourth_floor .contents .rooms {
+  -moz-transform: rotateZ(-90deg) translateX(23.25%) translateY(-60%);
+  -ms-transform: rotateZ(-90deg) translateX(23.25%) translateY(-60%);
+  -webkit-transform: rotateZ(-90deg) translateX(23.25%) translateY(-60%);
+  transform: rotateZ(-90deg) translateX(23.25%) translateY(-60%);
 }
 #fourth_floor .contents > .room {
   -moz-transform: translateZ(-36px);
@@ -1345,39 +1398,39 @@ body.rotated #building_container {
 }
 @-moz-keyframes fourth-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    -moz-transform: rotateX(90deg) translateX(30px) translateZ(-30px);
+    transform: rotateX(90deg) translateX(30px) translateZ(-30px);
   }
 
   100% {
-    -moz-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -moz-transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
+    transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
   }
 }
 @-webkit-keyframes fourth-floor {
   50% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    -webkit-transform: rotateX(90deg) translateX(30px) translateZ(-30px);
+    transform: rotateX(90deg) translateX(30px) translateZ(-30px);
   }
 
   100% {
-    -webkit-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -webkit-transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
+    transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
   }
 }
 @keyframes fourth-floor {
   50% {
-    -moz-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
-    -ms-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
-    transform: rotateX(90deg) rotateZ(-90deg) translateZ(147px) translateX(0px) translateY(-120px);
+    -moz-transform: rotateX(90deg) translateX(30px) translateZ(-30px);
+    -ms-transform: rotateX(90deg) translateX(30px) translateZ(-30px);
+    -webkit-transform: rotateX(90deg) translateX(30px) translateZ(-30px);
+    transform: rotateX(90deg) translateX(30px) translateZ(-30px);
   }
 
   100% {
-    -moz-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    -ms-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    -webkit-transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
-    transform: translateY(90px) rotateX(20deg) rotateZ(-30deg) translateX(-80px) translateZ(0px);
+    -moz-transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
+    -ms-transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
+    -webkit-transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
+    transform: translateY(690px) rotateX(20deg) rotateZ(60deg) translateX(-250px);
   }
 }
 #fourth_floor *:not([class="facade"]) {
@@ -1440,11 +1493,15 @@ body.rotated #building_container {
     opacity: 0;
   }
 }
+#fourth_floor .facade {
+  -webkit-transform-origin: center 316%;
+  transform-origin: center 316%;
+}
 #fourth_floor svg > g {
-  -moz-transform: rotateZ(90deg) scale(0.635) translateX(62px) translateY(-418px);
-  -ms-transform: rotateZ(90deg) scale(0.635) translateX(62px) translateY(-418px);
-  -webkit-transform: rotateZ(90deg) scale(0.635) translateX(62px) translateY(-418px);
-  transform: rotateZ(90deg) scale(0.635) translateX(62px) translateY(-418px);
+  -moz-transform: scale(0.276) translateY(990px) translateX(-111px);
+  -ms-transform: scale(0.276) translateY(990px) translateX(-111px);
+  -webkit-transform: scale(0.276) translateY(990px) translateX(-111px);
+  transform: scale(0.276) translateY(990px) translateX(-111px);
 }
 #fourth_floor .room_1 {
   width: 100%;
