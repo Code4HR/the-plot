@@ -59,7 +59,7 @@
   width: 23px;
   height: 23px;
   pointer-events: auto;
-  cursor: pointer;
+  cursor: default;
 }
 #top_floor .number .circle, #second_floor .number .circle, #third_floor .number .circle, #fourth_floor .number .circle {
   -moz-border-radius: 50%;
@@ -88,7 +88,7 @@
   background: #212121;
   border-width: 1px;
 }
-#top_floor .number:hover .detail, #second_floor .number:hover .detail, #third_floor .number:hover .detail, #fourth_floor .number:hover .detail {
+#top_floor .number:hover .detail, #second_floor .number:hover .detail, #third_floor .number:hover .detail, #fourth_floor .number:hover .detail, #top_floor .number.hover .detail, #second_floor .number.hover .detail, #third_floor .number.hover .detail, #fourth_floor .number.hover .detail {
   opacity: 1;
 }
 #top_floor .ground, #second_floor .ground, #third_floor .ground, #fourth_floor .ground {

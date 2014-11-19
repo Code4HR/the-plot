@@ -22,4 +22,16 @@ window.onload = function() {
 		xhr.send("");
 	});
 
+	document.querySelector("body").addEventListener("mouseover", function(e) {
+		if(e.target.className.split(" ").indexOf("ground") > -1) {
+			document.getElementById(e.target.getAttribute("data-number")).className += " hover";
+		}
+	});
+
+	document.querySelector("body").addEventListener("mouseout", function(e) {
+		if(e.target.className.split(" ").indexOf("ground") > -1) {
+			var el = document.getElementById(e.target.getAttribute("data-number"));
+			el.className = el.className.replace( new RegExp('(?:^|\\s)hover(?!\\S)'), '' );
+		}
+	})
 }

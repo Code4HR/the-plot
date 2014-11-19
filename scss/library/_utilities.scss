@@ -52,7 +52,7 @@
 		@include transform(rotateX(-38deg) rotateZ(24deg) rotateY(-15deg));
 		@include square(23px);
 		pointer-events: auto;
-		cursor: pointer;
+		cursor: default;
 		.circle {
 			@include border-radius(50%);
 			@include square(100%);
@@ -78,7 +78,7 @@
 				border-width: 1px;
 			}
 		}
-		&:hover {
+		&:hover, &.hover {
 			.detail {
 				opacity: 1;
 			}
