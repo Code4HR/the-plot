@@ -12,11 +12,12 @@ window.onload = function() {
 		xhr.open("GET", "img/" + floor + "_floor.svg");
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {
-				var response = xhr.responseXML.documentElement;
+				var response = xhr.responseXML.documentElement,
+					el = document.querySelector("#" + floor + "_floor");
 
-				document.querySelector("#" + floor + "_floor svg").appendChild(response);
-				document.querySelector("#" + floor + "_floor svg").setAttribute("viewBox", "0 0 " + document.querySelector("#" + floor + "_floor .facade").offsetWidth * 2 + " " + document.querySelector("#" + floor + "_floor .facade").offsetHeight * 2);
-				document.querySelector("#" + floor + "_floor").innerHTML = document.querySelector("#" + floor + "_floor").innerHTML;
+				el.querySelector("svg").appendChild(response);
+				el.querySelector("svg").setAttribute("viewBox", "0 0 " + el.querySelector(".facade").offsetWidth * 2 + " " + el.querySelector(".facade").offsetHeight * 2);
+				el.innerHTML = el.innerHTML;
 			}
 		};
 		xhr.send("");
@@ -33,5 +34,7 @@ window.onload = function() {
 			var el = document.getElementById(e.target.getAttribute("data-number"));
 			el.className = el.className.replace( new RegExp('(?:^|\\s)hover(?!\\S)'), '' );
 		}
-	})
+	});
+
+
 }
