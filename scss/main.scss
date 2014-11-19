@@ -50,6 +50,13 @@ body {
 		@include square(100%);
 		position: absolute;
 	}
+	@include tablet-landscape-and-below {
+		@include transform(scale(0.75));
+	}
+	@include desktop-and-up {
+		margin-top: 200px;
+		@include transform(scale(1.2));
+	}
 }
 
 @include sizing($floor-depth, $floor-width);

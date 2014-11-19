@@ -1200,6 +1200,23 @@ body.rotated #building_container {
   height: 100%;
   position: absolute;
 }
+@media only screen and (max-width: 1024px) {
+  .building {
+    -moz-transform: scale(0.75);
+    -ms-transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+  }
+}
+@media only screen and (min-width: 1383px) {
+  .building {
+    margin-top: 200px;
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
 
 .top-side, .bottom-side, [class*="bottom_wall"], [class*="top_wall"] {
   height: 65px;
