@@ -58,19 +58,38 @@
   transform: rotateX(-38deg) rotateZ(24deg) rotateY(-15deg);
   width: 23px;
   height: 23px;
-  text-align: center;
-  line-height: 23px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+#top_floor .number .circle, #second_floor .number .circle, #third_floor .number .circle, #fourth_floor .number .circle {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 23px;
   opacity: 0;
   transition-duration: 0;
   font-size: 13px;
+  color: white;
 }
-#top_floor .number.empty, #second_floor .number.empty, #third_floor .number.empty, #fourth_floor .number.empty {
+#top_floor .number .detail, #second_floor .number .detail, #third_floor .number .detail, #fourth_floor .number .detail {
+  pointer-events: none;
+  opacity: 0;
+  width: 500%;
+  height: 200%;
+  border-width: 2px;
+  color: white;
+  bottom: 130%;
+  margin-left: -200%;
+}
+#top_floor .number.empty .circle, #second_floor .number.empty .circle, #third_floor .number.empty .circle, #fourth_floor .number.empty .circle {
   background: #212121;
   border-width: 1px;
+}
+#top_floor .number:hover .detail, #second_floor .number:hover .detail, #third_floor .number:hover .detail, #fourth_floor .number:hover .detail {
+  opacity: 1;
 }
 #top_floor .ground, #second_floor .ground, #third_floor .ground, #fourth_floor .ground {
   -moz-transition: opacity 250ms;
@@ -1337,7 +1356,7 @@ body.rotated #building_container {
 #top_floor *:not([class="facade"]) {
   border-color: #733e2d;
 }
-#top_floor [class*="leg"], #top_floor .number:not(.empty) {
+#top_floor [class*="leg"], #top_floor .number:not(.empty) .circle {
   background: #733e2d;
 }
 #top_floor [class*='side'], #top_floor [class*='wall'], #top_floor .ground {
@@ -1356,14 +1375,14 @@ body.rotated #building_container {
   fill: #cf9684;
   stroke: none;
 }
-.rotated #top_floor .room, .rotated #top_floor .number {
+.rotated #top_floor .room, .rotated #top_floor .number .circle {
   opacity: 1;
 }
 .rotated #top_floor .room {
   transition-delay: 0.65s;
   transition-duration: 0.37143s;
 }
-.rotated #top_floor .number {
+.rotated #top_floor .number .circle {
   transition-delay: 1.3s;
   transition-duration: 200ms;
 }
@@ -1505,7 +1524,7 @@ body.rotated #building_container {
 #second_floor *:not([class="facade"]) {
   border-color: #3c685c;
 }
-#second_floor [class*="leg"], #second_floor .number:not(.empty) {
+#second_floor [class*="leg"], #second_floor .number:not(.empty) .circle {
   background: #3c685c;
 }
 #second_floor [class*='side'], #second_floor [class*='wall'], #second_floor .ground {
@@ -1524,14 +1543,14 @@ body.rotated #building_container {
   fill: #95c2b5;
   stroke: none;
 }
-.rotated #second_floor .room, .rotated #second_floor .number {
+.rotated #second_floor .room, .rotated #second_floor .number .circle {
   opacity: 1;
 }
 .rotated #second_floor .room {
   transition-delay: 0.65s;
   transition-duration: 0.37143s;
 }
-.rotated #second_floor .number {
+.rotated #second_floor .number .circle {
   transition-delay: 1.3s;
   transition-duration: 200ms;
 }
@@ -1674,7 +1693,7 @@ body.rotated #building_container {
 #third_floor *:not([class="facade"]) {
   border-color: #693e3e;
 }
-#third_floor [class*="leg"], #third_floor .number:not(.empty) {
+#third_floor [class*="leg"], #third_floor .number:not(.empty) .circle {
   background: #693e3e;
 }
 #third_floor [class*='side'], #third_floor [class*='wall'], #third_floor .ground {
@@ -1693,14 +1712,14 @@ body.rotated #building_container {
   fill: #c29898;
   stroke: none;
 }
-.rotated #third_floor .room, .rotated #third_floor .number {
+.rotated #third_floor .room, .rotated #third_floor .number .circle {
   opacity: 1;
 }
 .rotated #third_floor .room {
   transition-delay: 0.65s;
   transition-duration: 0.37143s;
 }
-.rotated #third_floor .number {
+.rotated #third_floor .number .circle {
   transition-delay: 1.3s;
   transition-duration: 200ms;
 }
@@ -1843,7 +1862,7 @@ body.rotated #building_container {
 #fourth_floor *:not([class="facade"]) {
   border-color: #496c52;
 }
-#fourth_floor [class*="leg"], #fourth_floor .number:not(.empty) {
+#fourth_floor [class*="leg"], #fourth_floor .number:not(.empty) .circle {
   background: #496c52;
 }
 #fourth_floor [class*='side'], #fourth_floor [class*='wall'], #fourth_floor .ground {
@@ -1862,14 +1881,14 @@ body.rotated #building_container {
   fill: #a5c2ad;
   stroke: none;
 }
-.rotated #fourth_floor .room, .rotated #fourth_floor .number {
+.rotated #fourth_floor .room, .rotated #fourth_floor .number .circle {
   opacity: 1;
 }
 .rotated #fourth_floor .room {
   transition-delay: 0.65s;
   transition-duration: 0.37143s;
 }
-.rotated #fourth_floor .number {
+.rotated #fourth_floor .number .circle {
   transition-delay: 1.3s;
   transition-duration: 200ms;
 }

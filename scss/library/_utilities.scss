@@ -51,16 +51,37 @@
 	.number {
 		@include transform(rotateX(-38deg) rotateZ(24deg) rotateY(-15deg));
 		@include square(23px);
-		text-align: center;
-		line-height: 23px;
-		@include border-radius(50%);
-		color: white;
-		opacity: 0;
-		transition-duration: 0;
-		font-size: 13px;
+		pointer-events: auto;
+		cursor: pointer;
+		.circle {
+			@include border-radius(50%);
+			@include square(100%);
+			text-align: center;
+			line-height: 23px;
+			opacity: 0;
+			transition-duration: 0;
+			font-size: 13px;
+			color: white;
+		}
+		.detail {
+			pointer-events: none;
+			opacity: 0;
+			@include size(500%, 200%);
+			border-width: 2px;
+			color: white;
+			bottom: 130%;
+			margin-left: -200%;
+		}
 		&.empty {
-			background: $background-color;
-			border-width: 1px;
+			.circle {
+				background: $background-color;
+				border-width: 1px;
+			}
+		}
+		&:hover {
+			.detail {
+				opacity: 1;
+			}
 		}
 	}
 	.ground {
@@ -213,7 +234,7 @@
 	*:not([class="facade"]) {
 		border-color: $color;
 	}
-	[class*="leg"], .number:not(.empty) {
+	[class*="leg"], .number:not(.empty) .circle {
 		background: $color;
 	}
 	[class*='side'], [class*='wall'], .ground {
@@ -232,14 +253,14 @@
 				stroke: none;
 			}
 		}
-		.room, .number {
+		.room, .number .circle {
 			opacity: 1;
 		}
 		.room {
 			transition-delay: $split-transition-duration;
 			transition-duration: $skew-transition-duration / 1.75;
 		}
-		.number {
+		.number .circle {
 			transition-delay: 2 * $split-transition-duration;
 			transition-duration: 200ms;
 		}
