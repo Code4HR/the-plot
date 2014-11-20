@@ -79,7 +79,6 @@ var serializeDOM = function(el) {
 
 var html = function(opts) {
 	// perhaps this should deal just with string manipulation if i'm only trying to get the HTML as a string, for performance's sake
-	// element, classes, id
 	var classes = opts.classes || [],
 		id = opts.id || "",
 		element = opts.element || "div",
@@ -111,8 +110,27 @@ var constructChair = function(orientation, additionalClasses) {
 }
 
 var constructFloor = function(orientation) {
-	var wrapper = html({classes: ['container'], id: orientation + "_floor_test"});
-	wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['contents']}));
+	var wrapper = html({classes: ['container'], id: orientation + "_floor_test"}),
+		contents = html({classes: ['contents']}),
+		facade = html({classes: ['facade']});
+
+	facade.insertAdjacentHTML('beforeend', html({serialize: true, element: "svg"}));
+
+	contents.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['rooms']}));
+	contents.insertAdjacentHTML('beforeend', serializeDOM(facade));
+
+	wrapper.insertAdjacentHTML('beforeend', serializeDOM(contents));
+	return wrapper;
+}
+
+var constructRoom = function(additionalClasses, sides) {
+	additionalClasses = additionalClasses || [];
+	sides = sides || ['top', 'right', 'bottom', 'left'];
+
+	var wrapper = html({classes: ['room', additionalClasses.join(" ")]});
+	sides.forEach(function(side) {
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['side', side + '-side']}));
+	});
 	return wrapper;
 }
 
@@ -149,22 +167,12 @@ window.onload = function() {
 	buildingContainer = d.querySelector("#test_building");
 
 	Object.keys(floors).forEach(function(floor) {
-		console.log(floor);
-		console.log(floors[floor]);
-		// needed constructs: 
-		// - create a div
-		// - append to a div
-		// perhaps I'll build out the most nested elements first, and then append them higher and higher
-		// perhaps I should consider using a templating system with some sort of handlebars construct?
-		// 
-		// the problem here is that i need references to each level as i move up and down through the tree
-		
 		var floorEl = constructFloor(floor);
+		floors[floor].rooms.forEach(function(room) {
+			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom()));
+			console.log(room);
+		});
 
-		buildingContainer.insertAdjacentHTML('beforeend', serializeDOM(floorEl)); // this needs to happen at the end for performance sake
+		buildingContainer.insertAdjacentHTML('beforeend', serializeDOM(floorEl));
 	});
-
-	console.log("creating chair");
-	var test = constructChair('right');
-	console.log(test);
 }
