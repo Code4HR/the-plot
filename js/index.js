@@ -19,47 +19,56 @@ var floors = {
 						identifier: 'work_room_1',
 						hoverable: true,
 						walls: ['top', 'left'],
-						contents: { 
-							tables: [
-								{
+						contents: [
+							{
+								type: 'table',
+								options: {
 									addedClasses: [],
 									leftChairs: 2,
 									rightChairs: 2,
 									frontChairs: 0,
 									backChairs: 0
 								}
-							]
-						}
+							}
+						]
 					},
 					{
 						identifier: 'work_room_2',
 						hoverable: true,
 						walls: ['top', 'left'],
-						contents: {
-							couches: [
-								{
+						contents: [
+							{
+								type: 'couch',
+								options: {
 									addedClasses: ['couch_1']
-								},
-								{
+								}
+							},
+							{
+								type: 'couch',
+								options: {
 									addedClasses: ['couch_2']
 								}
-							]
-						}
+							}
+						]
 					},
 					{
 						identifier: 'work_room_3',
 						hoverable: true,
 						walls: ['bottom', 'right'],
-						contents: {
-							couches: [
-								{
+						contents: [
+							{
+								type: 'couch',
+								options: {
 									addedClasses: ['couch_1']
-								},
-								{
+								}
+							},
+							{
+								type: 'couch',
+								options: {
 									addedClasses: ['couch_2']
 								}
-							]
-						}
+							}
+						]
 					},
 					{
 						identifier: 'storage_room_1',
@@ -97,6 +106,17 @@ var html = function(opts) {
 		return serializeDOM(el);
 	}
 	return el;
+}
+
+var itemConstructors = {
+	table: function() {
+		var wrapper = html({classes: ['test']});
+		return wrapper;
+	},
+	couch: function() {
+		var wrapper = html({classes: ['test']});
+		return wrapper;
+	}
 }
 
 // these functions all return the DOM element
@@ -158,6 +178,12 @@ var constructSubRoom = function(opts) {
 	opts.walls.forEach(function(wall) {
 		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: [wall + "_wall"]}));
 	});
+
+	if(opts.contents) {
+		opts.contents.forEach(function(item) {
+			wrapper.insertAdjacentHTML('beforeend', serializeDOM(itemConstructors[item.type](item.options)));
+		});
+	}
 
 	return wrapper;
 }
