@@ -347,16 +347,16 @@
 #top_floor .conference_room .chair_right_facing {
   right: 102%;
 }
-#top_floor .conference_room .chair_1, #top_floor .conference_room .chair_5 {
+#top_floor .conference_room .chair_0, #top_floor .conference_room .chair_4 {
   top: 5%;
 }
-#top_floor .conference_room .chair_2, #top_floor .conference_room .chair_6 {
+#top_floor .conference_room .chair_1, #top_floor .conference_room .chair_5 {
   top: 28%;
 }
-#top_floor .conference_room .chair_3, #top_floor .conference_room .chair_7 {
+#top_floor .conference_room .chair_2, #top_floor .conference_room .chair_6 {
   top: 51%;
 }
-#top_floor .conference_room .chair_4, #top_floor .conference_room .chair_8 {
+#top_floor .conference_room .chair_3, #top_floor .conference_room .chair_7 {
   top: 75%;
 }
 #top_floor #conference_room_number {
@@ -377,10 +377,10 @@
   bottom: 0;
   left: 37%;
 }
-#top_floor .work_room_1 .chair_1, #top_floor .work_room_1 .chair_3 {
+#top_floor .work_room_1 .chair_0, #top_floor .work_room_1 .chair_2 {
   top: 5%;
 }
-#top_floor .work_room_1 .chair_2, #top_floor .work_room_1 .chair_4 {
+#top_floor .work_room_1 .chair_1, #top_floor .work_room_1 .chair_3 {
   top: 50%;
 }
 #top_floor #work_room_1_number {

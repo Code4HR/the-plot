@@ -11,6 +11,12 @@ var d = document,
 
 var floors = {
 	"top": {
+		numbers: [
+			"work_room_1",
+			"work_room_2",
+			"work_room_3",
+			"conference_room"
+		],
 		rooms: [ //usually just one for a floor
 			{
 				addedClasses: [],
@@ -75,6 +81,36 @@ var floors = {
 					{
 						identifier: 'storage_room_1',
 						walls: ['bottom', 'right']
+					},
+					{
+						identifier: 'storage_room_2',
+						walls: ['bottom', 'right']
+					},
+					{
+						identifier: 'storage_room_3',
+						walls: ['bottom', 'right', 'left']
+					},
+					{
+						identifier: 'storage_room_4',
+						walls: ['bottom', 'right']
+					},
+					{
+						identifier: 'conference_room',
+						hoverable: true,
+						walls: ['right'],
+						contents: [
+							{
+								type: 'table',
+								options: {
+									chairs: {
+										left: 4,
+										right: 4,
+										front: 0,
+										back: 0
+									}
+								}
+							}
+						]
 					}
 				]
 			}
@@ -110,29 +146,41 @@ var html = function(opts) {
 	return el;
 }
 
+var insertSeries = function(el, items) {
+	items.forEach(function(item) {
+		el.insertAdjacentHTML('beforeend', html({serialize: true, classes: item.classes}));
+	});
+	return el;
+}
+
 var itemConstructors = {
 	chair: function(orientation, additionalClasses) {
 		additionalClasses = additionalClasses || [];
 
 		var wrapper = html({classes: ['chair', 'chair_' + orientation + '_facing', additionalClasses.join(" ")]});
 
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_seat']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_back']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_tl']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_tr']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_bl']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_br']}));
+		insertSeries(wrapper, [
+			{classes: ['chair_seat']},
+			{classes: ['chair_back']},
+			{classes: ['chair_leg_tl']},
+			{classes: ['chair_leg_tr']},
+			{classes: ['chair_leg_bl']},
+			{classes: ['chair_leg_br']}
+		]);
+
 		return wrapper;
 	},
 	table: function(opts) {
 		var addedClasses = opts.addedClasses || [],
 			wrapper = html({classes: ['table', addedClasses.join(" ")]});
 
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_surface']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_tl']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_tr']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_bl']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_br']}));
+		insertSeries(wrapper, [
+			{classes: ['table_surface']},
+			{classes: ['table_leg_tl']},
+			{classes: ['table_leg_tr']},
+			{classes: ['table_leg_bl']},
+			{classes: ['table_leg_br']}
+		]);
 
 		var chairCount = 0;
 
@@ -148,23 +196,39 @@ var itemConstructors = {
 		var addedClasses = opts.addedClasses || [],
 			wrapper = html({classes: ['couch', addedClasses.join(" ")]});
 
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['back']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['floor']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step', 'step_1']}));
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step', 'step_2']}));
+		insertSeries(wrapper, [
+			{classes: ['back']},
+			{classes: ['floor']},
+			{classes: ['step', 'step_1']},
+			{classes: ['step', 'step_2']}
+		]);
 
-		wrapper.querySelector('.step_1').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_1_vertical']}));
-		wrapper.querySelector('.step_1').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_1_horizontal']}));
+		insertSeries(wrapper.querySelector('.step_1'), [
+			{classes: ['step_1_vertical']},
+			{classes: ['step_1_horizontal']}
+		]);
 
-		wrapper.querySelector('.step_2').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_2_vertical']}));
-		wrapper.querySelector('.step_2').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_1_horizontal']}));
+		insertSeries(wrapper.querySelector('.step_2'), [
+			{classes: ['step_2_vertical']},
+			{classes: ['step_2_horizontal']}
+		]);
+
+		return wrapper;
+	},
+	number: function(opts) {
+		var wrapper = html({classes: ['number'], id: opts.id + "_number"});
+
+		insertSeries(wrapper, [
+			{classes: ['detail']},
+			{classes: ['circle']}
+		]);
 
 		return wrapper;
 	}
 }
 
 var constructFloor = function(orientation) {
-	var wrapper = html({classes: ['container'], id: orientation + "_floor_test"}),
+	var wrapper = html({classes: ['container'], id: orientation + "_floor"}),
 		contents = html({classes: ['contents']}),
 		facade = html({classes: ['facade']});
 
@@ -218,6 +282,26 @@ var constructSubRoom = function(opts) {
 }
 
 window.onload = function() {
+	buildingContainer = d.querySelector(".building");
+
+	Object.keys(floors).forEach(function(floor) {
+		var floorEl = constructFloor(floor);
+		floors[floor].rooms.forEach(function(room, roomIndex) {
+			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom(["wrapper_room_" + roomIndex])));
+			var roomEl = floorEl.querySelector(".wrapper_room_" + roomIndex);
+
+			room.subRooms.forEach(function(subRoom) {
+				roomEl.insertAdjacentHTML('beforeend', serializeDOM(constructSubRoom(subRoom)));
+			});
+		});
+
+		floors[floor].numbers.forEach(function(number) {
+			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(itemConstructors.number({id: number})));
+		});
+
+		buildingContainer.insertAdjacentHTML('afterbegin', serializeDOM(floorEl));
+	});
+
 	['top', 'second', 'third', 'fourth'].forEach(function(floor) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "img/" + floor + "_floor.svg");
@@ -245,21 +329,5 @@ window.onload = function() {
 			var el = d.getElementById(e.target.getAttribute("data-number"));
 			el.className = el.className.replace( new RegExp('(?:^|\\s)hover(?!\\S)'), '' );
 		}
-	});
-
-	buildingContainer = d.querySelector("#test_building");
-
-	Object.keys(floors).forEach(function(floor) {
-		var floorEl = constructFloor(floor);
-		floors[floor].rooms.forEach(function(room, roomIndex) {
-			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom(["top_level_room_" + roomIndex])));
-			var roomEl = floorEl.querySelector(".top_level_room_" + roomIndex);
-
-			room.subRooms.forEach(function(subRoom) {
-				roomEl.insertAdjacentHTML('beforeend', serializeDOM(constructSubRoom(subRoom)));
-			});
-		});
-
-		buildingContainer.insertAdjacentHTML('beforeend', serializeDOM(floorEl));
 	});
 }
