@@ -24,10 +24,12 @@ var floors = {
 								type: 'table',
 								options: {
 									addedClasses: [],
-									leftChairs: 2,
-									rightChairs: 2,
-									frontChairs: 0,
-									backChairs: 0
+									chairs: {
+										left: 2,
+										right: 2,
+										front: 0,
+										back: 0
+									}
 								}
 							}
 						]
@@ -109,29 +111,56 @@ var html = function(opts) {
 }
 
 var itemConstructors = {
-	table: function() {
-		var wrapper = html({classes: ['test']});
+	chair: function(orientation, additionalClasses) {
+		additionalClasses = additionalClasses || [];
+
+		var wrapper = html({classes: ['chair', 'chair_' + orientation + '_facing', additionalClasses.join(" ")]});
+
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_seat']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_back']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_tl']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_tr']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_bl']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_br']}));
 		return wrapper;
 	},
-	couch: function() {
-		var wrapper = html({classes: ['test']});
+	table: function(opts) {
+		var addedClasses = opts.addedClasses || [],
+			wrapper = html({classes: ['table', addedClasses.join(" ")]});
+
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_surface']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_tl']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_tr']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_bl']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['table_leg_br']}));
+
+		var chairCount = 0;
+
+		Object.keys(opts.chairs).forEach(function(chairSide) {
+			for(var i=0; i<opts.chairs[chairSide]; i++) {
+				wrapper.insertAdjacentHTML('beforeend', serializeDOM(this.chair(chairSide, ["chair_" + chairCount])));
+				chairCount++;
+			}
+		}.bind(this));
+		return wrapper;
+	},
+	couch: function(opts) {
+		var addedClasses = opts.addedClasses || [],
+			wrapper = html({classes: ['couch', addedClasses.join(" ")]});
+
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['back']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['floor']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step', 'step_1']}));
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step', 'step_2']}));
+
+		wrapper.querySelector('.step_1').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_1_vertical']}));
+		wrapper.querySelector('.step_1').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_1_horizontal']}));
+
+		wrapper.querySelector('.step_2').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_2_vertical']}));
+		wrapper.querySelector('.step_2').insertAdjacentHTML('beforeend', html({serialize: true, classes: ['step_1_horizontal']}));
+
 		return wrapper;
 	}
-}
-
-// these functions all return the DOM element
-var constructChair = function(orientation, additionalClasses) {
-	additionalClasses = additionalClasses || [];
-
-	var wrapper = html({classes: ['chair', 'chair_' + orientation + '_facing', additionalClasses.join(" ")]});
-
-	wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_seat']}));
-	wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_back']}));
-	wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_tl']}));
-	wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_tr']}));
-	wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_bl']}));
-	wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['chair_leg_br']}));
-	return wrapper;
 }
 
 var constructFloor = function(orientation) {
