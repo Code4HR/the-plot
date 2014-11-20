@@ -16,7 +16,7 @@ var floors = {
 				addedClasses: [],
 				subRooms: [
 					{
-						addedClasses: ["work_room_1"],
+						identifier: 'work_room_1',
 						hoverable: true,
 						walls: ['top', 'left'],
 						contents: { 
@@ -32,7 +32,7 @@ var floors = {
 						}
 					},
 					{
-						addedClasses: ['work_room_2'],
+						identifier: 'work_room_2',
 						hoverable: true,
 						walls: ['top', 'left'],
 						contents: {
@@ -47,7 +47,7 @@ var floors = {
 						}
 					},
 					{
-						addedClasses: ['work_room_3'],
+						identifier: 'work_room_3',
 						hoverable: true,
 						walls: ['bottom', 'right'],
 						contents: {
@@ -62,7 +62,7 @@ var floors = {
 						}
 					},
 					{
-						addedClasses: ['storage_room_1'],
+						identifier: 'storage_room_1',
 						walls: ['bottom', 'right']
 					}
 				]
@@ -83,10 +83,15 @@ var html = function(opts) {
 		id = opts.id || "",
 		element = opts.element || "div",
 		serialize = opts.serialize || false,
+		attributes = opts.attributes || [],
 		el = d.createElement(element);
 	
 	el.className = classes.join(" ");
 	el.setAttribute("id", id);
+
+	attributes.forEach(function(attribute) {
+		el.setAttribute(attribute.name, attribute.value);
+	});
 
 	if(serialize) {
 		return serializeDOM(el);
@@ -134,6 +139,29 @@ var constructRoom = function(additionalClasses, sides) {
 	return wrapper;
 }
 
+var constructSubRoom = function(opts) {
+	var additionalClasses = opts.addedClasses ? [opts.addedClasses, opts.identifier] : [opts.identifier],
+		wrapper = html({classes: additionalClasses});
+
+	if(opts.hoverable === true) {
+		wrapper.insertAdjacentHTML('beforeend', html(
+			{
+				classes: ['ground'], 
+				serialize: true,
+				attributes: [{
+					name: 'data-number', 
+					value: opts.identifier + "_number"
+				}]
+			}));
+	}
+
+	opts.walls.forEach(function(wall) {
+		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: [wall + "_wall"]}));
+	});
+
+	return wrapper;
+}
+
 window.onload = function() {
 	['top', 'second', 'third', 'fourth'].forEach(function(floor) {
 		var xhr = new XMLHttpRequest();
@@ -168,9 +196,13 @@ window.onload = function() {
 
 	Object.keys(floors).forEach(function(floor) {
 		var floorEl = constructFloor(floor);
-		floors[floor].rooms.forEach(function(room) {
-			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom()));
-			console.log(room);
+		floors[floor].rooms.forEach(function(room, roomIndex) {
+			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom(["top_level_room_" + roomIndex])));
+			var roomEl = floorEl.querySelector(".top_level_room_" + roomIndex);
+
+			room.subRooms.forEach(function(subRoom) {
+				roomEl.insertAdjacentHTML('beforeend', serializeDOM(constructSubRoom(subRoom)));
+			});
 		});
 
 		buildingContainer.insertAdjacentHTML('beforeend', serializeDOM(floorEl));
