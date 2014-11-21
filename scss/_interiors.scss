@@ -312,7 +312,7 @@
 		left: 17%;
 		top: 15%;
 	}
-	#erics_office_number {
+	#eric_office_number {
 		left: 30.5%;
 		top: 18%;
 	}
@@ -539,11 +539,17 @@
 		}
 	}
 	.room_3 {
+		> .top-side {
+			display: none;
+		}
 		@include size(8%, 14%);
 		top: 86%;
 		left: 32%;
 	}
 	.room_4 {
+		> .top-side {
+			display: none;
+		}
 		@include size(5%, 65%);
 		top: 43%;;
 		left: 40%;
@@ -571,6 +577,9 @@
 		}
 	}
 	.room_5 {
+		> .top-side {
+			display: none;
+		}
 		@include size(20%, 65%);
 		left: 45%;
 		top: 43%;
@@ -626,6 +635,9 @@
 		}
 	}
 	.room_6 {
+		> .top-side {
+			display: none;
+		}
 		@include size(16%, 65%);
 		left: 65%;
 		top: 43%;

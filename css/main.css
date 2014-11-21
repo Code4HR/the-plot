@@ -729,7 +729,7 @@
   left: 17%;
   top: 15%;
 }
-#fourth_floor #erics_office_number {
+#fourth_floor #eric_office_number {
   left: 30.5%;
   top: 18%;
 }
@@ -989,11 +989,17 @@
   top: 86%;
   left: 32%;
 }
+#fourth_floor .room_3 > .top-side {
+  display: none;
+}
 #fourth_floor .room_4 {
   width: 5%;
   height: 65%;
   top: 43%;
   left: 40%;
+}
+#fourth_floor .room_4 > .top-side {
+  display: none;
 }
 #fourth_floor .room_4 .room {
   width: 100%;
@@ -1024,6 +1030,9 @@
   height: 65%;
   left: 45%;
   top: 43%;
+}
+#fourth_floor .room_5 > .top-side {
+  display: none;
 }
 #fourth_floor .room_5 > .divider {
   width: 100%;
@@ -1087,6 +1096,9 @@
   height: 65%;
   left: 65%;
   top: 43%;
+}
+#fourth_floor .room_6 > .top-side {
+  display: none;
 }
 #fourth_floor .room_6 .table {
   width: 60%;
