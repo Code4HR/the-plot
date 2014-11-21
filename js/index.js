@@ -19,7 +19,6 @@ var floors = {
 		],
 		rooms: [
 			{
-				addedClasses: [],
 				subRooms: [
 					{
 						identifier: 'work_room_1',
@@ -32,9 +31,7 @@ var floors = {
 									addedClasses: [],
 									chairs: {
 										left: 2,
-										right: 2,
-										front: 0,
-										back: 0
+										right: 2
 									}
 								}
 							}
@@ -104,9 +101,7 @@ var floors = {
 								options: {
 									chairs: {
 										left: 4,
-										right: 4,
-										front: 0,
-										back: 0
+										right: 4
 									}
 								}
 							}
@@ -145,9 +140,7 @@ var floors = {
 									addedClasses: ['table_1'],
 									chairs: {
 										front: 1,
-										back: 1,
-										left: 0,
-										right: 0
+										back: 1
 									},
 									umbrella: true
 								}
@@ -158,9 +151,7 @@ var floors = {
 									addedClasses: ['table_2'],
 									chairs: {
 										front: 1,
-										back: 1,
-										left: 0,
-										right: 0
+										back: 1
 									},
 									umbrella: true
 								}
@@ -177,9 +168,7 @@ var floors = {
 						options: {
 							chairs: {
 								front: 5,
-								back: 5,
-								left: 0,
-								right: 0
+								back: 5
 							}
 						}
 					},
@@ -226,6 +215,134 @@ var floors = {
 							value: 'kitchen_number'
 						}]
 					}));
+				}
+			}
+		]
+	},
+	"third": {
+		numbers: ['mezzanine'],
+		rooms: [
+			{
+				subRooms: [
+					{
+						identifier: 'stairs',
+						walls: [],
+						contents: [
+							{
+								type: 'step',
+								options: {
+									addedClasses: ['step_large', 'step_1']
+								}
+							},
+							{
+								type: 'step',
+								options: {
+									addedClasses: ['step_large', 'step_2']
+								}
+							},
+							{
+								type: 'step',
+								options: {
+									addedClasses: ['step_small', 'step_1']
+								}
+							},
+							{
+								type: 'step',
+								options: {
+									addedClasses: ['step_small', 'step_2']
+								}
+							},
+							{
+								type: 'step',
+								options: {
+									addedClasses: ['step_small', 'step_3']
+								}
+							},
+							{
+								type: 'step',
+								options: {
+									addedClasses: ['step_small', 'step_4']
+								}
+							},
+						],
+						edits: function(el) {
+							el.insertAdjacentHTML('afterbegin', html({serialize: true, classes: ['floor']}));
+						}
+					}
+				],
+				contents: [
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_1'],
+							chairs: {
+								left: 3
+							}
+						}
+					},
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_2'],
+							chairs: {
+								right: 2
+							}
+						}
+					},
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_3'],
+							chairs: {
+								left: 2
+							}
+						}
+					},
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_4'],
+							chairs: {
+								right: 2
+							}
+						}
+					},
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_5'],
+							chairs: {
+								left: 2
+							}
+						}
+					},
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_6'],
+							chairs: {
+								right: 2
+							}
+						}
+					},
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_7'],
+							chairs: {
+								left: 2
+							}
+						}
+					},
+					{
+						type: 'table',
+						options: {
+							addedClasses: ['table_8']
+						}
+					}
+				],
+				edits: function(el) {
+					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground'], attributes: [{name: 'data-number', value: 'mezzanine_number'}]}));
 				}
 			}
 		]
@@ -297,12 +414,14 @@ var itemConstructors = {
 
 		var chairCount = 0;
 
-		Object.keys(opts.chairs).forEach(function(chairSide) {
-			for(var i=0; i<opts.chairs[chairSide]; i++) {
-				wrapper.insertAdjacentHTML('beforeend', serializeDOM(this.chair(chairSide, ["chair_" + chairCount])));
-				chairCount++;
-			}
-		}.bind(this));
+		if(opts.chairs) {
+			Object.keys(opts.chairs).forEach(function(chairSide) {
+				for(var i=0; i<opts.chairs[chairSide]; i++) {
+					wrapper.insertAdjacentHTML('beforeend', serializeDOM(this.chair(chairSide, ["chair_" + chairCount])));
+					chairCount++;
+				}
+			}.bind(this));
+		}
 
 		if(opts.umbrella === true) {
 			wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['umbrella']}));
@@ -457,7 +576,7 @@ window.onload = function() {
 			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(itemConstructors.number({id: number})));
 		});
 
-		buildingContainer.insertAdjacentHTML('afterbegin', serializeDOM(floorEl));
+		buildingContainer.insertAdjacentHTML('beforeend', serializeDOM(floorEl));
 	});
 
 	['top', 'second', 'third', 'fourth'].forEach(function(floor) {

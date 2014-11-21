@@ -496,19 +496,19 @@
   width: 33%;
   height: 22%;
 }
-#second_floor .table .chair_1, #second_floor .table .chair_6 {
+#second_floor .table .chair_0, #second_floor .table .chair_5 {
   left: 9%;
 }
-#second_floor .table .chair_2, #second_floor .table .chair_7 {
+#second_floor .table .chair_1, #second_floor .table .chair_6 {
   left: 28%;
 }
-#second_floor .table .chair_3, #second_floor .table .chair_8 {
+#second_floor .table .chair_2, #second_floor .table .chair_7 {
   left: 48%;
 }
-#second_floor .table .chair_4, #second_floor .table .chair_9 {
+#second_floor .table .chair_3, #second_floor .table .chair_8 {
   left: 67%;
 }
-#second_floor .table .chair_5, #second_floor .table .chair_10 {
+#second_floor .table .chair_4, #second_floor .table .chair_9 {
   left: 86%;
 }
 #second_floor .couch_1 {
@@ -678,23 +678,23 @@
   width: 6%;
   height: 100%;
 }
-#third_floor .contents .table_1 .chair_1 {
+#third_floor .contents .table_1 .chair_0 {
   top: 30%;
 }
-#third_floor .contents .table_1 .chair_2 {
+#third_floor .contents .table_1 .chair_1 {
   top: 50%;
 }
-#third_floor .contents .table_1 .chair_3 {
+#third_floor .contents .table_1 .chair_2 {
   top: 80%;
 }
 #third_floor .contents .table_2, #third_floor .contents .table_3, #third_floor .contents .table_4, #third_floor .contents .table_5, #third_floor .contents .table_6, #third_floor .contents .table_7 {
   width: 7%;
   height: 55%;
 }
-#third_floor .contents .table_2 .chair_1, #third_floor .contents .table_3 .chair_1, #third_floor .contents .table_4 .chair_1, #third_floor .contents .table_5 .chair_1, #third_floor .contents .table_6 .chair_1, #third_floor .contents .table_7 .chair_1 {
+#third_floor .contents .table_2 .chair_0, #third_floor .contents .table_3 .chair_0, #third_floor .contents .table_4 .chair_0, #third_floor .contents .table_5 .chair_0, #third_floor .contents .table_6 .chair_0, #third_floor .contents .table_7 .chair_0 {
   top: 15%;
 }
-#third_floor .contents .table_2 .chair_2, #third_floor .contents .table_3 .chair_2, #third_floor .contents .table_4 .chair_2, #third_floor .contents .table_5 .chair_2, #third_floor .contents .table_6 .chair_2, #third_floor .contents .table_7 .chair_2 {
+#third_floor .contents .table_2 .chair_1, #third_floor .contents .table_3 .chair_1, #third_floor .contents .table_4 .chair_1, #third_floor .contents .table_5 .chair_1, #third_floor .contents .table_6 .chair_1, #third_floor .contents .table_7 .chair_1 {
   top: 60%;
 }
 #third_floor .contents .table_2 {
