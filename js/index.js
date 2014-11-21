@@ -28,7 +28,6 @@ var floors = {
 							{
 								type: 'table',
 								options: {
-									addedClasses: [],
 									chairs: {
 										left: 2,
 										right: 2
@@ -44,15 +43,11 @@ var floors = {
 						contents: [
 							{
 								type: 'couch',
-								options: {
-									addedClasses: ['couch_1']
-								}
+								options: { addedClasses: ['couch_1'] }
 							},
 							{
 								type: 'couch',
-								options: {
-									addedClasses: ['couch_2']
-								}
+								options: { addedClasses: ['couch_2'] }
 							}
 						]
 					},
@@ -63,15 +58,11 @@ var floors = {
 						contents: [
 							{
 								type: 'couch',
-								options: {
-									addedClasses: ['couch_1']
-								}
+								options: { addedClasses: ['couch_1'] }
 							},
 							{
 								type: 'couch',
-								options: {
-									addedClasses: ['couch_2']
-								}
+								options: { addedClasses: ['couch_2'] }
 							}
 						]
 					},
@@ -132,7 +123,6 @@ var floors = {
 					{
 						identifier: 'deck',
 						hoverable: true,
-						walls: [],
 						contents: [
 							{
 								type: "table",
@@ -174,27 +164,19 @@ var floors = {
 					},
 					{
 						type: 'couch',
-						options: {
-							addedClasses: ['couch_1']
-						}
+						options: { addedClasses: ['couch_1'] }
 					},
 					{
 						type: 'couch',
-						options: {
-							addedClasses: ['couch_2']
-						}
+						options: { addedClasses: ['couch_2'] }
 					},
 					{
 						type: 'couch',
-						options: {
-							addedClasses: ['couch_3']
-						}
+						options: { addedClasses: ['couch_3'] }
 					},
 					{
 						type: 'step',
-						options: {
-							addedClasses: ['counter']
-						}
+						options: { addedClasses: ['counter'] }
 					}
 				],
 				edits: function(el) {
@@ -226,43 +208,30 @@ var floors = {
 				subRooms: [
 					{
 						identifier: 'stairs',
-						walls: [],
 						contents: [
 							{
 								type: 'step',
-								options: {
-									addedClasses: ['step_large', 'step_1']
-								}
+								options: { addedClasses: ['step_large', 'step_1'] }
 							},
 							{
 								type: 'step',
-								options: {
-									addedClasses: ['step_large', 'step_2']
-								}
+								options: { addedClasses: ['step_large', 'step_2'] }
 							},
 							{
 								type: 'step',
-								options: {
-									addedClasses: ['step_small', 'step_1']
-								}
+								options: { addedClasses: ['step_small', 'step_1'] }
 							},
 							{
 								type: 'step',
-								options: {
-									addedClasses: ['step_small', 'step_2']
-								}
+								options: { addedClasses: ['step_small', 'step_2'] }
 							},
 							{
 								type: 'step',
-								options: {
-									addedClasses: ['step_small', 'step_3']
-								}
+								options: { addedClasses: ['step_small', 'step_3'] }
 							},
 							{
 								type: 'step',
-								options: {
-									addedClasses: ['step_small', 'step_4']
-								}
+								options: { addedClasses: ['step_small', 'step_4'] }
 							},
 						],
 						edits: function(el) {
@@ -275,70 +244,54 @@ var floors = {
 						type: 'table',
 						options: {
 							addedClasses: ['table_1'],
-							chairs: {
-								left: 3
-							}
+							chairs: { left: 3 }
 						}
 					},
 					{
 						type: 'table',
 						options: {
 							addedClasses: ['table_2'],
-							chairs: {
-								right: 2
-							}
+							chairs: { right: 2 }
 						}
 					},
 					{
 						type: 'table',
 						options: {
 							addedClasses: ['table_3'],
-							chairs: {
-								left: 2
-							}
+							chairs: { left: 2 }
 						}
 					},
 					{
 						type: 'table',
 						options: {
 							addedClasses: ['table_4'],
-							chairs: {
-								right: 2
-							}
+							chairs: { right: 2 }
 						}
 					},
 					{
 						type: 'table',
 						options: {
 							addedClasses: ['table_5'],
-							chairs: {
-								left: 2
-							}
+							chairs: { left: 2 }
 						}
 					},
 					{
 						type: 'table',
 						options: {
 							addedClasses: ['table_6'],
-							chairs: {
-								right: 2
-							}
+							chairs: { right: 2 }
 						}
 					},
 					{
 						type: 'table',
 						options: {
 							addedClasses: ['table_7'],
-							chairs: {
-								left: 2
-							}
+							chairs: { left: 2 }
 						}
 					},
 					{
 						type: 'table',
-						options: {
-							addedClasses: ['table_8']
-						}
+						options: { addedClasses: ['table_8'] }
 					}
 				],
 				edits: function(el) {
@@ -534,9 +487,11 @@ var constructSubRoom = function(opts) {
 			}));
 	}
 
-	opts.walls.forEach(function(wall) {
-		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: [wall + "_wall"]}));
-	});
+	if(opts.walls) {
+		opts.walls.forEach(function(wall) {
+			wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: [wall + "_wall"]}));
+		});
+	}
 
 	if(opts.contents) {
 		opts.contents.forEach(function(item) {
