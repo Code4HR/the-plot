@@ -341,6 +341,9 @@
 		top: 67%;
 	}
 	.room_1 {
+		> .left-side {
+			display: none;
+		}
 		.ground_front_desk {
 			width: 4%;
 			left: 6.3%;
@@ -384,7 +387,7 @@
 			.chair_left_facing {
 				left: 96%;
 			}
-			.chair_2 {
+			.chair_1 {
 				top: 50%;
 			}
 		}
@@ -466,13 +469,13 @@
 			@include size(10%, 38%);
 			left: 67%;
 			top: 30%;
-			.chair_1, .chair_4 {
+			.chair_0, .chair_3 {
 				left: 15%;
 			}
-			.chair_2, .chair_5 {
+			.chair_1, .chair_4 {
 				left: 45%;
 			}
-			.chair_3, .chair_6 {
+			.chair_2, .chair_5 {
 				left: 75%;
 			}
 		}
@@ -497,6 +500,9 @@
 		}
 	}
 	.room_2 {
+		> .top-side {
+			display: none;
+		}
 		@include size(40%, 43%);
 		top: 43%;
 		.ground {
@@ -504,13 +510,13 @@
 		}
 		.table_1, .table_2, .table_3 {
 			@include size(8%, 73%);
-			.chair_1, .chair_4 {
+			.chair_0, .chair_3 {
 				top: 15%;
 			}
-			.chair_2, .chair_5 {
+			.chair_1, .chair_4 {
 				top: 40%;
 			}
-			.chair_3, .chair_6 {
+			.chair_2, .chair_5 {
 				top: 65%;
 			}
 		}
@@ -584,26 +590,26 @@
 			.chair {
 				top: 100%;
 			}
-			.chair_1 {
+			.chair_0 {
 				left: 12%;
 			}
-			.chair_2 {
+			.chair_1 {
 				left: 35%;
 			}
-			.chair_3 {
+			.chair_2 {
 				left: 58%;
 			}
-			.chair_4 {
+			.chair_3 {
 				left: 82%;
 			}
 		}
 		.creative_table_1, .creative_table_2 {
 			@include size(23%, 34%);
 			bottom: 0;
-			.chair_1, .chair_3 {
+			.chair_0, .chair_2 {
 				top: 10%;
 			}
-			.chair_2, .chair_4 {
+			.chair_1, .chair_3 {
 				top: 60%;
 			}
 			.divider {
@@ -626,13 +632,13 @@
 		.table {
 			@include size(60%, 22%);
 			left: 23%;
-			.chair_1, .chair_4 {
+			.chair_0, .chair_3 {
 				left: 15%;
 			}
-			.chair_2, .chair_5 {
+			.chair_1, .chair_4 {
 				left: 50%;
 			}
-			.chair_3, .chair_6 {
+			.chair_2, .chair_5 {
 				left: 85%;
 			}
 		}

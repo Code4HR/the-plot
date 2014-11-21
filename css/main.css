@@ -761,6 +761,9 @@
   width: 100%;
   height: 43%;
 }
+#fourth_floor .room_1 > .left-side {
+  display: none;
+}
 #fourth_floor .room_1 .ground_front_desk {
   width: 4%;
   left: 6.3%;
@@ -806,7 +809,7 @@
 #fourth_floor .room_1 .front_desk .chair_left_facing {
   left: 96%;
 }
-#fourth_floor .room_1 .front_desk .chair_2 {
+#fourth_floor .room_1 .front_desk .chair_1 {
   top: 50%;
 }
 #fourth_floor .room_1 .divider {
@@ -907,13 +910,13 @@
   left: 67%;
   top: 30%;
 }
-#fourth_floor .room_1 .producer_table .chair_1, #fourth_floor .room_1 .producer_table .chair_4 {
+#fourth_floor .room_1 .producer_table .chair_0, #fourth_floor .room_1 .producer_table .chair_3 {
   left: 15%;
 }
-#fourth_floor .room_1 .producer_table .chair_2, #fourth_floor .room_1 .producer_table .chair_5 {
+#fourth_floor .room_1 .producer_table .chair_1, #fourth_floor .room_1 .producer_table .chair_4 {
   left: 45%;
 }
-#fourth_floor .room_1 .producer_table .chair_3, #fourth_floor .room_1 .producer_table .chair_6 {
+#fourth_floor .room_1 .producer_table .chair_2, #fourth_floor .room_1 .producer_table .chair_5 {
   left: 75%;
 }
 #fourth_floor .room_1 .green_room_divider {
@@ -942,6 +945,9 @@
   height: 43%;
   top: 43%;
 }
+#fourth_floor .room_2 > .top-side {
+  display: none;
+}
 #fourth_floor .room_2 .ground {
   width: 60%;
 }
@@ -949,13 +955,13 @@
   width: 8%;
   height: 73%;
 }
-#fourth_floor .room_2 .table_1 .chair_1, #fourth_floor .room_2 .table_1 .chair_4, #fourth_floor .room_2 .table_2 .chair_1, #fourth_floor .room_2 .table_2 .chair_4, #fourth_floor .room_2 .table_3 .chair_1, #fourth_floor .room_2 .table_3 .chair_4 {
+#fourth_floor .room_2 .table_1 .chair_0, #fourth_floor .room_2 .table_1 .chair_3, #fourth_floor .room_2 .table_2 .chair_0, #fourth_floor .room_2 .table_2 .chair_3, #fourth_floor .room_2 .table_3 .chair_0, #fourth_floor .room_2 .table_3 .chair_3 {
   top: 15%;
 }
-#fourth_floor .room_2 .table_1 .chair_2, #fourth_floor .room_2 .table_1 .chair_5, #fourth_floor .room_2 .table_2 .chair_2, #fourth_floor .room_2 .table_2 .chair_5, #fourth_floor .room_2 .table_3 .chair_2, #fourth_floor .room_2 .table_3 .chair_5 {
+#fourth_floor .room_2 .table_1 .chair_1, #fourth_floor .room_2 .table_1 .chair_4, #fourth_floor .room_2 .table_2 .chair_1, #fourth_floor .room_2 .table_2 .chair_4, #fourth_floor .room_2 .table_3 .chair_1, #fourth_floor .room_2 .table_3 .chair_4 {
   top: 40%;
 }
-#fourth_floor .room_2 .table_1 .chair_3, #fourth_floor .room_2 .table_1 .chair_6, #fourth_floor .room_2 .table_2 .chair_3, #fourth_floor .room_2 .table_2 .chair_6, #fourth_floor .room_2 .table_3 .chair_3, #fourth_floor .room_2 .table_3 .chair_6 {
+#fourth_floor .room_2 .table_1 .chair_2, #fourth_floor .room_2 .table_1 .chair_5, #fourth_floor .room_2 .table_2 .chair_2, #fourth_floor .room_2 .table_2 .chair_5, #fourth_floor .room_2 .table_3 .chair_2, #fourth_floor .room_2 .table_3 .chair_5 {
   top: 65%;
 }
 #fourth_floor .room_2 .table_1 {
@@ -1041,16 +1047,16 @@
 #fourth_floor .room_5 .standing_desks .chair {
   top: 100%;
 }
-#fourth_floor .room_5 .standing_desks .chair_1 {
+#fourth_floor .room_5 .standing_desks .chair_0 {
   left: 12%;
 }
-#fourth_floor .room_5 .standing_desks .chair_2 {
+#fourth_floor .room_5 .standing_desks .chair_1 {
   left: 35%;
 }
-#fourth_floor .room_5 .standing_desks .chair_3 {
+#fourth_floor .room_5 .standing_desks .chair_2 {
   left: 58%;
 }
-#fourth_floor .room_5 .standing_desks .chair_4 {
+#fourth_floor .room_5 .standing_desks .chair_3 {
   left: 82%;
 }
 #fourth_floor .room_5 .creative_table_1, #fourth_floor .room_5 .creative_table_2 {
@@ -1058,10 +1064,10 @@
   height: 34%;
   bottom: 0;
 }
-#fourth_floor .room_5 .creative_table_1 .chair_1, #fourth_floor .room_5 .creative_table_1 .chair_3, #fourth_floor .room_5 .creative_table_2 .chair_1, #fourth_floor .room_5 .creative_table_2 .chair_3 {
+#fourth_floor .room_5 .creative_table_1 .chair_0, #fourth_floor .room_5 .creative_table_1 .chair_2, #fourth_floor .room_5 .creative_table_2 .chair_0, #fourth_floor .room_5 .creative_table_2 .chair_2 {
   top: 10%;
 }
-#fourth_floor .room_5 .creative_table_1 .chair_2, #fourth_floor .room_5 .creative_table_1 .chair_4, #fourth_floor .room_5 .creative_table_2 .chair_2, #fourth_floor .room_5 .creative_table_2 .chair_4 {
+#fourth_floor .room_5 .creative_table_1 .chair_1, #fourth_floor .room_5 .creative_table_1 .chair_3, #fourth_floor .room_5 .creative_table_2 .chair_1, #fourth_floor .room_5 .creative_table_2 .chair_3 {
   top: 60%;
 }
 #fourth_floor .room_5 .creative_table_1 .divider, #fourth_floor .room_5 .creative_table_2 .divider {
@@ -1087,13 +1093,13 @@
   height: 22%;
   left: 23%;
 }
-#fourth_floor .room_6 .table .chair_1, #fourth_floor .room_6 .table .chair_4 {
+#fourth_floor .room_6 .table .chair_0, #fourth_floor .room_6 .table .chair_3 {
   left: 15%;
 }
-#fourth_floor .room_6 .table .chair_2, #fourth_floor .room_6 .table .chair_5 {
+#fourth_floor .room_6 .table .chair_1, #fourth_floor .room_6 .table .chair_4 {
   left: 50%;
 }
-#fourth_floor .room_6 .table .chair_3, #fourth_floor .room_6 .table .chair_6 {
+#fourth_floor .room_6 .table .chair_2, #fourth_floor .room_6 .table .chair_5 {
   left: 85%;
 }
 #fourth_floor .room_6 .table_1 {
