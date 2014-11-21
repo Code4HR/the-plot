@@ -340,9 +340,7 @@ var floors = {
 							{
 								type: 'table',
 								options: {
-									chairs: {
-										back: 1
-									}
+									chairs: {back: 1 }
 								}
 							}
 						]
@@ -407,9 +405,7 @@ var floors = {
 							{
 								type: 'table',
 								options: {
-									chairs: {
-										back: 1
-									}
+									chairs: {back: 1 }
 								}
 							}
 						]
@@ -420,9 +416,7 @@ var floors = {
 						type: 'table',
 						options: {
 							addedClasses: ['front_desk'],
-							chairs: {
-								left: 2
-							}
+							chairs: {left: 2 }
 						}
 					},
 					{
@@ -494,9 +488,7 @@ var floors = {
 					},
 					{
 						type: 'table',
-						options: {
-							addedClasses: ['bar']
-						}
+						options: {addedClasses: ['bar'] }
 					}
 				],
 				edits: function(el) {
@@ -519,18 +511,14 @@ var floors = {
 						type: 'table',
 						options: {
 							addedClasses: ['office_desk_1'],
-							chairs: {
-								back: 1
-							}
+							chairs: {back: 1 }
 						}
 					},
 					{
 						type: 'table',
 						options: {
 							addedClasses: ['office_desk_2'],
-							chairs: {
-								front: 1
-							}
+							chairs: {front: 1 }
 						}
 					}
 				]
@@ -542,9 +530,7 @@ var floors = {
 						type: 'table',
 						options: {
 							addedClasses: ['standing_desks'],
-							chairs: {
-								back: 4
-							}
+							chairs: {back: 4 }
 						}
 					},
 					{
@@ -817,10 +803,12 @@ window.onload = function() {
 		var floorEl = constructFloor(floor);
 		floors[floor].rooms.forEach(function(room, roomIndex) {
 			var addedClasses = room.addedClasses || [];
+
 			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom({
 					additionalClasses: ["wrapper_room_" + roomIndex, addedClasses.join(" ")],
 					contents: room.contents
 				})));
+
 			var roomEl = floorEl.querySelector(".wrapper_room_" + roomIndex);
 
 			if(room.subRooms) {
@@ -829,9 +817,7 @@ window.onload = function() {
 				});
 			}
 
-			if(room.edits) {
-				room.edits(roomEl);
-			}
+			if(room.edits) {room.edits(roomEl); }
 		});
 
 		floors[floor].numbers.forEach(function(number) {
@@ -839,6 +825,11 @@ window.onload = function() {
 		});
 
 		buildingContainer.insertAdjacentHTML('beforeend', serializeDOM(floorEl));
+	});
+
+	// for demo purposes:
+	[].forEach.call(d.querySelectorAll('.number'), function(el) {
+		el.querySelector('.circle').innerHTML = Math.round(Math.random() * 10) + 1;
 	});
 
 	['top', 'second', 'third', 'fourth'].forEach(function(floor) {
