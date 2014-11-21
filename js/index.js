@@ -17,7 +17,7 @@ var floors = {
 			"work_room_3",
 			"conference_room"
 		],
-		rooms: [ //usually just one for a floor
+		rooms: [
 			{
 				addedClasses: [],
 				subRooms: [
@@ -115,6 +115,120 @@ var floors = {
 				]
 			}
 		]
+	},
+	"second": {
+		numbers: [
+			"deck",
+			"couches",
+			"kitchen"
+		],
+		rooms: [
+			{
+				addedClasses: [],
+				subRooms: [
+					{
+						identifier: "bathroom",
+						walls: ['left', 'right', 'bottom']
+					},
+					{
+						identifier: "closet",
+						walls: ['right', 'bottom']
+					},
+					{
+						identifier: 'deck',
+						hoverable: true,
+						walls: [],
+						contents: [
+							{
+								type: "table",
+								options: {
+									addedClasses: ['table_1'],
+									chairs: {
+										front: 1,
+										back: 1,
+										left: 0,
+										right: 0
+									},
+									umbrella: true
+								}
+							},
+							{
+								type: "table",
+								options: {
+									addedClasses: ['table_2'],
+									chairs: {
+										front: 1,
+										back: 1,
+										left: 0,
+										right: 0
+									},
+									umbrella: true
+								}
+							}
+						],
+						edits: function(el) {
+							el.querySelector(".ground").insertAdjacentHTML('afterend', html({serialize: true, classes: ['floor']}));
+						}
+					}
+				],
+				contents: [
+					{
+						type: "table",
+						options: {
+							chairs: {
+								front: 5,
+								back: 5,
+								left: 0,
+								right: 0
+							}
+						}
+					},
+					{
+						type: 'couch',
+						options: {
+							addedClasses: ['couch_1']
+						}
+					},
+					{
+						type: 'couch',
+						options: {
+							addedClasses: ['couch_2']
+						}
+					},
+					{
+						type: 'couch',
+						options: {
+							addedClasses: ['couch_3']
+						}
+					},
+					{
+						type: 'step',
+						options: {
+							addedClasses: ['counter']
+						}
+					}
+				],
+				edits: function(el) {
+					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({
+						serialize: true, 
+						classes: ['ground', 'ground_couches'], 
+						attributes: [{
+							name: 'data-number', 
+							value: 'couches_number'
+						}]
+					}));
+
+					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({
+						serialize: true, 
+						classes: ['ground', 'ground_kitchen'], 
+						attributes: [{
+							name: 'data-number', 
+							value: 'kitchen_number'
+						}]
+					}));
+				}
+			}
+		]
 	}
 }
 
@@ -125,7 +239,6 @@ var serializeDOM = function(el) {
 }
 
 var html = function(opts) {
-	// perhaps this should deal just with string manipulation if i'm only trying to get the HTML as a string, for performance's sake
 	var classes = opts.classes || [],
 		id = opts.id || "",
 		element = opts.element || "div",
@@ -190,6 +303,22 @@ var itemConstructors = {
 				chairCount++;
 			}
 		}.bind(this));
+
+		if(opts.umbrella === true) {
+			wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['umbrella']}));
+			insertSeries(wrapper.querySelector('.umbrella'), [
+				{classes: ['pole']},
+				{classes: ['triangle', 'triangle_1']},
+				{classes: ['triangle', 'triangle_2']},
+				{classes: ['triangle', 'triangle_3']},
+				{classes: ['triangle', 'triangle_4']},
+				{classes: ['triangle', 'triangle_5']},
+				{classes: ['triangle', 'triangle_6']},
+				{classes: ['triangle', 'triangle_7']},
+				{classes: ['triangle', 'triangle_8']}
+			]);
+		}
+
 		return wrapper;
 	},
 	couch: function(opts) {
@@ -211,6 +340,17 @@ var itemConstructors = {
 		insertSeries(wrapper.querySelector('.step_2'), [
 			{classes: ['step_2_vertical']},
 			{classes: ['step_2_horizontal']}
+		]);
+
+		return wrapper;
+	},
+	step: function(opts) {
+		var addedClasses = opts.addedClasses || [],
+			wrapper = html({classes: ['step', addedClasses.join(" ")]});
+
+		insertSeries(wrapper, [
+			{classes: ['vertical']},
+			{classes: ['horizontal']},
 		]);
 
 		return wrapper;
@@ -241,14 +381,21 @@ var constructFloor = function(orientation) {
 	return wrapper;
 }
 
-var constructRoom = function(additionalClasses, sides) {
-	additionalClasses = additionalClasses || [];
-	sides = sides || ['top', 'right', 'bottom', 'left'];
+var constructRoom = function(opts) {
+	var additionalClasses = opts.additionalClasses || [],
+		sides = opts.sides || ['top', 'right', 'bottom', 'left'],
+		wrapper = html({classes: ['room', additionalClasses.join(" ")]});
 
-	var wrapper = html({classes: ['room', additionalClasses.join(" ")]});
 	sides.forEach(function(side) {
 		wrapper.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['side', side + '-side']}));
 	});
+
+	if(opts.contents) {
+		opts.contents.forEach(function(item) {
+			wrapper.insertAdjacentHTML('beforeend', serializeDOM(itemConstructors[item.type](item.options)));
+		});
+	}
+
 	return wrapper;
 }
 
@@ -278,6 +425,10 @@ var constructSubRoom = function(opts) {
 		});
 	}
 
+	if(opts.edits) {
+		opts.edits(wrapper);
+	}
+
 	return wrapper;
 }
 
@@ -287,12 +438,19 @@ window.onload = function() {
 	Object.keys(floors).forEach(function(floor) {
 		var floorEl = constructFloor(floor);
 		floors[floor].rooms.forEach(function(room, roomIndex) {
-			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom(["wrapper_room_" + roomIndex])));
+			floorEl.querySelector('.rooms').insertAdjacentHTML('beforeend', serializeDOM(constructRoom({
+					additionalClasses: ["wrapper_room_" + roomIndex],
+					contents: room.contents
+				})));
 			var roomEl = floorEl.querySelector(".wrapper_room_" + roomIndex);
 
 			room.subRooms.forEach(function(subRoom) {
 				roomEl.insertAdjacentHTML('beforeend', serializeDOM(constructSubRoom(subRoom)));
 			});
+
+			if(room.edits) {
+				room.edits(roomEl);
+			}
 		});
 
 		floors[floor].numbers.forEach(function(number) {
