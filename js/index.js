@@ -847,15 +847,6 @@ window.onload = function() {
 				var response = xhr.responseXML.documentElement,
 					el = d.querySelector("#" + floor + "_floor");
 
-				// if(floor == "top") {
-				// 	for(var i=1; i<5; i++) {
-				// 		var thisEl = d.querySelector("#test_" + i + " svg");
-				// 		thisEl.appendChild(response);
-				// 		thisEl.setAttribute("viewBox", "0 0 " + el.querySelector(".facade").offsetWidth * 0.5 + " " + el.querySelector(".facade").offsetHeight * 0.5);
-				// 		thisEl.innerHTML = thisEl.innerHTML;
-				// 	}
-				// }
-
 				el.querySelector("svg").appendChild(response);
 				el.querySelector("svg").setAttribute("viewBox", "0 0 " + floors[floor].facadeWidth / 2.5 + " " + floors[floor].facadeHeight / 2.5);
 				el.innerHTML = el.innerHTML;

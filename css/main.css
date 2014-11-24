@@ -1135,45 +1135,6 @@ svg {
   overflow: visible;
 }
 
-[id^="test"] {
-  margin-left: 400px;
-  margin-top: 200px;
-}
-
-#test_1 {
-  margin-top: 400px;
-}
-
-#test_1_wrapper, #test_2_wrapper, #test_3_wrapper, #test_4_wrapper {
-  perspective: 1000px;
-  perspective-origin: center 20%;
-}
-
-#test_2_wrapper *, #test_3_wrapper * {
-  -moz-transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-#test_2_wrapper #test_2_contents, #test_2_wrapper #test_3_contents, #test_3_wrapper #test_2_contents, #test_3_wrapper #test_3_contents {
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
-#test_3_wrapper #test_3 {
-  -moz-transform: rotateX(90deg);
-  -ms-transform: rotateX(90deg);
-  -webkit-transform: rotateX(90deg);
-  transform: rotateX(90deg);
-}
-#test_3_wrapper #test_3 .svg_wrapper {
-  -moz-transform: rotateX(-90deg);
-  -ms-transform: rotateX(-90deg);
-  -webkit-transform: rotateX(-90deg);
-  transform: rotateX(-90deg);
-}
-
 #building_container {
   -webkit-perspective: 1000px;
   perspective: 1000px;
