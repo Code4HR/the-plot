@@ -45,7 +45,7 @@
 		@include transform(rotateZ(-90deg));
 	}
 	.room {
-		// opacity: 0;
+		opacity: 0;
 		transition-duration: 0;
 	}
 	.number {
@@ -78,9 +78,11 @@
 				border-width: 1px;
 			}
 		}
-		&:hover, &.hover {
-			.detail {
-				opacity: 1;
+		.rotated & {
+			&:hover, &.hover {
+				.detail {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -157,7 +159,7 @@
 	@extend %floor-base;
 }
 
-@mixin floor-sizing($width, $height, $facade-height-ratio, $floor-name, $facade-translate-y, $facade-translate-x, $svg-translate-x, $svg-translate-y, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0) {
+@mixin floor-sizing($width, $height, $facade-height-ratio, $floor-name, $facade-translate-y, $facade-translate-x, $svg-translate-x, $svg-translate-y, $post-transform-x, $post-transform-y, $post-svg-translate-x, $post-svg-translate-y, $post-svg-translate-z, $pre-transform-x: 0px, $pre-transform-y: 0) {
 
 	@include size($width, $height);
 
@@ -245,8 +247,8 @@
 				opacity: 1;
 			}
 			100% {
-				@include transform(scale(0.75) translateX(0.25 * 0.5 * $facade-translate-x) translateY(0.25 * 0.5 * $facade-translate-y));
-				// opacity: 0;
+				@include transform(rotateX(-86deg) rotateY(-60deg) rotateZ(-16deg) scale(0.75) translateX($post-svg-translate-x) translateY($post-svg-translate-y) translateZ($post-svg-translate-z));
+				opacity: 0;
 			}
 		}
 	}

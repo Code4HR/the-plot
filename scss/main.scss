@@ -106,6 +106,9 @@ svg {
 		facade-translate-y: 155px,
 		svg-translate-x: -66px,
 		svg-translate-y: -55px,
+		post-svg-translate-y: -17px,
+		post-svg-translate-x: -107px,
+		post-svg-translate-z: 182px,
 		post-transform-x: -30px, 
 		post-transform-y: -30px, 
 		pre-transform-y: 40%
@@ -116,14 +119,19 @@ svg {
 			facade-translate-x: 167px,
 			facade-translate-y: 159px,
 			svg-translate-x: -107px,
-			svg-translate-y: -27px
+			svg-translate-y: -27px,
+			post-svg-translate-y: 12px,
+			post-svg-translate-x: -116px,
+			post-svg-translate-z: 132px
 		))...);
 	}
 	@include desktop-and-up {
 		@include floor-sizing(map-merge($top-floor-settings, (
 			facade-translate-x: 196px,
 			facade-translate-y: 168px,
-			svg-translate-x: -120px
+			svg-translate-x: -120px,
+			post-svg-translate-z: 232px,
+			post-svg-translate-x: -122px
 		))...);
 	}
 	@include floor-styling($first-floor-color, 'top-floor');
@@ -144,6 +152,9 @@ svg {
 		facade-translate-y: -17px,
 		svg-translate-x: -33px,
 		svg-translate-y: -13px,
+		post-svg-translate-x: -61px,
+		post-svg-translate-y: 4px,
+		post-svg-translate-z: 208px,
 		post-transform-x: -30px, 
 		post-transform-y: 15px, 
 		pre-transform-y: 40%
@@ -156,7 +167,9 @@ svg {
 			facade-translate-y: -21px,
 			svg-translate-x: -49px,
 			svg-translate-y: -6px,
-			post-transform-y: 5px
+			post-transform-y: 5px,
+			post-svg-translate-x: -71px,
+			post-svg-translate-z: 158px
 		))...);
 	}
 	@include desktop-and-up {
@@ -165,7 +178,10 @@ svg {
 			facade-translate-x: 197px,
 			facade-translate-y: -4px,
 			svg-translate-x: -53px,
-			post-transform-y: 20px
+			post-transform-y: 20px,
+			post-svg-translate-x: -54px,
+			post-svg-translate-y: 37px,
+			post-svg-translate-z: 256px
 		))...);
 	}
 	@include floor-styling($second-floor-color, 'second-floor');
@@ -186,6 +202,9 @@ svg {
 		facade-translate-y: -176px,
 		svg-translate-x: -3px,
 		svg-translate-y: 26px,
+		post-svg-translate-x: 35px,
+		post-svg-translate-y: -70px,
+		post-svg-translate-z: 128px,
 		post-transform-y: -182px, 
 		post-transform-x: 190px, 
 		pre-transform-y: 59%, 
@@ -200,7 +219,10 @@ svg {
 			svg-translate-x: 6px,
 			svg-translate-y: 15px,
 			post-transform-x: 155px,
-			post-transform-y: -160px
+			post-transform-y: -160px,
+			post-svg-translate-x: 10px,
+			post-svg-translate-y: -47px,
+			post-svg-translate-z: 90px
 		))...);
 	}
 	@include desktop-and-up {
@@ -209,7 +231,10 @@ svg {
 			facade-translate-x: 196px,
 			facade-translate-y: -165px,
 			svg-translate-x: 21px,
-			post-transform-y: -175px
+			post-transform-y: -175px,
+			post-svg-translate-x: 45px,
+			post-svg-translate-y: 37px,
+			post-svg-translate-z: 168px
 		))...);
 	}
 	@include floor-styling($third-floor-color, 'third-floor');
@@ -230,6 +255,9 @@ svg {
 		facade-translate-y: -394px,
 		svg-translate-x: 30px,
 		svg-translate-y: 39px,
+		post-svg-translate-x: -150px,
+		post-svg-translate-y: 245px,
+		post-svg-translate-z: 220px,
 		post-transform-x: -275px, 
 		post-transform-y: 540px, 
 		pre-transform-y: -63%, 
@@ -244,16 +272,20 @@ svg {
 			svg-translate-x: 60px,
 			svg-translate-y: 17px,
 			post-transform-y: 485px,
-			post-transform-x: -320px
+			post-transform-x: -320px,
+			post-svg-translate-x: -162px,
+			post-svg-translate-z: 140px
 		))...);
 	}
 	@include desktop-and-up {
 		@include floor-sizing(map-merge($fourth-floor-settings, (
 			facade-translate-x: 263px,
-			facade-translate-y: -368px,
+			facade-translate-y: -346px,
 			svg-translate-x: 100px,
 			svg-translate-y: 69px,
-			post-transform-y: 640px
+			post-transform-y: 640px,
+			post-svg-translate-x: -108px,
+			post-svg-translate-z: 320px
 		))...);
 	}
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
