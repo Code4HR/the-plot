@@ -163,23 +163,29 @@
 
 	$mid-x: 0;
 	$mid-z: 0;
-	$modifier: 20px;
+	$modifier-x: 20px;
+	$modifier-z: 20px;
+
+	@include desktop-and-up {
+		$modifier-x: 40px;
+		$modifier-z: 10px;
+	}
 
 	@if ($floor-name == "top-floor") {
-		$mid-x: -($modifier + $modifier/2);
-		$mid-z: $modifier + $modifier/2;
+		$mid-x: -($modifier-x + $modifier-x/2);
+		$mid-z: $modifier-z + $modifier-z/2;
 	}
 	@else if ($floor-name == "second-floor") {
-		$mid-x: -($modifier/2);
-		$mid-z: $modifier/2;
+		$mid-x: -($modifier-x/2);
+		$mid-z: $modifier-z/2;
 	}
 	@else if ($floor-name == "third-floor") {
-		$mid-x: $modifier/2;
-		$mid-z: -($modifier/2);
+		$mid-x: $modifier-x/2;
+		$mid-z: -($modifier-z/2);
 	}
 	@else {
-		$mid-x: $modifier + $modifier/2;
-		$mid-z: -($modifier + $modifier/2);
+		$mid-x: $modifier-x + $modifier-x/2;
+		$mid-z: -($modifier-z + $modifier-z/2);
 	}
 	.facade {
 		$modified-facade-width: $height;
