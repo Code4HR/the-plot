@@ -9,6 +9,42 @@ body {
 	}
 }
 
+svg {
+	overflow: visible;
+}
+
+[id^="test"] {
+	margin-left: 400px;
+	margin-top: 200px;
+}
+
+#test_1 {
+	margin-top: 400px;
+}
+
+#test_1_wrapper, #test_2_wrapper, #test_3_wrapper, #test_4_wrapper {
+	perspective: 1000px;
+	perspective-origin: center 20%;
+}
+
+#test_2_wrapper, #test_3_wrapper {
+	* {
+		@include transform-style(preserve-3d);
+	}
+	#test_2_contents, #test_3_contents {
+		@include transform(scale(1.2));
+	}
+}
+
+#test_3_wrapper {
+	#test_3 {
+		@include transform(rotateX(90deg));
+		.svg_wrapper {
+			@include transform(rotateX(-90deg));
+		}
+	}
+}
+
 #building_container {
   -webkit-perspective: 1000px;
   perspective: 1000px;
@@ -50,33 +86,43 @@ body {
 		@include square(100%);
 		position: absolute;
 	}
-	@include tablet-landscape-and-below {
-		@include transform(scale(0.75));
+	.contents {
+		@include transform(rotateX(90deg));
 	}
 	@include desktop-and-up {
 		margin-top: 200px;
-		@include transform(scale(1.2));
 	}
 }
 
 @include sizing($floor-depth, $floor-width);
 
-.facade {
-	@include transform(rotateX(-90deg));
-}
-
 #top_floor {
-	@include floor-sizing($width: 325px, 
-					 	  $height: $floor-width, 
-					 	  $facade-height-ratio: 0.82, 
-					 	  $floor-name: 'top-floor', 
-					 	  $facade-translate-x: 376px,
-					 	  $facade-translate-y: 700px,
-					 	  $svg-translate-x: 14px,
-					 	  $svg-translate-y: 81px,
-					 	  $post-transform-x: -30px, 
-					 	  $post-transform-y: -30px, 
-					 	  $pre-transform-y: 40%);
+	$top-floor-settings: (
+		width: 325px, 
+		height: $floor-width, 
+		facade-height-ratio: 0.82, 
+		floor-name: 'top-floor', 
+		facade-translate-x: 183px,
+		facade-translate-y: 155px,
+		svg-translate-x: -66px,
+		svg-translate-y: -55px,
+		post-transform-x: -30px, 
+		post-transform-y: -30px, 
+		pre-transform-y: 40%
+	);
+	@include floor-sizing($top-floor-settings...);
+	@include tablet-landscape-and-below {
+		@include floor-sizing(map-merge($top-floor-settings, (
+			facade-translate-x: 167px,
+			facade-translate-y: 159px
+		))...);
+	}
+	@include desktop-and-up {
+		@include floor-sizing(map-merge($top-floor-settings, (
+			facade-translate-x: 196px,
+			facade-translate-y: 168px
+		))...);
+	}
 	@include floor-styling($first-floor-color, 'top-floor');
 	.facade {
 		-webkit-transform-origin: center 254%;
@@ -85,17 +131,35 @@ body {
 }
 
 #second_floor {
-	@include floor-sizing($width: 325px, 
-						  $height: $floor-width, 
-						  $facade-height-ratio: 0.58, 
-						  $floor-name: 'second-floor', 
-						  $facade-translate-x: 377px,
-						  $facade-translate-y: 486px,
-						  $svg-translate-x: 14px,
-						  $svg-translate-y: 81px,
-						  $post-transform-x: -30px, 
-						  $post-transform-y: 35px, 
-						  $pre-transform-y: 40%);
+	margin-top: 4.2%;
+	$second-floor-settings: (
+		width: 325px, 
+		height: $floor-width, 
+		facade-height-ratio: 0.58, 
+		floor-name: 'second-floor', 
+		facade-translate-x: 184px,
+		facade-translate-y: -17px,
+		svg-translate-x: -33px,
+		svg-translate-y: -13px,
+		post-transform-x: -30px, 
+		post-transform-y: 35px, 
+		pre-transform-y: 40%
+	);
+	@include floor-sizing($second-floor-settings...);
+	@include tablet-landscape-and-below {
+		margin-top: -1%;
+		@include floor-sizing(map-merge($second-floor-settings, (
+			facade-translate-x: 168px,
+			facade-translate-y: -21px
+		))...);
+	}
+	@include desktop-and-up {
+		margin-top: 9.5%;
+		@include floor-sizing(map-merge($second-floor-settings, (
+			facade-translate-x: 197px,
+			facade-translate-y: -4px
+		))...);
+	}
 	@include floor-styling($second-floor-color, 'second-floor');
 	.facade {
 		-webkit-transform-origin: center 353%;
@@ -104,19 +168,36 @@ body {
 }
 
 #third_floor {
-	margin-top: -2%;
-	@include floor-sizing($width: 285px, 
-						  $height: $floor-width, 
-						  $facade-height-ratio: 0.52, 
-						  $floor-name: 'third-floor', 
-						  $facade-translate-x: 417px,
-						  $facade-translate-y: 295px,
-						  $svg-translate-x: 19px,
-						  $svg-translate-y: 83px,
-						  $post-transform-y: -140px, 
-						  $post-transform-x: 190px, 
-						  $pre-transform-y: 59%, 
-						  $pre-transform-x: -7%);
+	margin-top: 2%;
+	$third-floor-settings: (
+		width: 285px, 
+		height: $floor-width, 
+		facade-height-ratio: 0.52, 
+		floor-name: 'third-floor', 
+		facade-translate-x: 184px,
+		facade-translate-y: -176px,
+		svg-translate-x: -3px,
+		svg-translate-y: 26px,
+		post-transform-y: -140px, 
+		post-transform-x: 190px, 
+		pre-transform-y: 59%, 
+		pre-transform-x: -7%
+	);
+	@include floor-sizing($third-floor-settings...);
+	@include tablet-landscape-and-below {
+		margin-top: -2.5%;
+		@include floor-sizing(map-merge($third-floor-settings, (
+			facade-translate-x: 167px,
+			facade-translate-y: -190px
+		))...);
+	}
+	@include desktop-and-up {
+		margin-top: 7%;
+		@include floor-sizing(map-merge($third-floor-settings, (
+			facade-translate-x: 196px,
+			facade-translate-y: -165px
+		))...);
+	}
 	@include floor-styling($third-floor-color, 'third-floor');
 	.facade {
 		-webkit-transform-origin: center 389%;
@@ -125,19 +206,35 @@ body {
 }
 
 #fourth_floor {
-	margin-top: -16%;
-	@include floor-sizing($width: 800px, 
-						  $height: 220px, 
-						  $facade-height-ratio: 0.46, 
-						  $floor-name: 'fourth-floor', 
-						  $facade-translate-x: 18px,
-						  $facade-translate-y: 247px,
-						  $svg-translate-x: -68px,
-						  $svg-translate-y: 95px,
-						  $post-transform-x: -275px, 
-						  $post-transform-y: 605px, 
-						  $pre-transform-y: -63%, 
-						  $pre-transform-x: 30%);
+	margin-top: -12.2%;
+	$fourth-floor-settings: (
+		width: 800px, 
+		height: 220px, 
+		facade-height-ratio: 0.46, 
+		floor-name: 'fourth-floor', 
+		facade-translate-x: 264px,
+		facade-translate-y: -394px,
+		svg-translate-x: 30px,
+		svg-translate-y: 39px,
+		post-transform-x: -275px, 
+		post-transform-y: 605px, 
+		pre-transform-y: -63%, 
+		pre-transform-x: 30%
+	);
+	@include floor-sizing($fourth-floor-settings...);
+	@include tablet-landscape-and-below {
+		margin-top: -16.5%;
+		@include floor-sizing(map-merge($fourth-floor-settings, (
+			facade-translate-x: 272px,
+			facade-translate-y: -439px
+		))...);
+	}
+	@include desktop-and-up {
+		@include floor-sizing(map-merge($fourth-floor-settings, (
+			facade-translate-x: 263px,
+			facade-translate-y: -368px
+		))...);
+	}
 	@include floor-styling($fourth-floor-color, 'fourth-floor');
 	.facade {
 		-webkit-transform-origin: center 267%;

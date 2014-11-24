@@ -45,7 +45,7 @@
 		@include transform(rotateZ(-90deg));
 	}
 	.room {
-		opacity: 0;
+		// opacity: 0;
 		transition-duration: 0;
 	}
 	.number {
@@ -153,8 +153,11 @@
 	}
 }
 
-@mixin floor-sizing($width, $height, $facade-height-ratio, $floor-name, $facade-translate-y, $facade-translate-x, $svg-translate-x, $svg-translate-y, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0) {
+#top_floor, #second_floor, #third_floor, #fourth_floor {
 	@extend %floor-base;
+}
+
+@mixin floor-sizing($width, $height, $facade-height-ratio, $floor-name, $facade-translate-y, $facade-translate-x, $svg-translate-x, $svg-translate-y, $post-transform-x, $post-transform-y, $pre-transform-x: 0px, $pre-transform-y: 0) {
 
 	@include size($width, $height);
 
@@ -179,7 +182,15 @@
 		$mid-z: -($modifier + $modifier/2);
 	}
 	.facade {
-		@include size($height, $facade-height-ratio * $height);
+		$modified-facade-width: $height;
+		$modified-facade-height: $facade-height-ratio * $height;
+		@include size($modified-facade-width, $modified-facade-height);
+		@include tablet-landscape-and-below {
+			@include size($tablet-landscape-and-below-scale-factor * $modified-facade-width, $tablet-landscape-and-below-scale-factor * $modified-facade-height);
+		}
+		@include desktop-and-up {
+			@include size($desktop-and-up-scale-factor * $modified-facade-width, $desktop-and-up-scale-factor * $modified-facade-height);
+		}
 		left: 50%;
 		margin-left: -0.5 * $height;
 		svg {
@@ -190,9 +201,14 @@
 		}
 	}
 	.contents {
-		@include transform(rotateX(90deg));
 		.rooms {
 			@include transform(rotateZ(-90deg) translateX($pre-transform-x) translateY($pre-transform-y));
+			@include tablet-landscape-and-below {
+				@include transform(scale($tablet-landscape-and-below-scale-factor) rotateZ(-90deg) translateX($pre-transform-x) translateY($pre-transform-y));
+			}
+			@include desktop-and-up {
+				@include transform(scale($desktop-and-up-scale-factor) rotateZ(-90deg) translateX($pre-transform-x) translateY($pre-transform-y));
+			}
 		}
 		> .room {
 			@include transform(translateZ(-($facade-height-ratio * $height - $floor-depth)));
@@ -224,7 +240,7 @@
 			}
 			100% {
 				@include transform(scale(0.75) translateX(0.25 * 0.5 * $facade-translate-x) translateY(0.25 * 0.5 * $facade-translate-y));
-				opacity: 0;
+				// opacity: 0;
 			}
 		}
 	}

@@ -11,6 +11,8 @@ var d = document,
 
 var floors = {
 	"top": {
+		facadeWidth: 361,
+		facadeHeight: 296,
 		numbers: [
 			"work_room_1",
 			"work_room_2",
@@ -103,6 +105,8 @@ var floors = {
 		]
 	},
 	"second": {
+		facadeWidth: 361,
+		facadeHeight: 209,
 		numbers: [
 			"deck",
 			"couches",
@@ -201,6 +205,8 @@ var floors = {
 		]
 	},
 	"third": {
+		facadeWidth: 361,
+		facadeHeight: 188,
 		numbers: ['mezzanine'],
 		rooms: [
 			{
@@ -300,6 +306,8 @@ var floors = {
 		]
 	},
 	"fourth": {
+		facadeWidth: 753,
+		facadeHeight: 346,
 		numbers: [
 			'front_desk',
 			'ping_pong_table',
@@ -735,11 +743,10 @@ var constructFloor = function(orientation) {
 		facade = html({classes: ['facade']});
 
 	facade.insertAdjacentHTML('beforeend', html({serialize: true, element: "svg"}));
-
 	contents.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['rooms']}));
-	contents.insertAdjacentHTML('beforeend', serializeDOM(facade));
 
 	wrapper.insertAdjacentHTML('beforeend', serializeDOM(contents));
+	wrapper.insertAdjacentHTML('beforeend', serializeDOM(facade));
 	return wrapper;
 }
 
@@ -832,7 +839,7 @@ window.onload = function() {
 		el.querySelector('.circle').innerHTML = Math.round(Math.random() * 10) + 1;
 	});
 
-	['top', 'second', 'third', 'fourth'].forEach(function(floor) {
+	Object.keys(floors).forEach(function(floor) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "img/" + floor + "_floor.svg");
 		xhr.onreadystatechange = function() {
@@ -840,8 +847,17 @@ window.onload = function() {
 				var response = xhr.responseXML.documentElement,
 					el = d.querySelector("#" + floor + "_floor");
 
+				// if(floor == "top") {
+				// 	for(var i=1; i<5; i++) {
+				// 		var thisEl = d.querySelector("#test_" + i + " svg");
+				// 		thisEl.appendChild(response);
+				// 		thisEl.setAttribute("viewBox", "0 0 " + el.querySelector(".facade").offsetWidth * 0.5 + " " + el.querySelector(".facade").offsetHeight * 0.5);
+				// 		thisEl.innerHTML = thisEl.innerHTML;
+				// 	}
+				// }
+
 				el.querySelector("svg").appendChild(response);
-				el.querySelector("svg").setAttribute("viewBox", "0 0 " + el.querySelector(".facade").offsetWidth * 2 + " " + el.querySelector(".facade").offsetHeight * 2);
+				el.querySelector("svg").setAttribute("viewBox", "0 0 " + floors[floor].facadeWidth / 2.5 + " " + floors[floor].facadeHeight / 2.5);
 				el.innerHTML = el.innerHTML;
 			}
 		};
