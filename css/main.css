@@ -359,7 +359,7 @@
 #top_floor .conference_room .chair_3, #top_floor .conference_room .chair_7 {
   top: 75%;
 }
-#top_floor #conference_room_number {
+#top_floor [data-expandable="conference1"] {
   left: 10%;
   top: 15%;
 }
@@ -383,7 +383,7 @@
 #top_floor .work_room_1 .chair_1, #top_floor .work_room_1 .chair_3 {
   top: 50%;
 }
-#top_floor #work_room_1_number {
+#top_floor [data-expandable="workroom1"] {
   left: 87%;
   top: 61%;
 }
@@ -406,7 +406,7 @@
   transform: translateZ(-65px) rotateZ(-90deg);
   top: 10%;
 }
-#top_floor #work_room_2_number {
+#top_floor [data-expandable="workroom2"] {
   left: 70%;
   top: 61%;
 }
@@ -427,7 +427,7 @@
   width: 45%;
   top: 40%;
 }
-#top_floor #work_room_3_number {
+#top_floor [data-expandable="workroom3"] {
   left: 35%;
   top: 25%;
 }
@@ -450,7 +450,7 @@
   height: 30%;
 }
 
-#second_floor #couches_number {
+#second_floor [data-expandable="couches"] {
   left: 7%;
   top: 50%;
 }
@@ -486,7 +486,7 @@
   width: 10%;
   height: 30%;
 }
-#second_floor #kitchen_number {
+#second_floor [data-expandable="kitchen"] {
   left: 50%;
   top: 48%;
 }
@@ -534,7 +534,7 @@
 #second_floor .couch_3 {
   top: 50%;
 }
-#second_floor #deck_number {
+#second_floor [data-expandable="deck"] {
   left: 115%;
   top: 50%;
 }
@@ -653,7 +653,7 @@
   transform: rotateZ(360deg);
 }
 
-#third_floor .contents #mezzanine_number {
+#third_floor .contents [data-expandable="mezzanine"] {
   left: 50%;
   top: 50%;
 }
@@ -721,41 +721,49 @@
   height: 70%;
 }
 
-#fourth_floor #front_desk_number {
+#fourth_floor [data-expandable="front"] {
   left: 4%;
   top: 22%;
 }
-#fourth_floor #ping_pong_table_number {
+#fourth_floor [data-expandable="pingpong"] {
   left: 17%;
   top: 15%;
 }
-#fourth_floor #eric_office_number {
+#fourth_floor [data-expandable="ericsoffice"] {
   left: 30.5%;
   top: 18%;
 }
-#fourth_floor #stairs_number {
-  left: 61.5%;
+#fourth_floor [data-expandable="producers"] {
+  left: 70%;
   top: 19%;
 }
-#fourth_floor #drew_office_number {
+#fourth_floor [data-expandable="drewsoffice"] {
   left: 82%;
   top: 18%;
 }
-#fourth_floor #green_room_number {
+#fourth_floor [data-expandable="back"] {
   left: 91.5%;
   top: 21%;
 }
-#fourth_floor #field_guide_number {
+#fourth_floor [data-expandable="fieldguide"] {
   left: 8%;
   top: 60%;
 }
-#fourth_floor #creative_space_number {
+#fourth_floor [data-expandable="429creatives"] {
   left: 52.5%;
   top: 72%;
 }
-#fourth_floor #war_room_number {
+#fourth_floor [data-expandable="429warroom"] {
   left: 71.5%;
   top: 67%;
+}
+#fourth_floor [data-expandable="429office1"] {
+  left: 40.5%;
+  top: 61%;
+}
+#fourth_floor [data-expandable="429office2"] {
+  left: 40.5%;
+  top: 82%;
 }
 #fourth_floor .room_1 {
   width: 100%;
@@ -773,8 +781,8 @@
   left: 14.5%;
 }
 #fourth_floor .room_1 .ground_steps {
-  width: 12%;
-  left: 52%;
+  width: 12.5%;
+  left: 66%;
 }
 #fourth_floor .room_1 .ground_green_room {
   width: 11.75%;
@@ -1001,6 +1009,9 @@
 #fourth_floor .room_4 > .top-side {
   display: none;
 }
+#fourth_floor .room_4 .top_wall {
+  top: 2%;
+}
 #fourth_floor .room_4 .room {
   width: 100%;
   height: 35%;
@@ -1014,7 +1025,7 @@
   left: 40%;
 }
 #fourth_floor .room_4 .office_desk_1 {
-  top: 35%;
+  top: 1%;
 }
 #fourth_floor .room_4 .office_desk_1 .chair {
   top: 100%;
@@ -1024,6 +1035,13 @@
 }
 #fourth_floor .room_4 .office_desk_2 .chair {
   bottom: 100%;
+}
+#fourth_floor .room_4 .ground_office_1 {
+  height: 47%;
+}
+#fourth_floor .room_4 .ground_office_2 {
+  height: 53%;
+  top: 47%;
 }
 #fourth_floor .room_5 {
   width: 20%;
@@ -1743,7 +1761,7 @@ svg {
   opacity: 1;
 }
 .rotated #top_floor .room {
-  transition-delay: 0.65s;
+  transition-delay: 0.43333s;
   transition-duration: 0.37143s;
 }
 .rotated #top_floor .number .circle {
@@ -2252,7 +2270,7 @@ svg {
   opacity: 1;
 }
 .rotated #second_floor .room {
-  transition-delay: 0.65s;
+  transition-delay: 0.43333s;
   transition-duration: 0.37143s;
 }
 .rotated #second_floor .number .circle {
@@ -2761,7 +2779,7 @@ svg {
   opacity: 1;
 }
 .rotated #third_floor .room {
-  transition-delay: 0.65s;
+  transition-delay: 0.43333s;
   transition-duration: 0.37143s;
 }
 .rotated #third_floor .number .circle {
@@ -3269,7 +3287,7 @@ svg {
   opacity: 1;
 }
 .rotated #fourth_floor .room {
-  transition-delay: 0.65s;
+  transition-delay: 0.43333s;
   transition-duration: 0.37143s;
 }
 .rotated #fourth_floor .number .circle {

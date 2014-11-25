@@ -27,7 +27,7 @@
 			top: 75%;
 		}
 	}
-	#conference_room_number {
+	[data-expandable="conference1"] {
 		left: 10%;
 		top: 15%;
 	}
@@ -49,7 +49,7 @@
 			top: 50%;
 		}
 	}
-	#work_room_1_number {
+	[data-expandable="workroom1"] {
 		left: 87%;
 		top: 61%;
 	}
@@ -68,7 +68,7 @@
 			top: 10%;
 		}
 	}
-	#work_room_2_number {
+	[data-expandable="workroom2"] {
 		left: 70%;
 		top: 61%;
 	}
@@ -85,7 +85,7 @@
 			top: 40%;
 		}
 	}
-	#work_room_3_number {
+	[data-expandable="workroom3"] {
 		left: 35%;
 		top: 25%;
 	}
@@ -107,7 +107,7 @@
 }
 
 #second_floor {
-	#couches_number {
+	[data-expandable="couches"] {
 		left: 7%;
 		top: 50%;
 	}
@@ -133,7 +133,7 @@
 		left: 83%;
 		@include size(10%, 30%);
 	}
-	#kitchen_number {
+	[data-expandable="kitchen"] {
 		left: 50%;
 		top: 48%;
 	}
@@ -174,7 +174,7 @@
 	.couch_3 {
 		top: 50%;
 	}
-	#deck_number {
+	[data-expandable="deck"] {
 		left: 115%;
 		top: 50%;
 	}
@@ -237,7 +237,7 @@
 
 #third_floor {
 	.contents {
-		#mezzanine_number {
+		[data-expandable="mezzanine"] {
 			left: 50%;
 			top: 50%;
 		}
@@ -304,41 +304,49 @@
 }
 
 #fourth_floor {
-	#front_desk_number {
+	[data-expandable="front"] {
 		left: 4%;
 		top: 22%;
 	}
-	#ping_pong_table_number {
+	[data-expandable="pingpong"] {
 		left: 17%;
 		top: 15%;
 	}
-	#eric_office_number {
+	[data-expandable="ericsoffice"] {
 		left: 30.5%;
 		top: 18%;
 	}
-	#stairs_number {
-		left: 61.5%;
+	[data-expandable="producers"] {
+		left: 70%;
 		top: 19%;
 	}
-	#drew_office_number {
+	[data-expandable="drewsoffice"] {
 		left: 82%;
 		top: 18%;
 	}
-	#green_room_number {
+	[data-expandable="back"] {
 		left: 91.5%;
 		top: 21%;
 	}
-	#field_guide_number {
+	[data-expandable="fieldguide"] {
 		left: 8%;
 		top: 60%;
 	}
-	#creative_space_number {
+	[data-expandable="429creatives"] {
 		left: 52.5%;
 		top: 72%;
 	}
-	#war_room_number {
+	[data-expandable="429warroom"] {
 		left: 71.5%;
 		top: 67%;
+	}
+	[data-expandable="429office1"] {
+		left: 40.5%;
+		top: 61%;
+	}
+	[data-expandable="429office2"] {
+		left: 40.5%;
+		top: 82%;
 	}
 	.room_1 {
 		> .left-side {
@@ -353,8 +361,8 @@
 			left: 14.5%;
 		}
 		.ground_steps {
-			width: 12%;
-			left: 52%;
+			width: 12.5%;
+			left: 66%;
 		}
 		.ground_green_room {
 			width: 11.75%;
@@ -553,6 +561,9 @@
 		@include size(5%, 65%);
 		top: 43%;;
 		left: 40%;
+		.top_wall {
+			top: 2%;
+		}
 		.room {
 			@include size(100%, 35%);
 			top: 35%;
@@ -564,7 +575,7 @@
 			}
 		}
 		.office_desk_1 {
-			top: 35%;
+			top: 1%;
 			.chair {
 				top: 100%;
 			}
@@ -574,6 +585,13 @@
 			.chair {
 				bottom: 100%;
 			}
+		}
+		.ground_office_1 {
+			height: 47%;
+		}
+		.ground_office_2 {
+			height: 53%;
+			top: 47%;
 		}
 	}
 	.room_5 {

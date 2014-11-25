@@ -281,7 +281,7 @@
 			opacity: 1;
 		}
 		.room {
-			transition-delay: $split-transition-duration;
+			transition-delay: $split-transition-duration / 1.5;
 			transition-duration: $skew-transition-duration / 1.75;
 		}
 		.number .circle {

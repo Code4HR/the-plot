@@ -14,17 +14,16 @@ var floors = {
 		facadeWidth: 361,
 		facadeHeight: 296,
 		numbers: [
-			"work_room_1",
-			"work_room_2",
-			"work_room_3",
-			"conference_room"
+			"workroom1",
+			"workroom2",
+			"workroom3",
+			"conference1"
 		],
 		rooms: [
 			{
 				subRooms: [
 					{
 						identifier: 'work_room_1',
-						hoverable: true,
 						walls: ['top', 'left'],
 						contents: [
 							{
@@ -35,12 +34,17 @@ var floors = {
 										right: 2
 									}
 								}
+							},
+							{
+								type: 'expandable',
+								options: {
+									identifier: 'workroom1'
+								}
 							}
 						]
 					},
 					{
 						identifier: 'work_room_2',
-						hoverable: true,
 						walls: ['top', 'left'],
 						contents: [
 							{
@@ -50,12 +54,17 @@ var floors = {
 							{
 								type: 'couch',
 								options: { addedClasses: ['couch_2'] }
+							},
+							{
+								type: 'expandable',
+								options: {
+									identifier: 'workroom2'
+								}
 							}
 						]
 					},
 					{
 						identifier: 'work_room_3',
-						hoverable: true,
 						walls: ['bottom', 'right'],
 						contents: [
 							{
@@ -65,6 +74,12 @@ var floors = {
 							{
 								type: 'couch',
 								options: { addedClasses: ['couch_2'] }
+							},
+							{
+								type: 'expandable',
+								options: {
+									identifier: 'workroom3'
+								}
 							}
 						]
 					},
@@ -86,7 +101,6 @@ var floors = {
 					},
 					{
 						identifier: 'conference_room',
-						hoverable: true,
 						walls: ['right'],
 						contents: [
 							{
@@ -96,6 +110,12 @@ var floors = {
 										left: 4,
 										right: 4
 									}
+								}
+							},
+							{
+								type: 'expandable',
+								options: {
+									identifier: 'conference1'
 								}
 							}
 						]
@@ -125,7 +145,6 @@ var floors = {
 					},
 					{
 						identifier: 'deck',
-						hoverable: true,
 						contents: [
 							{
 								type: "table",
@@ -147,6 +166,12 @@ var floors = {
 										back: 1
 									},
 									umbrella: true
+								}
+							},
+							{
+								type: 'expandable',
+								options: {
+									identifier: 'deck'
 								}
 							}
 						],
@@ -180,27 +205,22 @@ var floors = {
 					{
 						type: 'step',
 						options: { addedClasses: ['counter'] }
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_couches'],
+							identifier: 'couches'
+						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_kitchen'],
+							identifier: 'kitchen'
+						}
 					}
-				],
-				edits: function(el) {
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({
-						serialize: true, 
-						classes: ['ground', 'ground_couches'], 
-						attributes: [{
-							name: 'data-number', 
-							value: 'couches_number'
-						}]
-					}));
-
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({
-						serialize: true, 
-						classes: ['ground', 'ground_kitchen'], 
-						attributes: [{
-							name: 'data-number', 
-							value: 'kitchen_number'
-						}]
-					}));
-				}
+				]
 			}
 		]
 	},
@@ -297,11 +317,14 @@ var floors = {
 					{
 						type: 'table',
 						options: { addedClasses: ['table_8'] }
+					},
+					{
+						type: 'expandable',
+						options: {
+							identifier: 'mezzanine'
+						}
 					}
-				],
-				edits: function(el) {
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground'], attributes: [{name: 'data-number', value: 'mezzanine_number'}]}));
-				}
+				]
 			}
 		]
 	},
@@ -309,15 +332,17 @@ var floors = {
 		facadeWidth: 753,
 		facadeHeight: 346,
 		numbers: [
-			'front_desk',
-			'ping_pong_table',
-			'eric_office',
-			'stairs',
-			'drew_office',
-			'green_room',
-			'field_guide',
-			'creative_space',
-			'war_room'
+			'front',
+			'pingpong',
+			'ericsoffice',
+			'producers',
+			'drewsoffice',
+			'back',
+			'fieldguide',
+			'429creatives',
+			'429warroom',
+			'429office1',
+			'429office2'
 		],
 		rooms: [
 			{
@@ -342,13 +367,18 @@ var floors = {
 					},
 					{
 						identifier: 'eric_office',
-						hoverable: true,
 						walls: ['left', 'right', 'top'],
 						contents: [
 							{
 								type: 'table',
 								options: {
 									chairs: {back: 1 }
+								}
+							},
+							{
+								type: 'expandable',
+								options: {
+									identifier: 'ericsoffice'
 								}
 							}
 						]
@@ -407,13 +437,18 @@ var floors = {
 					},
 					{
 						identifier: 'drew_office',
-						hoverable: true,
 						walls: ['left', 'right', 'top'],
 						contents: [
 							{
 								type: 'table',
 								options: {
 									chairs: {back: 1 }
+								}
+							},
+							{
+								type: 'expandable',
+								options: {
+									identifier: 'drewsoffice'
 								}
 							}
 						]
@@ -442,15 +477,39 @@ var floors = {
 								back: 3
 							}
 						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_steps'],
+							identifier: 'producers'
+						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_green_room'],
+							identifier: 'back'
+						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_front_desk'],
+							identifier: 'front'
+						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_ping_pong_table'],
+							identifier: 'pingpong'
+						}
 					}
 				],
 				edits: function(el) {
 					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['left_wall', 'upper']}));
 					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['left_wall', 'lower']}));
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground', 'ground_front_desk'], attributes: [{name: 'data-number', value: 'front_desk_number'}]}));
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground', 'ground_ping_pong_table'], attributes: [{name: 'data-number', value: 'ping_pong_table_number'}]}));
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground', 'ground_steps'], attributes: [{name: 'data-number', value: 'stairs_number'}]}));
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground', 'ground_green_room'], attributes: [{name: 'data-number', value: 'green_room_number'}]}));
 
 					el.insertAdjacentHTML('beforeend', html({serialize: true, classes: ['left_wall', 'green_room_divider']}));
 				}
@@ -497,11 +556,14 @@ var floors = {
 					{
 						type: 'table',
 						options: {addedClasses: ['bar'] }
+					},
+					{
+						type: 'expandable',
+						options: {
+							identifier: 'fieldguide'
+						}
 					}
-				],
-				edits: function(el) {
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground'], attributes: [{name: 'data-number', value: 'field_guide_number'}]}));
-				}
+				]
 			},
 			{
 				addedClasses: ['room_3']
@@ -528,8 +590,25 @@ var floors = {
 							addedClasses: ['office_desk_2'],
 							chairs: {front: 1 }
 						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_office_1'],
+							identifier: '429office1'
+						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							addedClasses: ['ground_office_2'],
+							identifier: '429office2'
+						}
 					}
-				]
+				],
+				edits: function(el) {
+					el.querySelector('.bottom-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['top_wall']}));
+				}
 			},
 			{
 				addedClasses: ['room_5'],
@@ -560,10 +639,15 @@ var floors = {
 								right: 2
 							}
 						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							identifier: '429creatives'
+						}
 					}
 				],
 				edits: function(el) {
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground'], attributes: [{name: 'data-number', value: 'creative_space_number'}]}));
 					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['divider', 'divider_1']}));
 					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['divider', 'divider_2']}));
 				}
@@ -590,11 +674,14 @@ var floors = {
 								back: 3
 							}
 						}
+					},
+					{
+						type: 'expandable',
+						options: {
+							identifier: '429warroom'
+						}
 					}
-				],
-				edits: function(el) {
-					el.querySelector('.left-side').insertAdjacentHTML('afterend', html({serialize: true, classes: ['ground'], attributes: [{name: 'data-number', value: 'war_room_number'}]}));
-				}
+				]
 			}
 		]
 	}
@@ -635,6 +722,12 @@ var insertSeries = function(el, items) {
 }
 
 var itemConstructors = {
+	expandable: function(opts) {
+		var addedClasses = opts.addedClasses || [],
+			wrapper = html({classes: ['ground', 'iBeacon', addedClasses.join(" ")], attributes: [{name: 'data-number', value: opts.identifier}]});
+
+		return wrapper;
+	},
 	chair: function(orientation, additionalClasses) {
 		additionalClasses = additionalClasses || [];
 
@@ -726,7 +819,7 @@ var itemConstructors = {
 		return wrapper;
 	},
 	number: function(opts) {
-		var wrapper = html({classes: ['number'], id: opts.id + "_number"});
+		var wrapper = html({classes: ['number'], attributes: [{name: 'data-expandable', value: opts.id}]});
 
 		insertSeries(wrapper, [
 			{classes: ['detail']},
@@ -771,18 +864,6 @@ var constructRoom = function(opts) {
 var constructSubRoom = function(opts) {
 	var additionalClasses = opts.addedClasses ? [opts.addedClasses, opts.identifier] : [opts.identifier],
 		wrapper = html({classes: additionalClasses});
-
-	if(opts.hoverable === true) {
-		wrapper.insertAdjacentHTML('beforeend', html(
-			{
-				classes: ['ground'], 
-				serialize: true,
-				attributes: [{
-					name: 'data-number', 
-					value: opts.identifier + "_number"
-				}]
-			}));
-	}
 
 	if(opts.walls) {
 		opts.walls.forEach(function(wall) {
